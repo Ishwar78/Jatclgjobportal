@@ -1,0 +1,104 @@
+/* Step 13 Responsibilities & Committees Stylesheet */
+.step13-container {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  font-family: inherit;
+  color: #1e293b;
+}
+
+.step13-header {
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 12px;
+}
+
+.step13-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.step13-subtitle {
+  font-size: 13.5px;
+  color: #64748b;
+  margin: 4px 0 0 0;
+}
+
+.step13-table-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.step13-table-heading {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  background-color: #f1f5f9;
+  border-left: 4px solid #2563eb;
+  padding: 8px 14px;
+  border-radius: 4px 8px 8px 4px;
+  margin: 0;
+}
+
+.step13-table-wrapper {
+  overflow-x: auto;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.step13-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  text-align: left;
+}
+
+.step13-th {
+  background-color: #f8fafc;
+  color: #334155;
+  font-weight: 700;
+  padding: 10px 12px;
+  border-bottom: 1.5px solid #cbd5e1;
+  border-right: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+.step13-td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #e2e8f0;
+  border-right: 1px solid #e2e8f0;
+  vertical-align: middle;
+}
+
+.step13-row-label {
+  font-weight: 600;
+  color: #0f172a;
+  background-color: #f8fafc;
+  white-space: nowrap;
+}
+
+.step13-input {
+  width: 100%;
+  padding: 6px 8px;
+  font-size: 13px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  outline: none;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+
+.step13-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+.step13-score-input {
+  text-align: right;
+  font-weight: 700;
+  color: #1e3a8a;
+}

@@ -1,0 +1,18 @@
+.declaration-page {
+    --section-max-width: 850px;
+    max-width: var(--section-max-width)
+}
+
+.declaration-page p {
+    font-size: 15px;
+    line-height: 1.8
+}
+
+.declaration-check {
+    display: block;
+    background: #f5f7fb;
+    padding: 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-top: 20px
+}

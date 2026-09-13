@@ -1,0 +1,186 @@
+.application-shell {
+    min-height: 100vh;
+    background: #f1f3f7
+}
+
+.app-head {
+    padding: 18px 4%;
+    background: #26385f;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+.app-head h2 {
+    margin: 0;
+    font-size: 19px
+}
+
+.app-head span {
+    font-size: 13px
+}
+
+.app-body {
+    display: flex;
+    width: min(1240px, 100%);
+    margin: auto
+}
+
+.app-steps {
+    width: 230px;
+    padding: 25px 15px;
+    background: #fff;
+    border-right: 1px solid #e2e5ea;
+    min-height: calc(100vh - 75px)
+}
+
+.app-steps a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 9px;
+    font-size: 12px;
+    font-weight: 600
+}
+
+.app-steps em {
+    font-style: normal;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #e8edf8;
+    display: grid;
+    place-items: center
+}
+
+.app-steps a.active {
+    background: #354f9e;
+    color: #fff
+}
+
+.app-content {
+    flex: 1;
+    padding: 32px
+}
+
+.app-title p {
+    font-size: 13px;
+    color: #66758c;
+    margin: 0
+}
+
+.app-title h1 {
+    font-size: 26px;
+    margin: 6px 0 20px
+}
+
+.form-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 8px 30px #27386112
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px
+}
+
+.full {
+    grid-column: 1/-1
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    gap: 10px
+}
+
+.section-note {
+    font-size: 15px;
+    color: #5c6980
+}
+
+.check-list {
+    background: #f5f7fb;
+    padding: 18px;
+    border-radius: 12px
+}
+
+.score-box {
+    background: #26385f;
+    color: #fff;
+    padding: 18px;
+    border-radius: 12px;
+    font-size: 20px;
+    font-weight: 700
+}
+
+.upload-box {
+    border: 2px dashed #9caaca;
+    padding: 25px;
+    text-align: center;
+    border-radius: 12px
+}
+
+.table-wrap {
+    overflow: auto
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse
+}
+
+th,
+td {
+    padding: 12px;
+    border-bottom: 1px solid #e6e9ef;
+    text-align: left;
+    font-size: 13px
+}
+
+@media(max-width:800px) {
+    .app-body {
+        display: block
+    }
+
+    .app-steps {
+        width: 100%;
+        min-height: auto;
+        display: flex;
+        overflow: auto;
+        gap: 6px;
+        white-space: nowrap
+    }
+
+    .app-steps a {
+        margin: 0
+    }
+
+    .app-content {
+        padding: 18px
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr
+    }
+
+    .full {
+        grid-column: auto
+    }
+
+    .app-head {
+        display: block
+    }
+
+    .app-head span {
+        display: block;
+        margin-top: 5px
+    }
+}

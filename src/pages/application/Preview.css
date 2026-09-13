@@ -1,0 +1,27 @@
+.preview-page {
+    --section-max-width: 850px;
+    max-width: var(--section-max-width)
+}
+
+.preview-status {
+    background: #dff5ea;
+    color: #167052;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 11px
+}
+
+.final-submit {
+    display: flex;
+    gap: 10px;
+    margin-top: 24px
+}
+
+.success-message {
+    margin-top: 18px;
+    background: #e4f6ec;
+    color: #167052;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 14px
+}

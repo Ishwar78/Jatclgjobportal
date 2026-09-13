@@ -1,0 +1,105 @@
+.admin-login {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #1f2947, #3d4d83)
+}
+
+.admin-login-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    width: min(430px, calc(100% - 30px))
+}
+
+.admin-login-card h1 {
+    font-size: 25px
+}
+
+.admin-form-gap {
+    margin: 14px 0
+}
+
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px
+}
+
+.admin-stat,
+.admin-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 6px 20px #00000008
+}
+
+.admin-stat p {
+    font-size: 13px;
+    color: #68758a
+}
+
+.admin-stat b {
+    font-size: 25px
+}
+
+.admin-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 15px;
+    margin-top: 15px
+}
+
+.admin-card p {
+    font-size: 14px
+}
+
+.admin-table-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 14px;
+    overflow: auto
+}
+
+.admin-toolbar {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 15px
+}
+
+.admin-list {
+    display: grid;
+    gap: 12px
+}
+
+.admin-list>div {
+    background: #fff;
+    padding: 17px;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px #00000008
+}
+
+.chart-bars {
+    display: flex;
+    align-items: end;
+    gap: 14px;
+    height: 180px
+}
+
+.chart-bars i {
+    display: block;
+    width: 12%;
+    background: #3d5eb8;
+    border-radius: 7px 7px 0 0
+}
+
+@media(max-width:850px) {
+    .admin-stats {
+        grid-template-columns: 1fr 1fr
+    }
+
+    .admin-grid {
+        grid-template-columns: 1fr
+    }
+}

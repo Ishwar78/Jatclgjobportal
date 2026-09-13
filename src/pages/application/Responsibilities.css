@@ -1,0 +1,26 @@
+.responsibilities-page {
+    --section-max-width: 950px;
+    max-width: var(--section-max-width)
+}
+
+.responsibility-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 20px 0
+}
+
+.responsibility-list label {
+    padding: 13px;
+    background: #f6f7fa;
+    border-radius: 10px;
+    font-size: 14px;
+    display: flex;
+    gap: 9px
+}
+
+@media(max-width:650px) {
+    .responsibility-list {
+        grid-template-columns: 1fr
+    }
+}

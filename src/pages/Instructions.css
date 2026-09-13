@@ -1,0 +1,49 @@
+.instructions-page {
+    padding: 55px 0
+}
+
+.instructions-page h1 {
+    font-size: 30px
+}
+
+.instructions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 25px 0
+}
+
+.instruction-step {
+    background: #fff;
+    border-left: 5px solid #435fc0;
+    border-radius: 12px;
+    padding: 18px;
+    display: flex;
+    gap: 14px;
+    box-shadow: 0 6px 18px #0000000a
+}
+
+.instruction-step b {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #eef1fb;
+    color: #3858b8
+}
+
+.instruction-step p {
+    font-size: 15px;
+    margin: 7px 0
+}
+
+@media(max-width:700px) {
+    .instructions-grid {
+        grid-template-columns: 1fr
+    }
+
+    .instructions-page {
+        padding: 25px 0
+    }
+}

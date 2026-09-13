@@ -1,0 +1,125 @@
+/* Step 3 References Stylesheet */
+.step3-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: inherit;
+  color: #1e293b;
+}
+
+.step3-header {
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 12px;
+}
+
+.step3-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.step3-subtitle {
+  font-size: 13.5px;
+  color: #64748b;
+  margin: 4px 0 0 0;
+}
+
+.step3-note-box {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 16px 20px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #334155;
+  text-align: center;
+}
+
+.step3-referee-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.step3-referee-banner {
+  background-color: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 10px 16px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.step3-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px 22px;
+}
+
+@media (min-width: 768px) {
+  .step3-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.step3-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.step3-full-width {
+  grid-column: 1 / -1;
+}
+
+.step3-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.step3-required {
+  color: #ef4444;
+  margin-left: 2px;
+}
+
+.step3-input,
+.step3-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 15px;
+  color: #0f172a;
+  background-color: #ffffff;
+  border: 1.5px solid #94a3b8;
+  border-radius: 8px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.step3-input:focus,
+.step3-textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.step3-input-error {
+  border-color: #ef4444 !important;
+  background-color: #fef2f2;
+}
+
+.step3-helper-text {
+  font-size: 12px;
+  color: #64748b;
+  margin: 2px 0 0 0;
+}
+
+.step3-error-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: #dc2626;
+  margin: 2px 0 0 0;
+}

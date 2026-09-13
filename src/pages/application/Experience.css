@@ -1,0 +1,8 @@
+.experience-page {
+    --section-max-width: 100%;
+    max-width: var(--section-max-width)
+}
+
+.experience-page .form-grid {
+    width: 100%
+}

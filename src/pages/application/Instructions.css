@@ -1,0 +1,396 @@
+.instructions-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #f5f6f8;
+  padding: 30px 35px;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.instructions-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+/* ===============================
+   PAGE HEADING
+================================ */
+
+.page-heading {
+  border-bottom: 1px solid #d8dde3;
+  padding-bottom: 12px;
+  margin-bottom: 30px;
+}
+
+.page-heading h2 {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 700;
+  color: #2d3e50;
+  letter-spacing: 0.3px;
+}
+
+
+/* ===============================
+   TIMELINE CARD
+================================ */
+
+.timeline-card {
+  width: 100%;
+  min-height: 118px;
+  border: 1px solid #f2c5c0;
+  border-radius: 20px;
+  background: linear-gradient(
+    90deg,
+    #fff7f5 0%,
+    #ffffff 50%,
+    #fff8f7 100%
+  );
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 25px;
+  box-sizing: border-box;
+
+  margin-bottom: 28px;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+
+/* Left */
+
+.timeline-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+
+/* Calendar Icon */
+
+.calendar-icon {
+  width: 62px;
+  height: 62px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #fff1f0;
+  color: #df3f36;
+
+  font-size: 27px;
+
+  flex-shrink: 0;
+}
+
+
+/* Content */
+
+.timeline-content h3 {
+  margin: 0 0 10px;
+
+  font-size: 24px;
+  font-weight: 700;
+
+  color: #7a2e26;
+}
+
+.timeline-content p {
+  margin: 0;
+
+  font-size: 17px;
+
+  color: #873a31;
+}
+
+.timeline-content strong {
+  font-weight: 700;
+}
+
+
+/* Warning */
+
+.timeline-warning {
+  min-width: 520px;
+
+  border: 1px solid #f2d3cf;
+
+  border-radius: 12px;
+
+  background: #fffafa;
+
+  padding: 13px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  gap: 14px;
+
+  color: #9e3529;
+
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.timeline-warning svg {
+  color: #d94136;
+  font-size: 23px;
+  flex-shrink: 0;
+}
+
+
+/* ===============================
+   INSTRUCTION BOXES
+================================ */
+
+.instruction-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.instruction-box {
+  width: 100%;
+
+  min-height: 78px;
+
+  border: 1px solid #d3d9e0;
+
+  border-radius: 9px;
+
+  background: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 15px 35px;
+
+  box-sizing: border-box;
+
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.02);
+}
+
+.instruction-box p {
+  margin: 0;
+
+  max-width: 1280px;
+
+  text-align: center;
+
+  color: #425466;
+
+  font-size: 18px;
+  font-weight: 500;
+
+  line-height: 1.45;
+
+  letter-spacing: 0.2px;
+}
+
+
+/* ===============================
+   BOTTOM SECTION
+================================ */
+
+.bottom-section {
+  margin-top: 38px;
+
+  padding-top: 28px;
+
+  border-top: 1px solid #d8dde3;
+
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+/* Button */
+
+.save-next-btn {
+  border: none;
+
+  min-width: 220px;
+
+  height: 62px;
+
+  padding: 0 28px;
+
+  border-radius: 11px;
+
+  background: linear-gradient(
+    135deg,
+    #315cb8,
+    #2d5dbb
+  );
+
+  color: #ffffff;
+
+  font-size: 20px;
+  font-weight: 500;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  cursor: pointer;
+
+  box-shadow: 0 6px 14px rgba(48, 91, 184, 0.3);
+
+  transition: all 0.25s ease;
+}
+
+.save-next-btn svg {
+  font-size: 16px;
+}
+
+.save-next-btn:hover {
+  transform: translateY(-2px);
+
+  background: #244fa8;
+
+  box-shadow: 0 8px 18px rgba(48, 91, 184, 0.4);
+}
+
+.save-next-btn:active {
+  transform: translateY(0);
+}
+
+
+/* ===============================
+   TABLET RESPONSIVE
+================================ */
+
+@media (max-width: 1000px) {
+
+  .timeline-card {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 25px;
+  }
+
+  .timeline-warning {
+    width: 100%;
+    min-width: auto;
+
+    box-sizing: border-box;
+  }
+
+}
+
+
+/* ===============================
+   MOBILE RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+
+  .instructions-page {
+    padding: 20px 15px;
+  }
+
+  .page-heading h2 {
+    font-size: 21px;
+  }
+
+  .timeline-card {
+    padding: 20px 15px;
+
+    border-radius: 15px;
+  }
+
+  .timeline-left {
+    align-items: flex-start;
+  }
+
+  .calendar-icon {
+    width: 52px;
+    height: 52px;
+
+    font-size: 22px;
+  }
+
+  .timeline-content h3 {
+    font-size: 20px;
+  }
+
+  .timeline-content p {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .timeline-warning {
+    font-size: 14px;
+
+    padding: 12px 15px;
+  }
+
+  .instruction-list {
+    gap: 18px;
+  }
+
+  .instruction-box {
+    padding: 18px 15px;
+
+    min-height: auto;
+  }
+
+  .instruction-box p {
+    font-size: 15px;
+
+    line-height: 1.55;
+  }
+
+  .bottom-section {
+    margin-top: 25px;
+
+    padding-top: 20px;
+  }
+
+  .save-next-btn {
+    width: 100%;
+
+    height: 56px;
+
+    font-size: 18px;
+  }
+
+}
+
+
+/* ===============================
+   SMALL MOBILE
+================================ */
+
+@media (max-width: 480px) {
+
+  .timeline-left {
+    gap: 12px;
+  }
+
+  .calendar-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .timeline-content h3 {
+    font-size: 18px;
+  }
+
+  .page-heading h2 {
+    font-size: 19px;
+  }
+
+}

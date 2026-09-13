@@ -1,0 +1,8 @@
+.education-page {
+    --section-max-width: 100%;
+    max-width: var(--section-max-width)
+}
+
+.education-page .form-grid {
+    width: 100%
+}

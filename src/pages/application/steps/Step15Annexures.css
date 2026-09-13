@@ -1,0 +1,182 @@
+/* Step 15 Annexures Stylesheet */
+.step15-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: inherit;
+  color: #1e293b;
+}
+
+.step15-header {
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 12px;
+}
+
+.step15-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.step15-subtitle {
+  font-size: 13.5px;
+  color: #64748b;
+  margin: 4px 0 0 0;
+  line-height: 1.5;
+}
+
+.step15-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px 20px;
+}
+
+@media (min-width: 768px) {
+  .step15-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.step15-upload-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.step15-full-width {
+  grid-column: 1 / -1;
+}
+
+.step15-label {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #334155;
+  line-height: 1.4;
+}
+
+.step15-required {
+  color: #ef4444;
+  margin-left: 2px;
+}
+
+.step15-upload-card {
+  border: 2px dashed #94a3b8;
+  border-radius: 10px;
+  padding: 14px 16px;
+  text-align: center;
+  background-color: #f8fafc;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  min-height: 75px;
+}
+
+.step15-upload-card:hover {
+  border-color: #2563eb;
+  background-color: #eff6ff;
+}
+
+.step15-upload-card.has-error {
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+.step15-upload-icon {
+  font-size: 22px;
+  margin-bottom: 2px;
+}
+
+.step15-upload-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  margin: 0;
+}
+
+.step15-upload-hint {
+  font-size: 11px;
+  color: #94a3b8;
+  margin: 3px 0 0 0;
+}
+
+.step15-file-preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+}
+
+.step15-file-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.step15-file-check {
+  color: #16a34a;
+  font-size: 16px;
+}
+
+.step15-file-name {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #14532d;
+  margin: 0;
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.step15-file-link {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.step15-file-link:hover {
+  text-decoration: underline;
+}
+
+.step15-replace-btn {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #334155;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.step15-input {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14.5px;
+  color: #0f172a;
+  background-color: #ffffff;
+  border: 1.5px solid #94a3b8;
+  border-radius: 8px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.step15-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.step15-error-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: #dc2626;
+  margin: 2px 0 0 0;
+}

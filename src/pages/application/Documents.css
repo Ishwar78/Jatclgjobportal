@@ -1,0 +1,21 @@
+.documents-page {
+    --section-max-width: 1050px;
+    max-width: var(--section-max-width)
+}
+
+.document-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px
+}
+
+.upload-box p {
+    font-size: 13px;
+    color: #65718a
+}
+
+@media(max-width:800px) {
+    .document-grid {
+        grid-template-columns: 1fr
+    }
+}

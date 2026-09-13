@@ -1,0 +1,8 @@
+.personal-page {
+    --section-max-width: 100%;
+    max-width: var(--section-max-width)
+}
+
+.personal-page .form-grid {
+    width: 100%
+}

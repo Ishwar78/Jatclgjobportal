@@ -1,0 +1,17 @@
+export { default as Step1Instructions } from './Step1Instructions';
+export { default as Step2Personal } from './Step2Personal';
+export { default as Step3References } from './Step3References';
+export { default as Step4CourtDeclarations } from './Step4CourtDeclarations';
+export { default as Step5EducationQualifications } from './Step5EducationQualifications';
+export { default as Step6Employment } from './Step6Employment';
+export { default as Step7EducationDocuments } from './Step7EducationDocuments';
+export { default as Step8OtherService } from './Step8OtherService';
+export { default as Step9EmploymentNoc } from './Step9EmploymentNoc';
+export { default as Step10CriteriaInfo } from './Step10CriteriaInfo';
+export { default as Step11AcademicRecord } from './Step11AcademicRecord';
+export { default as Step12TeachingAdminScore } from './Step12TeachingAdminScore';
+export { default as Step13ResponsibilitiesCommittees } from './Step13ResponsibilitiesCommittees';
+export { default as Step14ResearchScore } from './Step14ResearchScore';
+export { default as Step15Annexures } from './Step15Annexures';
+export { default as Step16Payment } from './Step16Payment';
+export { default as Step17Declaration } from './Step17Declaration';

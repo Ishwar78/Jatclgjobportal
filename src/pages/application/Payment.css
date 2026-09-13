@@ -1,0 +1,18 @@
+.payment-page {
+    --section-max-width: 850px;
+    max-width: var(--section-max-width)
+}
+
+.payment-amount {
+    text-align: center;
+    background: #edf1fb;
+    padding: 20px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    font-size: 15px
+}
+
+.payment-amount strong {
+    font-size: 32px;
+    color: #263f88
+}

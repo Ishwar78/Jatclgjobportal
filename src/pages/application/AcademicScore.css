@@ -1,0 +1,4 @@
+.academic-score-page {
+    --section-max-width: 920px;
+    max-width: var(--section-max-width)
+}

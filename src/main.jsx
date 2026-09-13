@@ -1,0 +1,3 @@
+import React,{useEffect} from 'react'; import {createRoot} from 'react-dom/client'; import {BrowserRouter} from 'react-router-dom'; import App from './App'; import './tailwind.css'; import './styles.css';
+function ScrollTop(){useEffect(()=>{const f=()=>window.scrollY>400?document.body.classList.add('show-top'):document.body.classList.remove('show-top');window.addEventListener('scroll',f);return()=>window.removeEventListener('scroll',f)},[]);return <button className="global-top" onClick={()=>scrollTo({top:0,behavior:'smooth'})}>↑</button>}
+createRoot(document.getElementById('root')).render(<BrowserRouter><App/><ScrollTop/></BrowserRouter>);

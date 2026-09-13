@@ -1,0 +1,696 @@
+/* =========================================
+   FORGOT REGISTRATION PAGE
+========================================= */
+
+.forgot-reg-page {
+  min-height: 100vh;
+  width: 100%;
+  padding: 40px 20px;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      #e8f0ff,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      #eef2ff,
+      transparent 45%
+    ),
+    #f8fafc;
+
+  font-family: Inter, Arial, sans-serif;
+}
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.forgot-reg-back-wrapper {
+  max-width: 560px;
+  margin: 0 auto 14px;
+}
+
+
+.forgot-reg-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 10px 16px;
+
+  background: #ffffff;
+
+  border: 1px solid #dbe3ef;
+
+  border-radius: 10px;
+
+  color: #475569;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  box-shadow:
+    0 3px 10px rgba(15, 23, 42, 0.05);
+
+  transition: all 0.25s ease;
+}
+
+
+.forgot-reg-back:hover {
+  color: #2563eb;
+
+  border-color: #93c5fd;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 5px 15px rgba(37, 99, 235, 0.12);
+}
+
+
+/* =========================================
+   CENTER CONTAINER
+========================================= */
+
+.forgot-reg-container {
+  width: 100%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+
+
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.forgot-reg-card {
+
+  width: 100%;
+
+  max-width: 560px;
+
+  background:
+    rgba(255, 255, 255, 0.97);
+
+  border:
+    1px solid #dbe3ef;
+
+  border-radius:
+    22px;
+
+  padding:
+    34px;
+
+  box-shadow:
+    0 20px 60px rgba(15, 23, 42, 0.12);
+
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.forgot-reg-header {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-bottom: 25px;
+
+}
+
+
+.forgot-reg-icon {
+
+  width: 58px;
+
+  height: 58px;
+
+  min-width: 58px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 26px;
+
+  border-radius: 17px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #4f46e5
+    );
+
+  box-shadow:
+    0 10px 25px rgba(37, 99, 235, 0.25);
+
+}
+
+
+.forgot-reg-header h1 {
+
+  margin: 0;
+
+  color: #1e293b;
+
+  font-size: 22px;
+
+  font-weight: 800;
+
+}
+
+
+.forgot-reg-header p {
+
+  margin:
+    5px 0 0;
+
+  color: #64748b;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+
+}
+
+
+/* =========================================
+   INFORMATION BOX
+========================================= */
+
+.forgot-reg-info {
+
+  display: flex;
+
+  gap: 12px;
+
+  align-items: flex-start;
+
+  padding: 16px;
+
+  margin-bottom: 24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #eff6ff,
+      #eef2ff
+    );
+
+  border:
+    1px solid #bfdbfe;
+
+  border-radius:
+    14px;
+
+}
+
+
+.forgot-reg-info-icon {
+
+  width: 28px;
+
+  height: 28px;
+
+  min-width: 28px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background: #2563eb;
+
+  color: #ffffff;
+
+  font-weight: 800;
+
+}
+
+
+.forgot-reg-info strong {
+
+  display: block;
+
+  color: #1e3a8a;
+
+  font-size: 13px;
+
+  margin-bottom: 5px;
+
+}
+
+
+.forgot-reg-info p {
+
+  margin: 0;
+
+  color: #475569;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+
+}
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.forgot-reg-message {
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 10px;
+
+  padding: 14px;
+
+  margin-bottom: 20px;
+
+  border-radius: 12px;
+
+  font-size: 13px;
+
+}
+
+
+.forgot-reg-message p {
+
+  margin: 0;
+
+  line-height: 1.5;
+
+}
+
+
+.forgot-reg-message.success {
+
+  background: #ecfdf5;
+
+  border: 1px solid #a7f3d0;
+
+  color: #047857;
+
+}
+
+
+.forgot-reg-message.error {
+
+  background: #fef2f2;
+
+  border: 1px solid #fecaca;
+
+  color: #b91c1c;
+
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.forgot-reg-form {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 18px;
+
+}
+
+
+/* =========================================
+   FORM FIELDS
+========================================= */
+
+.forgot-reg-field {
+
+  display: flex;
+
+  flex-direction: column;
+
+}
+
+
+.forgot-reg-field label {
+
+  color: #334155;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  margin-bottom: 8px;
+
+}
+
+
+.forgot-reg-field label span {
+
+  color: #ef4444;
+
+  margin-left: 4px;
+
+}
+
+
+.forgot-reg-field input {
+
+  width: 100%;
+
+  height: 48px;
+
+  padding:
+    0 15px;
+
+  background: #ffffff;
+
+  border:
+    1px solid #cbd5e1;
+
+  border-radius:
+    12px;
+
+  color: #334155;
+
+  font-size: 14px;
+
+  outline: none;
+
+  transition:
+    all 0.25s ease;
+
+}
+
+
+.forgot-reg-field input::placeholder {
+
+  color: #94a3b8;
+
+}
+
+
+.forgot-reg-field input:focus {
+
+  border-color:
+    #2563eb;
+
+  box-shadow:
+    0 0 0 4px rgba(37, 99, 235, 0.10);
+
+}
+
+
+.forgot-reg-field small {
+
+  margin-top: 7px;
+
+  color: #64748b;
+
+  font-size: 11px;
+
+}
+
+
+/* =========================================
+   SUBMIT BUTTON
+========================================= */
+
+.forgot-reg-submit {
+
+  width: 100%;
+
+  height: 52px;
+
+  margin-top: 4px;
+
+  border: none;
+
+  border-radius:
+    13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #4f46e5
+    );
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 25px rgba(37, 99, 235, 0.25);
+
+  transition:
+    all 0.25s ease;
+
+}
+
+
+.forgot-reg-submit:hover:not(:disabled) {
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 15px 30px rgba(37, 99, 235, 0.30);
+
+}
+
+
+.forgot-reg-submit:active:not(:disabled) {
+
+  transform:
+    translateY(0);
+
+}
+
+
+.forgot-reg-submit:disabled {
+
+  opacity: 0.65;
+
+  cursor: not-allowed;
+
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.forgot-reg-footer {
+
+  margin-top: 28px;
+
+  padding-top: 22px;
+
+  border-top:
+    1px solid #e2e8f0;
+
+  text-align: center;
+
+}
+
+
+.forgot-reg-footer p {
+
+  margin:
+    0 0 9px;
+
+  color: #64748b;
+
+  font-size: 12px;
+
+}
+
+
+.forgot-reg-footer a {
+
+  color: #2563eb;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+}
+
+
+.forgot-reg-footer a:hover {
+
+  text-decoration:
+    underline;
+
+}
+
+
+/* =========================================
+   SECURITY
+========================================= */
+
+.forgot-reg-security {
+
+  margin-top: 22px;
+
+  text-align: center;
+
+  color: #64748b;
+
+  font-size: 12px;
+
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 650px) {
+
+  .forgot-reg-page {
+
+    padding:
+      25px 15px;
+
+  }
+
+
+  .forgot-reg-card {
+
+    padding:
+      25px 20px;
+
+  }
+
+
+  .forgot-reg-header h1 {
+
+    font-size:
+      20px;
+
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+  .forgot-reg-page {
+
+    padding:
+      18px 12px;
+
+  }
+
+
+  .forgot-reg-back-wrapper {
+
+    margin-bottom:
+      12px;
+
+  }
+
+
+  .forgot-reg-card {
+
+    border-radius:
+      18px;
+
+    padding:
+      22px 16px;
+
+  }
+
+
+  .forgot-reg-header {
+
+    align-items:
+      flex-start;
+
+    gap:
+      12px;
+
+  }
+
+
+  .forgot-reg-icon {
+
+    width:
+      48px;
+
+    height:
+      48px;
+
+    min-width:
+      48px;
+
+    font-size:
+      22px;
+
+    border-radius:
+      14px;
+
+  }
+
+
+  .forgot-reg-header h1 {
+
+    font-size:
+      18px;
+
+  }
+
+
+  .forgot-reg-header p {
+
+    font-size:
+      12px;
+
+  }
+
+
+  .forgot-reg-field input {
+
+    height:
+      46px;
+
+  }
+
+}

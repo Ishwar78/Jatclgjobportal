@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+* {
+    box-sizing: border-box
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+body {
+    margin: 0;
+    font-family: Montserrat, sans-serif;
+    background: #f4f5f8;
+    color: #26364d
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit
+}
+
+a {
+    text-decoration: none;
+    color: inherit
+}
+
+.global-top {
+    display: none;
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 99;
+    border: 0;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    background: #3458b9;
+    color: #fff;
+    font-size: 24px;
+    box-shadow: 0 8px 24px #0003;
+    cursor: pointer
+}
+
+.show-top .global-top {
+    display: block
+}
+
+.app-shell {
+    min-height: 100vh
+}
+
+.page-width {
+    width: min(1160px, calc(100% - 32px));
+    margin: auto
+}
+
+.btn {
+    border: 0;
+    border-radius: 10px;
+    padding: 14px 20px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    justify-content: center
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #3e63c7, #5143bb);
+    color: #fff
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #1d896f, #259b88);
+    color: #fff
+}
+
+.btn-danger {
+    background: #c92232;
+    color: #fff
+}
+
+.btn-outline {
+    background: #fff;
+    border: 1px solid #b7c2d6;
+    color: #28457c
+}
+
+.field-error {
+    color: #c92232;
+    font-size: 12px;
+    margin: 5px 0 0
+}
+
+.form-control {
+    width: 100%;
+    border: 1px solid #bdc8d7;
+    border-radius: 10px;
+    padding: 13px 14px;
+    background: #fff;
+    outline: none
+}
+
+.form-control:focus {
+    border-color: #405fc0;
+    box-shadow: 0 0 0 3px #405fc018
+}
+
+.label {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 7px;
+    display: block
+}
+
+.req {
+    color: #c92232
+}
+
+@media(max-width:700px) {
+    .page-width {
+        width: min(100% - 20px, 1160px)
+    }
+
+    .global-top {
+        right: 14px;
+        bottom: 14px
+    }
+}

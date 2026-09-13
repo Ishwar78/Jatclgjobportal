@@ -1,0 +1,719 @@
+/* ==========================================
+   MAIN PAGE
+========================================== */
+
+.personal-info-page {
+  width: 100%;
+  min-height: 100vh;
+
+  background: #f5f6f8;
+
+  padding: 25px 35px 0;
+
+  box-sizing: border-box;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+
+.personal-info-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.form-header {
+  padding: 8px 10px 12px;
+
+  border-bottom: 1px solid #d7dce2;
+
+  margin-bottom: 32px;
+}
+
+
+.form-header h2 {
+  margin: 0 0 5px;
+
+  color: #2d3e50;
+
+  font-size: 26px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.3px;
+}
+
+
+.form-header p {
+  margin: 0;
+
+  color: #627384;
+
+  font-size: 17px;
+
+  font-weight: 400;
+}
+
+
+/* ==========================================
+   FORM GRID
+========================================== */
+
+.form-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 28px;
+
+  margin-bottom: 46px;
+}
+
+
+/* ==========================================
+   FORM GROUP
+========================================== */
+
+.form-group {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+.form-group label,
+.upload-main-label {
+  margin-bottom: 7px;
+
+  color: #3b4d60;
+
+  font-size: 18px;
+
+  font-weight: 600;
+
+  line-height: 1.35;
+}
+
+
+.form-group label span,
+.upload-main-label span {
+  color: #d93f36;
+
+  margin-left: 4px;
+}
+
+
+/* ==========================================
+   INPUTS
+========================================== */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  border: 1px solid #cbd3dc;
+
+  border-radius: 9px;
+
+  background: #ffffff;
+
+  color: #304255;
+
+  font-size: 20px;
+
+  font-family: inherit;
+
+  outline: none;
+
+  transition:
+    border 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.form-group input,
+.form-group select {
+  height: 54px;
+
+  padding:
+    0
+    15px;
+}
+
+
+.form-group textarea {
+  min-height: 114px;
+
+  padding: 14px 15px;
+
+  resize: vertical;
+
+  line-height: 1.5;
+}
+
+
+/* Focus */
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #3564bf;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(53, 100, 191, 0.1);
+}
+
+
+/* ==========================================
+   LOCKED INPUT
+========================================== */
+
+.locked-input {
+  background:
+    #eef1f5 !important;
+
+  color:
+    #596b7c !important;
+
+  cursor:
+    not-allowed;
+}
+
+
+/* ==========================================
+   FIELD NOTES
+========================================== */
+
+.field-note {
+  margin-top: 7px;
+
+  color: #6b7c8c;
+
+  font-size: 15px;
+
+  line-height: 1.4;
+}
+
+
+.lock-note {
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+}
+
+
+.lock-note svg {
+  color: #111;
+
+  font-size: 16px;
+}
+
+
+/* ==========================================
+   PHOTO SECTION
+========================================== */
+
+.photo-section {
+  width: 50%;
+
+  margin-bottom: 52px;
+}
+
+
+/* ==========================================
+   FILE UPLOAD
+========================================== */
+
+.upload-wrapper {
+  width: 100%;
+}
+
+
+.upload-wrapper input[type="file"] {
+  display: none;
+}
+
+
+.upload-box {
+  width: 100%;
+
+  height: 88px;
+
+  border:
+    2px dashed
+    #c6ced8;
+
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  color: #405365;
+
+  cursor: pointer;
+
+  font-size: 19px;
+
+  transition:
+    all 0.2s ease;
+}
+
+
+.upload-box small {
+  color: #748393;
+
+  font-size: 15px;
+}
+
+
+.upload-box:hover {
+  border-color: #3564bf;
+
+  background: #f8faff;
+}
+
+
+.selected-file {
+  max-width: 90%;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  color: #315fb9;
+
+  font-size: 16px;
+}
+
+
+.upload-note {
+  margin-top: 7px;
+
+  color: #7a8896;
+
+  font-size: 14px;
+}
+
+
+.upload-applicable {
+  margin-top: 6px;
+}
+
+
+/* ==========================================
+   ADDRESS
+========================================== */
+
+.address-group {
+  margin-bottom: 48px;
+}
+
+
+/* ==========================================
+   DATE INPUT
+========================================== */
+
+.date-input-wrapper {
+  position: relative;
+
+  width: 100%;
+}
+
+
+.date-input-wrapper input {
+  padding-right: 58px;
+}
+
+
+.calendar-icon-form {
+  position: absolute;
+
+  right: 20px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: #617486;
+
+  font-size: 20px;
+
+  pointer-events: none;
+}
+
+
+/* Hide native calendar */
+
+.date-input-wrapper input::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+
+/* ==========================================
+   CERTIFICATE
+========================================== */
+
+.certificate-row {
+  margin-bottom: 48px;
+}
+
+
+.certificate-group .upload-box {
+  height: 90px;
+}
+
+
+/* ==========================================
+   FAMILY ID
+========================================== */
+
+.family-section {
+  width: 50%;
+
+  margin-bottom: 60px;
+}
+
+
+.family-group {
+  max-width: 100%;
+}
+
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+.form-footer {
+  width: 100%;
+
+  border-top:
+    1px solid #d8dde4;
+
+  padding:
+    30px 0 38px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+
+/* ==========================================
+   BACK BUTTON
+========================================== */
+
+.back-btn {
+  min-width: 135px;
+
+  height: 62px;
+
+  border:
+    1px solid #cfd7e1;
+
+  border-radius: 9px;
+
+  background: #ffffff;
+
+  color: #4a5d70;
+
+  font-size: 19px;
+
+  font-family: inherit;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 13px;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+
+.back-btn:hover {
+  background: #f1f4f7;
+
+  border-color: #b9c4cf;
+}
+
+
+.back-btn svg {
+  font-size: 15px;
+}
+
+
+/* ==========================================
+   SAVE BUTTON
+========================================== */
+
+.save-next-btn {
+  min-width: 220px;
+
+  height: 62px;
+
+  border: none;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #3968c6,
+      #2f5cb7
+    );
+
+  color: #ffffff;
+
+  font-size: 20px;
+
+  font-family: inherit;
+
+  font-weight: 500;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 14px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 6px 14px
+    rgba(48, 91, 184, 0.28);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.save-next-btn:hover {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 9px 20px
+    rgba(48, 91, 184, 0.4);
+}
+
+
+.save-next-btn:active {
+  transform:
+    translateY(0);
+}
+
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width: 1024px) {
+
+  .personal-info-page {
+    padding:
+      25px 25px 0;
+  }
+
+
+  .photo-section,
+  .family-section {
+    width: 100%;
+  }
+
+
+  .form-grid {
+    gap: 22px;
+  }
+
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 768px) {
+
+  .personal-info-page {
+    padding:
+      20px 15px 0;
+  }
+
+
+  .form-header {
+    margin-bottom: 25px;
+  }
+
+
+  .form-header h2 {
+    font-size: 22px;
+  }
+
+
+  .form-header p {
+    font-size: 15px;
+  }
+
+
+  .form-grid {
+    grid-template-columns:
+      1fr;
+
+    gap: 22px;
+
+    margin-bottom: 28px;
+  }
+
+
+  .form-group label,
+  .upload-main-label {
+    font-size: 16px;
+  }
+
+
+  .form-group input,
+  .form-group select {
+    height: 52px;
+
+    font-size: 17px;
+  }
+
+
+  .form-group textarea {
+    font-size: 17px;
+
+    min-height: 100px;
+  }
+
+
+  .photo-section {
+    width: 100%;
+
+    margin-bottom: 32px;
+  }
+
+
+  .upload-box {
+    height: 85px;
+
+    font-size: 16px;
+
+    flex-wrap: wrap;
+
+    padding: 10px;
+  }
+
+
+  .upload-box small {
+    font-size: 13px;
+  }
+
+
+  .address-group {
+    margin-bottom: 28px;
+  }
+
+
+  .certificate-row {
+    margin-bottom: 30px;
+  }
+
+
+  .family-section {
+    width: 100%;
+
+    margin-bottom: 35px;
+  }
+
+
+  .form-footer {
+    padding:
+      20px 0 25px;
+  }
+
+
+  .back-btn {
+    min-width: 110px;
+
+    height: 55px;
+
+    font-size: 17px;
+  }
+
+
+  .save-next-btn {
+    min-width: 170px;
+
+    height: 55px;
+
+    font-size: 17px;
+  }
+
+}
+
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width: 480px) {
+
+  .form-footer {
+    flex-direction: column-reverse;
+
+    gap: 15px;
+  }
+
+
+  .back-btn,
+  .save-next-btn {
+    width: 100%;
+  }
+
+
+  .lock-note {
+    align-items: flex-start;
+  }
+
+
+  .field-note {
+    font-size: 13px;
+  }
+
+}
