@@ -3,7 +3,7 @@ const path = require('path');
 
 const filePath = path.join(__dirname, '../src/api/candidateApi.js');
 
-const newContent = `const REMOTE_API = 'http://localhost:5035';
+const newContent = `const REMOTE_API = 'https://jatclgjobportal.onrender.com';
 export const COLLEGE_SLUG = 'all-india-jat-heroes-memorial-college';
 
 export const FALLBACK_CONFIG = {

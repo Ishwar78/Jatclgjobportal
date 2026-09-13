@@ -145,7 +145,7 @@ async function sendApplicationSubmissionEmail({ application, recipients }) {
           </div>
         `;
       } else {
-        paymentScreenshotHtml = `<p style="margin: 4px 0;"><strong>Screenshot:</strong> <a href="http://localhost:5035${rawUrl.startsWith('/') ? '' : '/'}${rawUrl}" target="_blank" style="color: #2563eb;">View Payment Receipt</a></p>`;
+        paymentScreenshotHtml = `<p style="margin: 4px 0;"><strong>Screenshot:</strong> <a href="https://jatclgjobportal.onrender.com${rawUrl.startsWith('/') ? '' : '/'}${rawUrl}" target="_blank" style="color: #2563eb;">View Payment Receipt</a></p>`;
       }
     } else if (rawUrl.startsWith('data:image/')) {
       const parts = rawUrl.split(';base64,');
@@ -175,7 +175,7 @@ async function sendApplicationSubmissionEmail({ application, recipients }) {
     let fileLink = '<span style="color: #64748b;">(Uploaded with Application)</span>';
     if (f.url) {
       if (f.url.startsWith('/uploads/') || f.url.startsWith('uploads/')) {
-        const fullUrl = `http://localhost:5035${f.url.startsWith('/') ? '' : '/'}${f.url}`;
+        const fullUrl = `https://jatclgjobportal.onrender.com${f.url.startsWith('/') ? '' : '/'}${f.url}`;
         fileLink = `<a href="${fullUrl}" target="_blank" style="color: #2563eb; font-weight: 600;">[Download / View File]</a>`;
       } else if (f.url.startsWith('http://') || f.url.startsWith('https://')) {
         fileLink = `<a href="${f.url}" target="_blank" style="color: #2563eb; font-weight: 600;">[View Document]</a>`;

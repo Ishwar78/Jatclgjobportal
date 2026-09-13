@@ -1,4 +1,4 @@
-const REMOTE_API = 'http://localhost:5035';
+const REMOTE_API = 'https://jatclgjobportal.onrender.com';
 export const COLLEGE_SLUG = 'all-india-jat-heroes-memorial-college';
 
 export const FALLBACK_CONFIG = {
