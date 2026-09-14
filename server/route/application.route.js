@@ -10,11 +10,30 @@ router.post('/submit', async (req, res) => {
   try {
     const { registrationId, formData = {}, fileData = {} } = req.body;
 
-    const candidateName = formData.name || formData.candidateName || 'Candidate';
-    const fatherName = formData.fatherName || formData.father || '';
-    const email = formData.email || '';
-    const mobile = formData.contactNo1 || formData.mobile || '';
+    let candidateName = formData.name || formData.candidateName || '';
+    let fatherName = formData.fatherName || formData.father || '';
+    let email = formData.email || '';
+    let mobile = formData.contactNo1 || formData.mobile || '';
     const postAppliedFor = formData.postAppliedFor || 'Principal';
+
+    // Retrieve missing candidate information from registered User record if needed
+    if (registrationId && (!email || !mobile || !candidateName)) {
+      try {
+        const user = await User.findOne({ registrationId });
+        if (user) {
+          if (!email) email = user.email || '';
+          if (!mobile) mobile = user.mobile || '';
+          if (!candidateName) candidateName = user.name || 'Candidate';
+          if (!fatherName) fatherName = user.fatherName || '';
+        }
+      } catch (uErr) {
+        console.warn('User fallback fetch warning:', uErr.message);
+      }
+    }
+
+    candidateName = candidateName || 'Candidate';
+    email = email || 'candidate@recruitment.jatcollegerohtak.ac.in';
+    mobile = mobile || '0000000000';
 
     // Generate unique application number
     const randomSuffix = Math.floor(100000 + Math.random() * 900000);
@@ -54,17 +73,40 @@ router.post('/submit', async (req, res) => {
     const savedApp = await newApp.save();
     console.log(`✅ Application ${savedApp.applicationNo} saved to MongoDB`);
 
-    // Asynchronously dispatch emails to the 3 committee emails + candidate email
-    sendApplicationSubmissionEmail({
-      application: savedApp,
-      recipients: [
-        'sharmaishwar970@gmail.com',
-        'a60196141@gmail.com',
-        'shar54ma2334@gmail.com'
-      ]
-    })
-      .then(() => console.log(`✅ Submission emails dispatched successfully for ${savedApp.applicationNo}`))
-      .catch((mailErr) => console.warn('⚠️ Submission email error:', mailErr.message));
+    // Update User model submitted state
+    if (registrationId) {
+      try {
+        await User.findOneAndUpdate(
+          { registrationId },
+          {
+            $set: {
+              submitted: true,
+              applicationNo: savedApp.applicationNo,
+              formData,
+              fileData
+            }
+          }
+        );
+      } catch (uUpdErr) {
+        console.warn('User submitted state update warning:', uUpdErr.message);
+      }
+    }
+
+    // Dispatch emails to the 3 committee emails + candidate email with PDF attached
+    try {
+      console.log(`[Submit Route] Dispatching submission emails for ${savedApp.applicationNo}...`);
+      await sendApplicationSubmissionEmail({
+        application: savedApp.toObject ? savedApp.toObject() : savedApp,
+        recipients: [
+          'sharmaishwar970@gmail.com',
+          'a60196141@gmail.com',
+          'shar54ma2334@gmail.com'
+        ]
+      });
+      console.log(`✅ Submission emails dispatched successfully for ${savedApp.applicationNo}`);
+    } catch (mailErr) {
+      console.warn('⚠️ Submission email error:', mailErr.message);
+    }
 
     res.status(201).json({
       success: true,

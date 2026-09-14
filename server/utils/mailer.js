@@ -101,10 +101,16 @@ async function sendApplicationSubmissionEmail({ application, recipients }) {
     'shar54ma2334@gmail.com'
   ];
 
+  const isValidEmail = (em) => typeof em === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.trim());
+  const committeeRecipients = (recipients || defaultCommittees).filter(isValidEmail);
+  const candEmail = (application.email && isValidEmail(application.email)) 
+    ? [application.email.trim()] 
+    : (application.formData?.email && isValidEmail(application.formData.email) ? [application.formData.email.trim()] : []);
+  
   // Merge unique recipients including candidate email
   const allRecipients = Array.from(new Set([
-    ...(recipients || defaultCommittees),
-    ...(application.email ? [application.email] : [])
+    ...committeeRecipients,
+    ...candEmail
   ]));
 
   const fd = application.formData || {};
@@ -1099,7 +1105,7 @@ async function sendApplicationSubmissionEmail({ application, recipients }) {
         }
       }
 
-      await page.setContent(pdfHtml, { waitUntil: 'networkidle0' });
+      await page.setContent(pdfHtml, { waitUntil: 'load', timeout: 15000 });
       const pdfBuffer = await page.pdf({
         format: 'A4',
         printBackground: true,
@@ -1129,7 +1135,27 @@ async function sendApplicationSubmissionEmail({ application, recipients }) {
     attachments
   };
 
-  return transporter.sendMail(mailOptions);
+  try {
+    const info = await transporter.sendMail(mailOptions);
+    console.log(`✅ Submission email delivered to [${allRecipients.join(', ')}]: ${info.messageId}`);
+    return info;
+  } catch (batchErr) {
+    console.warn('⚠️ Batch email delivery failed, attempting individual dispatch to each recipient:', batchErr.message);
+    const results = [];
+    for (const rec of allRecipients) {
+      try {
+        const indInfo = await transporter.sendMail({
+          ...mailOptions,
+          to: rec
+        });
+        console.log(`✅ Individual email delivered to ${rec}: ${indInfo.messageId}`);
+        results.push(indInfo);
+      } catch (indErr) {
+        console.error(`❌ Failed to send email to ${rec}:`, indErr.message);
+      }
+    }
+    return results;
+  }
 }
 
 /**
