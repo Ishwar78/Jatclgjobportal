@@ -1,1 +1,20 @@
-import React from'react';import{Link}from'react-router-dom';import{PublicLayout}from'../components/Layout';import'./Instructions.css';export default function Instructions(){return <PublicLayout><div className="instructions-page page-width"><h1>Application Instructions</h1><div className="instructions-grid">{[['1','Register with exact personal details.'],['2','Login using Application No / Registration No / Mobile / Email and Password.'],['3','Read each application step and complete mandatory fields.'],['4','Upload clear and valid documents in supported format.'],['5','Verify academic and research scores before final submission.'],['6','Complete payment details and upload receipt.'],['7','Review declaration and generate final application PDF.']].map(x=><div className="instruction-step" key={x[0]}><b>{x[0]}</b><p>{x[1]}</p></div>)}</div><Link className="btn btn-primary" to="/register">Start Registration</Link></div></PublicLayout>}
+import React from'react';
+import{Link}from'react-router-dom';
+import{PublicLayout}from'../components/Layout';
+import'./Instructions.css';
+export default function Instructions(){
+    return
+     <PublicLayout>
+        <div className="instructions-page page-width">
+            <h1>Application Instructions</h1>
+            <div className="instructions-grid">{[['1','Register with exact personal details.'],
+            ['2','Login using Application No / Registration No / Mobile / Email and Password.'],
+            ['3','Read each application step and complete mandatory fields.'],
+            ['4','Upload clear and valid documents in supported format.'],
+            ['5','Verify academic and research scores before final submission.'],
+            ['6','Complete payment details and upload receipt.'],
+            ['7','Review declaration and generate final application PDF.']].map(x=><div className="instruction-step" key={x[0]}><b>{x[0]}</b>
+            <p>{x[1]}</p></div>)}</div>
+            <Link className="btn btn-primary" to="/register">Start Registration</Link></div>
+            </PublicLayout>
+            }

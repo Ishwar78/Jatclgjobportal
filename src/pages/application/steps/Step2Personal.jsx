@@ -442,8 +442,8 @@ export default function Step2Personal({
           'Category Certificate',
           false,
           'application/pdf,image/*',
-          500,
-          'Upload if applicable (Max 500 KB)'
+          10240,
+          'Upload if applicable (Max 10 MB)'
         )}
 
         {/* 20. Aadhaar Card Number */}

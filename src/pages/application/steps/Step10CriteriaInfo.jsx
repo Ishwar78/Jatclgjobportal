@@ -8,7 +8,7 @@ export default function Step10CriteriaInfo({ values = {}, errors = {}, onValueCh
   return (
     <div className="step10-container">
       <div className="step10-header">
-        <h2 className="step10-title">Criteria for Selection of Principal</h2>
+        <h2 className="step10-title">CRITERIA FOR SELECTION OF PRINCIPAL IN GOVT.AIDED PRIVATE COLLEGES IN THE STATE OF HARYANA</h2>
         <p className="step10-subtitle">
           Selection criteria as notified by the Directorate General Higher Education (DGHE), Haryana
         </p>

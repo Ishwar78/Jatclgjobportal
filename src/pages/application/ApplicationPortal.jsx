@@ -12,7 +12,6 @@ import {
   Step5EducationQualifications,
   Step6Employment,
   Step7EducationDocuments,
-  Step8OtherService,
   Step9EmploymentNoc,
   Step10CriteriaInfo,
   Step11AcademicRecord,
@@ -144,7 +143,7 @@ export default function ApplicationPortal() {
         setFileMeta(normalizedFiles);
       }
 
-      // Start at Step 1 so the applicant can view and fill the 17 steps in serial order
+      // Start at Step 1 so the applicant can view and fill the 16 steps in serial order
       setCurrentStep(1);
       setIsReview(false);
     } catch (e) {
@@ -170,7 +169,7 @@ export default function ApplicationPortal() {
     candidateApi.getSchema(COLLEGE_SLUG)
       .then(remoteSchema => {
         const list = Array.isArray(remoteSchema) ? remoteSchema : remoteSchema?.sections;
-        if (Array.isArray(list) && list.length >= 17) {
+        if (Array.isArray(list) && list.length >= 16) {
           setSections(list);
         }
       })
@@ -340,12 +339,6 @@ export default function ApplicationPortal() {
           errs.confirmEmail = 'Email IDs do not match.';
         }
       }
-
-      if (field.id === 'confirmUtrNo' && values.utrNo && values.confirmUtrNo) {
-        if (values.utrNo.trim() !== values.confirmUtrNo.trim()) {
-          errs.confirmUtrNo = 'UTR numbers do not match.';
-        }
-      }
     }
 
     return errs;
@@ -375,7 +368,7 @@ export default function ApplicationPortal() {
       mergedPayload[k] = rows;
     }
 
-    const nextStep = stepNum + 1;
+    const nextStep = Math.min(stepNum + 1, sections.length);
 
     try {
       if (candidate?.registrationId) {
@@ -408,19 +401,18 @@ export default function ApplicationPortal() {
       setCurrentStep(nextStep);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      setIsReview(true);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // On Step 16, smooth scroll down to the Review section at the bottom
+      const revEl = document.getElementById('step16-review-section');
+      if (revEl) {
+        revEl.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
   // Back button
   const handleBack = () => {
     setErrors({});
-    if (isReview) {
-      setIsReview(false);
-      setCurrentStep(sections.length);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else if (currentStep > 1) {
+    if (currentStep > 1) {
       setCurrentStep(prev => prev - 1);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -429,9 +421,44 @@ export default function ApplicationPortal() {
   // Jump to specific step
   const handleJumpToStep = (stepNum) => {
     setErrors({});
-    setIsReview(false);
-    setCurrentStep(stepNum);
+    const target = Math.min(Math.max(Number(stepNum), 1), sections.length);
+    setCurrentStep(target);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Save for Later handler
+  const handleSaveForLater = async () => {
+    setIsSaving(true);
+    const mergedPayload = { ...values };
+    for (const [k, rows] of Object.entries(tableValues)) {
+      mergedPayload[k] = rows;
+    }
+    try {
+      if (candidate?.registrationId) {
+        await candidateApi.candidateSaveProgress(
+          candidate.registrationId,
+          COLLEGE_SLUG,
+          mergedPayload,
+          fileMeta,
+          currentStep
+        );
+        const updatedCand = {
+          ...candidate,
+          fatherName: values.fatherName || candidate.fatherName || '',
+          formData: mergedPayload,
+          fileData: fileMeta,
+          currentStep
+        };
+        safeSaveSession('candidate_session', updatedCand);
+        setCandidate(updatedCand);
+      }
+      alert('Your application progress has been saved successfully! You can resume anytime using your registration credentials.');
+    } catch (e) {
+      console.warn('Save for later error:', e);
+      alert('Application saved locally in your browser session.');
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   // Validate all mandatory fields across the entire form
@@ -480,34 +507,26 @@ export default function ApplicationPortal() {
     if (!fileMeta.docInter?.url) missing.push({ step: 7, label: '10+2 / Prep Certificate/Marksheet PDF' });
     if (!fileMeta.docGrad?.url) missing.push({ step: 7, label: 'Graduation Certificate/Marksheet PDF' });
 
-    // Step 8
-    if (!values.basicPayAcceptable) missing.push({ step: 8, label: 'Basic Pay Acceptable (Yes/No)' });
-    if (!values.joiningPeriod?.trim()) missing.push({ step: 8, label: 'Minimum Joining Period' });
+    // Step 8 (Employment Status, NOC & Other Service Details)
+    if (!values.isPresEmployed) missing.push({ step: 8, label: 'Presently Employed (Yes/No)' });
 
-    // Step 9
-    if (!values.isPresEmployed) missing.push({ step: 9, label: 'Presently Employed (Yes/No)' });
-
-    // Step 10
+    // Step 9 (Criteria for Selection)
     if (values.criteriaAccepted !== 'true' && values.criteriaAccepted !== true) {
-      missing.push({ step: 10, label: 'Accept Criteria for Selection' });
+      missing.push({ step: 9, label: 'Accept Criteria for Selection' });
     }
 
-    // Step 16
-    if (!values.paymentAmount?.trim()) missing.push({ step: 16, label: 'Payment Amount' });
-    if (!values.utrNo?.trim()) missing.push({ step: 16, label: '12-Digit UTR / Transaction No.' });
-    if (!values.confirmUtrNo?.trim()) missing.push({ step: 16, label: 'Re-enter UTR / Transaction No.' });
-    if (values.utrNo && values.confirmUtrNo && values.utrNo.trim() !== values.confirmUtrNo.trim()) {
-      missing.push({ step: 16, label: 'UTR numbers must match' });
-    }
-    if (!fileMeta.filePaymentScreenshot?.url) missing.push({ step: 16, label: 'Payment Screenshot Upload' });
+    // Step 15 (Payment)
+    if (!values.paymentAmount?.trim()) missing.push({ step: 15, label: 'Payment Amount' });
+    if (!values.utrNo?.trim()) missing.push({ step: 15, label: '12-Digit UTR / Transaction No.' });
+    if (!fileMeta.filePaymentScreenshot?.url) missing.push({ step: 15, label: 'Payment Screenshot Upload' });
 
-    // Step 17
+    // Step 16 (Declaration)
     if (values.finalVerification !== 'true' && values.finalVerification !== true) {
-      missing.push({ step: 17, label: 'Final Verification Checkbox' });
+      missing.push({ step: 16, label: 'Final Verification Checkbox' });
     }
-    if (!values.place?.trim()) missing.push({ step: 17, label: 'Declaration Place' });
-    if (!values.date?.trim()) missing.push({ step: 17, label: 'Declaration Date' });
-    if (!fileMeta.signature?.url) missing.push({ step: 17, label: 'Candidate Signature Upload' });
+    if (!values.place?.trim()) missing.push({ step: 16, label: 'Declaration Place' });
+    if (!values.date?.trim()) missing.push({ step: 16, label: 'Declaration Date' });
+    if (!fileMeta.signature?.url) missing.push({ step: 16, label: 'Candidate Signature Upload' });
 
     return missing;
   };
@@ -715,14 +734,6 @@ export default function ApplicationPortal() {
         );
       case 8:
         return (
-          <Step8OtherService
-            values={values}
-            errors={errors}
-            onValueChange={handleValueChange}
-          />
-        );
-      case 9:
-        return (
           <Step9EmploymentNoc
             values={values}
             errors={errors}
@@ -734,7 +745,7 @@ export default function ApplicationPortal() {
             onOpenNocDraft={() => setShowNocModal(true)}
           />
         );
-      case 10:
+      case 9:
         return (
           <Step10CriteriaInfo
             values={values}
@@ -742,7 +753,7 @@ export default function ApplicationPortal() {
             onValueChange={handleValueChange}
           />
         );
-      case 11:
+      case 10:
         return (
           <Step11AcademicRecord
             values={values}
@@ -750,7 +761,7 @@ export default function ApplicationPortal() {
             onValueChange={handleValueChange}
           />
         );
-      case 12:
+      case 11:
         return (
           <Step12TeachingAdminScore
             values={values}
@@ -758,7 +769,7 @@ export default function ApplicationPortal() {
             onValueChange={handleValueChange}
           />
         );
-      case 13:
+      case 12:
         return (
           <Step13ResponsibilitiesCommittees
             tableValues={tableValues}
@@ -770,7 +781,7 @@ export default function ApplicationPortal() {
             onFileChange={handleFileChange}
           />
         );
-      case 14:
+      case 13:
         return (
           <Step14ResearchScore
             values={values}
@@ -778,7 +789,7 @@ export default function ApplicationPortal() {
             onValueChange={handleValueChange}
           />
         );
-      case 15:
+      case 14:
         return (
           <Step15Annexures
             values={values}
@@ -790,7 +801,7 @@ export default function ApplicationPortal() {
             onFileChange={handleFileChange}
           />
         );
-      case 16:
+      case 15:
         return (
           <Step16Payment
             values={values}
@@ -804,18 +815,38 @@ export default function ApplicationPortal() {
             onFileRemove={handleFileRemove}
           />
         );
-      case 17:
+      case 16:
         return (
-          <Step17Declaration
-            values={values}
-            errors={errors}
-            fileMeta={fileMeta}
-            uploadingField={uploadingField}
-            uploadProgress={uploadProgress}
-            onValueChange={handleValueChange}
-            onFileChange={handleFileChange}
-            onFileRemove={handleFileRemove}
-          />
+          <div className="space-y-8">
+            <Step17Declaration
+              values={values}
+              errors={errors}
+              fileMeta={fileMeta}
+              uploadingField={uploadingField}
+              uploadProgress={uploadProgress}
+              onValueChange={handleValueChange}
+              onFileChange={handleFileChange}
+              onFileRemove={handleFileRemove}
+            />
+
+            {/* Review Section on Step 16 at the Bottom */}
+            <div className="mt-12 pt-8 border-t-2 border-slate-200" id="step16-review-section">
+              <ReviewModal
+                sections={sections}
+                values={values}
+                tableValues={tableValues}
+                fileMeta={fileMeta}
+                missingFields={missingFields}
+                onEditSection={handleJumpToStep}
+                onSubmit={handleFinalSubmit}
+                onSaveForLater={handleSaveForLater}
+                onBack={handleBack}
+                submitting={isSubmitting}
+                submitError={submitError}
+                isEmbedded={true}
+              />
+            </div>
+          </div>
         );
       default:
         return null;
@@ -833,15 +864,15 @@ export default function ApplicationPortal() {
         logoUrl={config.logo_url}
         currentStep={currentStep}
         totalSteps={sections.length}
-        isReview={isReview}
+        isReview={currentStep === sections.length}
         candidate={candidate}
         onLogout={handleLogout}
       />
 
-      {/* Step Numbers 1 to 17 Navigation Bar */}
+      {/* Step Numbers 1 to 16 Navigation Bar */}
       <StepProgress
         sections={sections}
-        currentStep={isReview ? sections.length + 1 : currentStep}
+        currentStep={currentStep}
         onStepClick={handleJumpToStep}
       />
 
@@ -849,27 +880,10 @@ export default function ApplicationPortal() {
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 py-8">
         <div className="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
           <div className="p-6 md:p-10">
-            {isReview ? (
-              <ReviewModal
-                sections={sections}
-                values={values}
-                tableValues={tableValues}
-                fileMeta={fileMeta}
-                missingFields={missingFields}
-                onEditSection={handleJumpToStep}
-                onSubmit={handleFinalSubmit}
-                onSaveForLater={() => {
-                  alert('Your application progress is saved! You can resume any time.');
-                }}
-                submitting={isSubmitting}
-                submitError={submitError}
-              />
-            ) : (
-              renderStepComponent()
-            )}
+            {renderStepComponent()}
 
-            {/* Bottom Actions Bar: Back, Save & Next */}
-            {!isReview && (
+            {/* Bottom Actions Bar: Back, Save & Next (Steps 1 to 15 only; Step 16 has Review actions below) */}
+            {currentStep < sections.length && (
               <div className="flex items-center justify-between mt-10 pt-6 border-t border-slate-200">
                 {currentStep > 1 ? (
                   <button
@@ -889,7 +903,7 @@ export default function ApplicationPortal() {
                   disabled={isSaving}
                   className="ml-auto flex items-center gap-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white px-8 py-3 rounded-xl font-bold text-sm shadow-md hover:shadow-blue-200 transition"
                 >
-                  {isSaving ? "Saving..." : isLastStep ? "Review Application ›" : "Save & Next ›"}
+                  {isSaving ? "Saving..." : currentStep === sections.length - 1 ? "Proceed to Declaration & Review ›" : "Save & Next ›"}
                 </button>
               </div>
             )}
@@ -910,6 +924,17 @@ export default function ApplicationPortal() {
           <span>Recruitment Portal v2.0</span>
         </div>
       </main>
+
+      {/* Printable Form (Mounted for Window Print & PDF Export) */}
+      <div className="print-only">
+        <PrintableApplication
+          applicationNo={candidate?.applicationNo || 'DRAFT-PREVIEW'}
+          candidate={candidate}
+          values={values}
+          tableValues={tableValues}
+          fileMeta={fileMeta}
+        />
+      </div>
 
       {/* Pre-filled NOC Certificate Generator Modal */}
       <NocDraftModal

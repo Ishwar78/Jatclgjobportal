@@ -114,23 +114,6 @@ export default function Step16Payment({
           {errors.utrNo && <p className="step16-error-text">{errors.utrNo}</p>}
         </div>
 
-        <div className="step16-field-group">
-          <label className="step16-label">
-            Re-enter UTR / Transaction No. <span className="step16-required">*</span>
-          </label>
-          <input
-            type="text"
-            value={values.confirmUtrNo || ''}
-            onChange={(e) => onValueChange('confirmUtrNo', e.target.value)}
-            className={`step16-input ${errors.confirmUtrNo ? 'step16-input-error' : ''}`}
-            placeholder="Re-enter same UTR No."
-            maxLength={22}
-          />
-          {errors.confirmUtrNo && (
-            <p className="step16-error-text">{errors.confirmUtrNo}</p>
-          )}
-        </div>
-
         {/* Screenshot Upload Field with Image Preview & 5MB Limit */}
         <div className="step16-field-group step16-full-width">
           <label className="step16-label">

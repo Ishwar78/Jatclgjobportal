@@ -7,6 +7,12 @@ export default function AcademicRecordScoreTable({ values = {}, errors = {}, onV
   const s = parseFloat(values.academicMatric || 0) || 0;
   const totalAcademic = (m + g + h + s).toFixed(2).replace(/\.00$/, '');
 
+  React.useEffect(() => {
+    if (values.academicTotal !== totalAcademic) {
+      onValueChange('academicTotal', totalAcademic);
+    }
+  }, [totalAcademic, values.academicTotal, onValueChange]);
+
   const handleScoreChange = (fieldId, rawVal, max = 5) => {
     if (rawVal === '') {
       onValueChange(fieldId, '');
@@ -37,8 +43,8 @@ export default function AcademicRecordScoreTable({ values = {}, errors = {}, onV
             <tr>
               <th className={`${thStyle} w-16 text-center`}>S.No.</th>
               <th className={`${thStyle} text-left`}>Particulars</th>
-              <th className={`${thStyle} text-left w-72`}>Marks Criteria</th>
-              <th className={`${thStyle} w-32 text-center`}>Obtained</th>
+              <th className={`${thStyle} text-left w-72`}>Marks</th>
+              <th className={`${thStyle} w-32 text-center`}>Self-Claimed</th>
             </tr>
           </thead>
           <tbody>

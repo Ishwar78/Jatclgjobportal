@@ -5,7 +5,7 @@ export default function StepProgress({
   currentStep = 1,
   onStepClick
 }) {
-  const total = sections.length || 17;
+  const total = sections.length || 16;
   const progressPercent = Math.min(Math.round((currentStep / total) * 100), 100);
 
   return (

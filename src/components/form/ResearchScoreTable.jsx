@@ -67,7 +67,20 @@ export default function ResearchScoreTable({ values = {}, errors = {}, onValueCh
         </thead>
         <tbody>
           {renderRow('1.', 
-            <>For Direct Recruitment:<br/>Research Papers in Peer-reviewed / UGC Journals upto 13.06.2019 and UGC CARE Listed Journals w.e.f. 14.06.2019<br/><br/>For Career Advancement Scheme:<br/>Research Papers in Peer-reviewed / UGC Journals upto 02.07.2023 and UGC CARE Listed Journals w.e.f. 03.07.2023</>,
+            <div>
+              <div className="font-bold text-slate-900 text-[14.5px] leading-tight mb-1">
+                Research Publications
+              </div>
+              <div className="text-xs text-slate-700 leading-relaxed">
+                <span className="font-semibold text-slate-800">For Direct Recruitment:</span>
+                <br/>
+                Research Papers in Peer-reviewed / UGC Journals upto 13.06.2019 and UGC CARE Listed Journals w.e.f. 14.06.2019
+                <div className="my-1 border-t border-slate-100"></div>
+                <span className="font-semibold text-slate-800">For Career Advancement Scheme:</span>
+                <br/>
+                Research Papers in Peer-reviewed / UGC Journals upto 02.07.2023 and UGC CARE Listed Journals w.e.f. 03.07.2023
+              </div>
+            </div>,
             '8', '10', 'resPapers')}
           
           {renderHeaderRow('2.', 'Publications (other than Research papers)')}

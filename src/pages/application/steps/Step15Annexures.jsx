@@ -58,6 +58,19 @@ export default function Step15Annexures({
     { id: 'annexure6Full', label: 'Annexure VI: Arrange and attach supporting documents in a single PDF' }
   ];
 
+  const formatLabel = (label) => {
+    const match = label.match(/^(Annexure\s+[IVXLCDM]+:?)(.*)$/i);
+    if (match) {
+      return (
+        <>
+          <span className="step15-annexure-tag">{match[1]}</span>
+          <span className="step15-label-text">{match[2]}</span>
+        </>
+      );
+    }
+    return <span className="step15-label-text">{label}</span>;
+  };
+
   const renderUpload = (item) => {
     const file = fileMeta[item.id];
     const isUploading = uploadingField === item.id;
@@ -69,7 +82,7 @@ export default function Step15Annexures({
         className={`step15-upload-field ${item.fullWidth ? 'step15-full-width' : ''}`}
       >
         <label className="step15-label">
-          {item.label} {item.required && <span className="step15-required">*</span>}
+          {formatLabel(item.label)} {item.required && <span className="step15-required">*</span>}
         </label>
 
         {file && file.url ? (

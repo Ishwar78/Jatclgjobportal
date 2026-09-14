@@ -1,10 +1,18 @@
 import React from 'react';
 
 export default function TeachingAdminScoreTable({ values = {}, errors = {}, onValueChange }) {
+  const exp15 = parseFloat(values.teachingExpAbove15 || 0) || 0;
   const v1 = parseFloat(values.adminJointDirector || 0) || 0;
   const v2 = parseFloat(values.adminRegistrar || 0) || 0;
   const v3 = parseFloat(values.adminHead || 0) || 0;
   const totalAdminClaim = v1 + v2 + v3;
+  const totalTeachingScore = (exp15 + Math.min(totalAdminClaim, 25)).toFixed(2).replace(/\.00$/, '');
+
+  React.useEffect(() => {
+    if (values.teachingTotalScore !== totalTeachingScore) {
+      onValueChange('teachingTotalScore', totalTeachingScore);
+    }
+  }, [totalTeachingScore, values.teachingTotalScore, onValueChange]);
 
   const handleScoreChange = (fieldId, rawVal, max = 25) => {
     if (rawVal === '') {
@@ -38,8 +46,8 @@ export default function TeachingAdminScoreTable({ values = {}, errors = {}, onVa
               <tr>
                 <th className={`${thStyle} w-16 text-center`}>S.No.</th>
                 <th className={`${thStyle} text-left`}>Particulars</th>
-                <th className={`${thStyle} text-left w-64`}>Marks Criteria</th>
-                <th className={`${thStyle} w-32 text-center`}>Obtained</th>
+                <th className={`${thStyle} text-left w-64`}>Marks</th>
+                <th className={`${thStyle} w-32 text-center`}>Self-Claimed</th>
               </tr>
             </thead>
             <tbody>
@@ -51,7 +59,7 @@ export default function TeachingAdminScoreTable({ values = {}, errors = {}, onVa
                     <p className="text-xs text-red-600 font-semibold mt-1">{errors.teachingExpAbove15}</p>
                   )}
                 </td>
-                <td className={tdStyle}>1 mark for each year of teaching experience</td>
+                <td className={tdStyle}>1 mark for each year</td>
                 <td className="p-3 border border-slate-200 text-center">
                   <input
                     type="number"
@@ -73,7 +81,10 @@ export default function TeachingAdminScoreTable({ values = {}, errors = {}, onVa
       {/* SECTION B(i): ADMINISTRATIVE SKILL */}
       <div className="overflow-hidden border border-slate-200 rounded-xl shadow-sm bg-white">
         <div className="bg-slate-100/80 p-2.5 text-center font-bold text-xs md:text-sm text-slate-800 border-b border-slate-200">
-          B(i). Assessment of Administrative Skill — Maximum 25 Marks (Note: sum of the 3 rows below cannot exceed 25 marks combined)
+          B. Assessment of Administrative Skill — Maximum 25 Marks
+        </div>
+         <div className="bg-slate-100/80 p-2.5 text-left font-bold text-xs md:text-sm text-slate-800 border-b border-slate-200">
+          B(i). Experience Of Administrative Responsibilities 
         </div>
         <div className="overflow-x-auto">
           <table className="w-full border-collapse text-xs">
@@ -81,8 +92,8 @@ export default function TeachingAdminScoreTable({ values = {}, errors = {}, onVa
               <tr>
                 <th className={`${thStyle} w-16 text-center`}>S.No.</th>
                 <th className={`${thStyle} text-left`}>Particulars</th>
-                <th className={`${thStyle} text-left w-64`}>Marks Criteria</th>
-                <th className={`${thStyle} w-32 text-center`}>Obtained</th>
+                <th className={`${thStyle} text-left w-64`}>Marks</th>
+                <th className={`${thStyle} w-32 text-center`}>Self-Claimed</th>
               </tr>
             </thead>
             <tbody>

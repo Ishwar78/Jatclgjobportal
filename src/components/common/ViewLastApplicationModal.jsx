@@ -201,7 +201,7 @@ export default function ViewLastApplicationModal({ isOpen, onClose, candidate })
                 No Submitted Application Found
               </h4>
               <p className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed mb-6">
-                You have not submitted a completed application form yet. Your application is currently saved as a draft. Once you complete all 17 steps and click Final Submit, your application will be saved here and available to download/print at any time.
+                You have not submitted a completed application form yet. Your application is currently saved as a draft. Once you complete all 16 steps and click Final Submit, your application will be saved here and available to download/print at any time.
               </p>
               <button
                 type="button"

@@ -164,3 +164,61 @@
   color: #dc2626;
   margin: 4px 0 0 0;
 }
+
+/* Other Service Details Merged Section */
+.step9-other-service {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.step9-section-header {
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 8px;
+}
+
+.step9-subtitle-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.step9-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px 22px;
+}
+
+@media (min-width: 768px) {
+  .step9-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.step9-input {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14.5px;
+  color: #0f172a;
+  background-color: #ffffff;
+  border: 1.5px solid #94a3b8;
+  border-radius: 8px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.step9-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.step9-helper-text {
+  font-size: 12px;
+  color: #64748b;
+  margin: 2px 0 0 0;
+}

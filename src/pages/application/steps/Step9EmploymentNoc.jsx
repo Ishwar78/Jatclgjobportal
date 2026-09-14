@@ -40,11 +40,11 @@ export default function Step9EmploymentNoc({
       {isEmployed && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginTop: '10px' }}>
           {/* NOC Instructions Banner */}
-          <div className="step9-noc-banner">
+          {/* <div className="step9-noc-banner">
             <p className="step9-noc-text">
               <strong>If Yes:</strong> Submit No Objection Certificate from the employer as per the Standard Format. Download the Standard Format, fill it, get it signed and stamped by your current employer on official letterhead, then upload the signed copy below.
             </p>
-          </div>
+          </div> */}
 
           {/* Name of Current Employer / College / Institution */}
           <div className="step2-field-group">
@@ -94,7 +94,7 @@ export default function Step9EmploymentNoc({
           {/* NOC Note & Draft Action */}
           <div className="step9-noc-banner">
             <p className="step9-noc-text">
-              👉 Click "Generate NOC Draft" button to download your pre-filled NOC certificate draft. Print it on your employer's official letterhead, get it signed and stamped, then upload the signed copy below.
+              <strong>If Yes</strong> Click "Generate NOC Draft" button to download your pre-filled NOC certificate draft. Print it on your employer's official letterhead, get it signed and stamped, then upload the signed copy below.
             </p>
             {onOpenNocDraft && (
               <button
@@ -177,6 +177,41 @@ export default function Step9EmploymentNoc({
           </div>
         </div>
       )}
+
+      {/* Other Service Details (Merged below NOC) */}
+      <div className="step9-other-service">
+        {/* <div className="step9-section-header">
+          <h3 className="step9-subtitle-title">Other Service Details</h3>
+        </div> */}
+
+        <div className="step9-grid">
+          <div className="step9-field-group">
+            <label className="step9-label">Basic Pay Acceptable</label>
+            <input
+              type="text"
+              value={values.basicPayAcceptable || ''}
+              onChange={(e) => onValueChange('basicPayAcceptable', e.target.value)}
+              className="step9-input"
+              placeholder="e.g. As per norms / 70,000"
+            />
+            <p className="step9-helper-text">e.g. As per norms / 70,000</p>
+          </div>
+
+          <div className="step9-field-group">
+            <label className="step9-label">
+              Period required for joining the post, if selected
+            </label>
+            <input
+              type="text"
+              value={values.joiningPeriod || ''}
+              onChange={(e) => onValueChange('joiningPeriod', e.target.value)}
+              className="step9-input"
+              placeholder="e.g. 30 days / One month / Immediately"
+            />
+            <p className="step9-helper-text">e.g. 30 days / One month / Immediately</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

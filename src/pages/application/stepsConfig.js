@@ -1,4 +1,4 @@
-// 17 Application Form Steps Configuration (Exact Original Metadata for Progress, Validation & Review)
+// 16 Application Form Steps Configuration (Exact Original Metadata for Progress, Validation & Review)
 export const STEPS_CONFIG = [
   {
     "id": "instructions",
@@ -456,25 +456,6 @@ export const STEPS_CONFIG = [
     ]
   },
   {
-    "id": "other_service",
-    "title": "Other Service Details",
-    "subtitle": "",
-    "fields": [
-      {
-        "id": "basicPayAcceptable",
-        "label": "Basic Pay Acceptable",
-        "type": "text",
-        "required": false
-      },
-      {
-        "id": "joiningPeriod",
-        "label": "Period required for joining the post, if selected",
-        "type": "text",
-        "required": false
-      }
-    ]
-  },
-  {
     "id": "employment_noc",
     "title": "Employment Status & No Objection Certificate",
     "subtitle": "",
@@ -548,6 +529,18 @@ export const STEPS_CONFIG = [
           "fieldId": "isPresEmployed",
           "equals": "Yes"
         }
+      },
+      {
+        "id": "basicPayAcceptable",
+        "label": "Basic Pay Acceptable",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "joiningPeriod",
+        "label": "Period required for joining the post, if selected",
+        "type": "text",
+        "required": false
       }
     ]
   },
@@ -1167,12 +1160,6 @@ export const STEPS_CONFIG = [
       {
         "id": "utrNo",
         "label": "UTR Number / Transaction ID",
-        "type": "text",
-        "required": true
-      },
-      {
-        "id": "confirmUtrNo",
-        "label": "Re-enter UTR Number",
         "type": "text",
         "required": true
       },

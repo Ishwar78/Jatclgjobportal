@@ -224,9 +224,9 @@ export default function Home() {
                     Forgot Password
                   </Link>
 
-                  <Link to="/forgot-application">
+                  {/* <Link to="/forgot-application">
                     Application No
-                  </Link>
+                  </Link> */}
 
                   <Link to="/forgot-registration">
                     Registration No
@@ -313,7 +313,7 @@ export default function Home() {
                 </span>
 
                 <p>
-                  Fill all 17 application steps carefully.
+                  Fill all 16 application steps carefully.
                   Your progress is automatically saved.
                 </p>
 
@@ -498,7 +498,7 @@ export default function Home() {
         <footer className="home-bottom-footer">
 
           <span>
-            Principal Recruitment Portal © 2026
+            JES(Regd.) Rohtak  Recruitment Portal © 2026
           </span>
 
           <span className="footer-divider">

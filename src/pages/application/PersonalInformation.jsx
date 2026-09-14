@@ -581,7 +581,7 @@ export default function PersonalInformation() {
               </div>
 
               <div className="upload-note">
-                Max size: 512 KB
+                Max size: 10 MB
               </div>
 
               <div className="field-note upload-applicable">

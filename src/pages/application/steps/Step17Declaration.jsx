@@ -22,17 +22,7 @@ export default function Step17Declaration({
         <h2 className="step17-title">Declaration</h2>
         <p className="step17-subtitle">Final verification and sign-off</p>
       </div>
-
-      {/* Prominent Declaration Note - placed ABOVE Date, Place & Signature as requested */}
-      <div className="step17-declaration-box">
-        <strong>Undertaking:</strong> I hereby declare and undertake that all the information
-        provided by me in this application form is true, correct and complete to the best of my
-        knowledge and belief and nothing has been concealed therein. In case any information is
-        found to be false, incorrect or misleading, my candidature/appointment is liable to be
-        cancelled.
-      </div>
-
-      {/* Final Verification Checkbox - placed ABOVE Date, Place & Signature as requested */}
+{/* Final Verification Checkbox - placed ABOVE Date, Place & Signature as requested */}
       <div>
         <label className="step17-verification-card">
           <input
@@ -55,6 +45,16 @@ export default function Step17Declaration({
           </p>
         )}
       </div>
+      {/* Prominent Declaration Note - placed ABOVE Date, Place & Signature as requested */}
+      <div className="step17-declaration-box">
+        <strong>Undertaking:</strong> I hereby declare and undertake that all the information
+        provided by me in this application form is true, correct and complete to the best of my
+        knowledge and belief and nothing has been concealed therein. In case any information is
+        found to be false, incorrect or misleading, my candidature/appointment is liable to be
+        cancelled.
+      </div>
+
+      
 
       {/* Place, Date, and Signature Grid */}
       <div className="step17-grid" style={{ marginTop: '10px' }}>

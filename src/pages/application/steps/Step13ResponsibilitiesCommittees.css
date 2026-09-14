@@ -77,8 +77,20 @@
 .step13-row-label {
   font-weight: 600;
   color: #0f172a;
+  background-color: #ffffff;
+  white-space: normal;
+  min-width: 200px;
+  line-height: 1.4;
+}
+
+.step13-criteria-cell {
+  font-size: 12px;
+  color: #475569;
   background-color: #f8fafc;
-  white-space: nowrap;
+  line-height: 1.4;
+  white-space: normal;
+  min-width: 170px;
+  font-weight: 500;
 }
 
 .step13-input {
@@ -102,3 +114,70 @@
   font-weight: 700;
   color: #1e3a8a;
 }
+
+.step13-note-box {
+  background-color: #fefce8;
+  border: 1px solid #fef08a;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 12px;
+  color: #854d0e;
+  line-height: 1.5;
+  margin-top: 12px;
+}
+
+.step13-total-row {
+  background-color: #eff6ff !important;
+  font-weight: 700;
+}
+
+.step13-total-label {
+  color: #1e3a8a;
+  font-weight: 700;
+  text-align: right;
+}
+
+.step13-total-val {
+  color: #1e3a8a;
+  font-weight: 800;
+  text-align: right;
+  font-size: 14px;
+}
+
+.step13-download-box {
+  margin-top: 20px;
+  margin-bottom: 6px;
+}
+
+.step13-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #f0f7ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  padding: 11px 18px;
+  color: #0369a1;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.step13-download-btn:hover {
+  background-color: #e0f2fe;
+  border-color: #7dd3fc;
+  color: #0284c7;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.15);
+  transform: translateY(-1px);
+}
+
+.step13-download-icon {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  flex-shrink: 0;
+}
+

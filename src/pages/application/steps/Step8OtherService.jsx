@@ -4,9 +4,9 @@ import './Step8OtherService.css';
 export default function Step8OtherService({ values = {}, errors = {}, onValueChange }) {
   return (
     <div className="step8-container">
-      <div className="step8-header">
+      {/* <div className="step8-header">
         <h2 className="step8-title">Other Service Details</h2>
-      </div>
+      </div> */}
 
       <div className="step8-grid">
         <div className="step8-field-group">

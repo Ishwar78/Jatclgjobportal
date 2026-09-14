@@ -6,7 +6,7 @@ export default function Header({
   tagline = "Rohtak, Haryana",
   logoUrl = "https://udbhhoxrstnjytgxpwje.supabase.co/storage/v1/object/public/tenant-assets/tenants/all-india-jat-heroes-memorial-college/logo-1788680557280.png",
   currentStep = 1,
-  totalSteps = 17,
+  totalSteps = 16,
   isReview = false,
   candidate = null,
   onLogout

@@ -13,63 +13,63 @@ export default function Step7EducationDocuments({
   const documents = [
     {
       id: 'docMatric',
-      label: 'Certificate and/or Marksheet for Matriculation',
+      label: 'Certificate for Matriculation',
       required: true,
       limitKB: 10240,
       helperText: 'Merge certificate and marksheet into one PDF — PDF only, max 10 MB'
     },
     {
       id: 'docInter',
-      label: 'Certificate and/or Marksheet for Prep/Pre/10+2',
+      label: 'Certificate for Prep/Pre/10+2',
       required: true,
       limitKB: 10240,
       helperText: 'Merge certificate and marksheet into one PDF — PDF only, max 10 MB'
     },
     {
       id: 'docGrad',
-      label: 'Certificate and/or Marksheet for Graduation (BA/B.Sc./B.Com/Other)',
+      label: 'Certificate for Graduation (BA/B.Sc./B.Com/Other)',
       required: true,
       limitKB: 10240,
       helperText: 'Merge certificate and marksheet into one PDF — PDF only, max 10 MB'
     },
     {
       id: 'docPG',
-      label: 'Certificate and/or Marksheet for Post-Graduation (MA/M.Sc./M.Com/Other)',
+      label: 'Certificate for Post-Graduation (MA/M.Sc./M.Com/Other)',
       required: false,
       limitKB: 10240,
       helperText: 'Merge certificate and marksheet into one PDF — PDF only, max 10 MB'
     },
     {
       id: 'docBEd',
-      label: 'Certificate and/or Marksheet for B.Ed.',
+      label: 'Certificate for B.Ed.',
       required: false,
       limitKB: 10240,
       helperText: 'If applicable — merge certificate and marksheet into one PDF — PDF only, max 10 MB'
     },
     {
       id: 'docMEd',
-      label: 'Certificate and/or Marksheet for M.Ed.',
+      label: 'Certificate for M.Ed.',
       required: false,
       limitKB: 10240,
       helperText: 'If applicable — merge certificate and marksheet into one PDF — PDF only, max 10 MB'
     },
     {
       id: 'docMPhil',
-      label: 'M.Phil Certificate / Degree',
+      label: 'Certificate for M.Phil',
       required: false,
       limitKB: 10240,
       helperText: 'If applicable — PDF only, max 10 MB'
     },
     {
       id: 'docPhd',
-      label: 'Ph.D. Certificate / Degree',
+      label: 'Certificate for PhD',
       required: false,
       limitKB: 10240,
       helperText: 'If applicable — PDF only, max 10 MB'
     },
     {
       id: 'docNetSlet',
-      label: 'NET/SLET Certificate',
+      label: 'Certificate for NET/SLET',
       required: false,
       limitKB: 10240,
       helperText: 'If applicable — PDF only, max 10 MB'
@@ -153,7 +153,7 @@ export default function Step7EducationDocuments({
       <div className="step7-header">
         <h2 className="step7-title">Upload Educational Documents</h2>
         <p className="step7-subtitle">
-          Combine Certificate and Marksheet for each class into one PDF. Max size: 500 KB each (Any Other: 2 MB).
+          Combine Certificate and/or Marksheet/Degree for each class into one PDF. Max size: 10 MB.
         </p>
       </div>
 
@@ -176,7 +176,7 @@ export default function Step7EducationDocuments({
         {/* Certificate for Any Other Qualification */}
         <div className="step7-upload-field" style={{ gridColumn: '1 / -1' }}>
           <label className="step7-label">
-            Certificate and/or Marksheet for Any Other Qualification
+            Certificate for Any Other Qualification
           </label>
 
           {otherFile && otherFile.url ? (

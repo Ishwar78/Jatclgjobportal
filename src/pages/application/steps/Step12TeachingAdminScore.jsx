@@ -8,7 +8,7 @@ export default function Step12TeachingAdminScore({ values = {}, errors = {}, onV
       <div className="step12-header">
         <h2 className="step12-title">Part II: Teaching Experience and Assessment of Administrative Skills</h2>
         <p className="step12-subtitle">
-          Maximum Score: 30 (Teaching: 20 + Administrative: 10)
+          Maximum : 35 marks
         </p>
       </div>
 

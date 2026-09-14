@@ -297,7 +297,7 @@ export default function Register() {
               </h1>
 
               <p>
-                Create your account to apply for faculty recruitment
+                Create your account for applying to the Job portal. 
               </p>
             </div>
 

@@ -1,6 +1,349 @@
 import React from 'react';
 
 export default function SelectionCriteriaTables() {
+  const thStyle = "p-2.5 border border-slate-300 bg-slate-100 text-slate-800 font-bold text-xs md:text-sm text-center";
+  const thLeft = "p-2.5 border border-slate-300 bg-slate-100 text-slate-800 font-bold text-xs md:text-sm text-left";
+  const tdStyle = "p-2.5 border border-slate-300 text-xs md:text-sm text-slate-800 leading-normal";
+  const tdCenter = "p-2.5 border border-slate-300 text-xs md:text-sm text-slate-800 text-center font-semibold";
+
+  return (
+    <div className="space-y-6 my-4 font-sans text-slate-800">
+      {/* ================= REVISED CRITERIA TITLE (WITHOUT BOX) ================= */}
+      <div className="py-2 px-1 text-center">
+        <p className="text-xs md:text-sm font-bold text-slate-800 leading-relaxed m-0">
+          Revised criteria for the recruitment of Assistant Professor and Principals in Govt. Aided Private Colleges in State of Haryana with reference to: Memo No. KW 8/36-2009 C-IV(3) dated 18/04/2023 and Memo no. KW 8/36-2009 C-IV(3) dated 12.12.2022
+        </p>
+      </div>
+
+      {/* ================= MAIN TITLE AS PER IMAGE 1 ================= */}
+      {/* <div className="text-center py-2 border-b-2 border-slate-300">
+        <h2 className="text-sm md:text-base font-extrabold uppercase tracking-wide text-slate-900">
+          CRITERIA FOR SELECTION OF PRINCIPALS IN GOVT. AIDED PRIVATE COLLEGES IN THE STATE OF HARYANA
+        </h2>
+      </div> */}
+
+      {/* ================= OVERALL SUMMARY BREAKDOWN TABLE (IMAGE 1) ================= */}
+      <div className="overflow-x-auto border border-slate-300 rounded-lg shadow-sm">
+        <table className="w-full border-collapse text-xs md:text-sm">
+          <thead>
+            <tr className="bg-slate-100 border-b border-slate-300">
+              <th className="p-2.5 text-left font-bold text-slate-800">Category</th>
+              <th className="p-2.5 text-right font-bold text-slate-800 w-36">Marks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="border-b border-slate-200 hover:bg-slate-50">
+              <td className="p-2.5 font-medium text-slate-800">I. Academic Record</td>
+              <td className="p-2.5 text-right font-semibold text-slate-800">20 Marks</td>
+            </tr>
+            <tr className="border-b border-slate-200 hover:bg-slate-50">
+              <td className="p-2.5 font-medium text-slate-800">II. Teaching Experience and Assessment of Administrative Skill</td>
+              <td className="p-2.5 text-right font-semibold text-slate-800">35 Marks</td>
+            </tr>
+            <tr className="border-b border-slate-200 hover:bg-slate-50">
+              <td className="p-2.5 font-medium text-slate-800">III. Academic/Research Score</td>
+              <td className="p-2.5 text-right font-semibold text-slate-800">32.5 Marks</td>
+            </tr>
+            <tr className="border-b border-slate-200 hover:bg-slate-50">
+              <td className="p-2.5 font-medium text-slate-800">IV. Interview</td>
+              <td className="p-2.5 text-right font-semibold text-slate-800">12.5 Marks</td>
+            </tr>
+            <tr className="bg-blue-50/80 font-bold border-t-2 border-slate-300 text-blue-900">
+              <td className="p-2.5 uppercase font-bold">TOTAL:</td>
+              <td className="p-2.5 text-right font-extrabold text-blue-900">100 Marks</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      {/* ================= CATEGORY I: ACADEMIC RECORD (IMAGE 1) ================= */}
+      <div className="space-y-2">
+        <h3 className="font-bold text-xs md:text-sm text-slate-900">
+          I. Academic Record: Maximum 20 marks
+        </h3>
+        <div className="overflow-x-auto border border-slate-300 rounded-lg shadow-sm">
+          <table className="w-full border-collapse text-xs md:text-sm">
+            <thead>
+              <tr>
+                <th className={`${thStyle} w-16`}>Sr. No.</th>
+                <th className={thLeft}>Particulars</th>
+                <th className={`${thLeft} min-w-[240px]`}>Marks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="hover:bg-slate-50">
+                <td className={tdCenter}>1</td>
+                <td className={tdStyle}>Above 55 % marks in Master's degree</td>
+                <td className={tdStyle}>0.5 mark for each percentage<br />(maximum 5 marks)</td>
+              </tr>
+              <tr className="hover:bg-slate-50">
+                <td className={tdCenter}>2</td>
+                <td className={tdStyle}>Above 55 % marks in Graduation</td>
+                <td className={tdStyle}>0.4 mark for each percentage<br />(maximum 5 marks)</td>
+              </tr>
+              <tr className="hover:bg-slate-50">
+                <td className={tdCenter}>3</td>
+                <td className={tdStyle}>Above 55 % marks in 10+2/Prep.</td>
+                <td className={tdStyle}>0.3 mark for each percentage<br />(maximum 5 marks)</td>
+              </tr>
+              <tr className="hover:bg-slate-50">
+                <td className={tdCenter}>4</td>
+                <td className={tdStyle}>Above 55 % marks in Matriculation</td>
+                <td className={tdStyle}>0.2 mark for each percentage<br />(maximum 5 marks)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* ================= CATEGORY II: TEACHING & ADMINISTRATIVE SKILL (IMAGES 1, 2, 3) ================= */}
+      <div className="space-y-3">
+        <h3 className="font-bold text-xs md:text-sm text-slate-900">
+          II. Teaching Experience and Assessment of Administrative Skill: Maximum 35 marks
+        </h3>
+
+        {/* II. A. Teaching Experience */}
+        <div className="space-y-1.5 pl-0 md:pl-2">
+          <h4 className="font-bold text-xs md:text-sm text-slate-800">
+            A. Teaching Experience: Maximum 10 marks
+          </h4>
+          <div className="overflow-x-auto border border-slate-300 rounded-lg shadow-sm">
+            <table className="w-full border-collapse text-xs md:text-sm">
+              <thead>
+                <tr>
+                  <th className={`${thStyle} w-16`}>Sr. No.</th>
+                  <th className={thLeft}>Particulars</th>
+                  <th className={`${thLeft} min-w-[240px]`}>Marks</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="hover:bg-slate-50">
+                  <td className={tdCenter}>1</td>
+                  <td className={tdStyle}>Above 15 years teaching experience</td>
+                  <td className={tdStyle}>1 mark for each year</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* II. B. Assessment of Administrative Skill */}
+        <div className="space-y-3 pl-0 md:pl-2 pt-2">
+          <h4 className="font-bold text-xs md:text-sm text-slate-800">
+            B. Assessment of Administrative Skill: Maximum 25 marks
+          </h4>
+
+          {/* (i) Experience of Administrative Responsibilities */}
+          <div className="space-y-1.5">
+            <h5 className="font-bold text-xs md:text-sm text-slate-700">
+              (i) Experience of Administrative Responsibilities
+            </h5>
+            <div className="overflow-x-auto border border-slate-300 rounded-lg shadow-sm">
+              <table className="w-full border-collapse text-xs md:text-sm">
+                <thead>
+                  <tr>
+                    <th className={`${thStyle} w-16`}>Sr. No.</th>
+                    <th className={thLeft}>Particulars</th>
+                    <th className={`${thLeft} min-w-[240px]`}>Marks</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="hover:bg-slate-50">
+                    <td className={tdCenter}>1</td>
+                    <td className={tdStyle}>Experience as Joint/Deputy/Assistant Director in Directorate of Higher Education, Haryana</td>
+                    <td className={tdStyle}>1 mark for each year</td>
+                  </tr>
+                  <tr className="hover:bg-slate-50">
+                    <td className={tdCenter}>2</td>
+                    <td className={tdStyle}>Experience as Registrar or any other administrative post in any University</td>
+                    <td className={tdStyle}>1 mark for each year</td>
+                  </tr>
+                  <tr className="hover:bg-slate-50">
+                    <td className={tdCenter}>3</td>
+                    <td className={tdStyle}>Experience as Head of the Higher Education Institution i.e. Principal, Officiating Principal/DDO</td>
+                    <td className={tdStyle}>1 mark for each year</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* (ii) Experience of Key responsibilities in colleges (IMAGE 2) */}
+          <div className="space-y-1.5">
+            <h5 className="font-bold text-xs md:text-sm text-slate-700">
+              (ii) Experience of Key responsibilities in colleges
+            </h5>
+            <div className="overflow-x-auto border border-slate-300 rounded-lg shadow-sm">
+              <table className="w-full border-collapse text-xs md:text-sm">
+                <thead>
+                  <tr>
+                    <th className={`${thStyle} w-16`}>Sr. No.</th>
+                    <th className={thLeft}>Particulars</th>
+                    <th className={`${thLeft} min-w-[240px]`}>Marks</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { no: '1', name: 'Staff Representative or V.C. Nominee in Managing Committee of any College', marks: '1 mark for each year maximum upto 3 marks' },
+                    { no: '2', name: 'Co-ordinator or Organizing Secretary of International/National/State Conference/Event', marks: '1 mark for each event maximum upto 3 marks' },
+                    { no: '3', name: 'Bursar', marks: '1 mark for each year maximum upto 3 marks' },
+                    { no: '4', name: 'NSS Programme Officer', marks: '1 mark for each year maximum upto 3 marks' },
+                    { no: '5', name: 'YRC Counsellor', marks: '1 mark for each year maximum upto 3 marks' },
+                    { no: '6', name: 'Hostel Warden', marks: '1 mark for each year maximum upto 3 marks' },
+                    { no: '7', name: 'Member of any Statutory Body of University', marks: '1 mark for each year maximum upto 2 marks' },
+                    { no: '8', name: 'Experience as Associate NCC Officer in HEI (s)', marks: '1 mark for each year maximum upto 3 marks' }
+                  ].map((row) => (
+                    <tr key={row.no} className="hover:bg-slate-50">
+                      <td className={tdCenter}>{row.no}</td>
+                      <td className={tdStyle}>{row.name}</td>
+                      <td className={tdStyle}>{row.marks}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* (iii) Experience of Committees in College (IMAGES 2 & 3) */}
+          <div className="space-y-1.5">
+            <h5 className="font-bold text-xs md:text-sm text-slate-700">
+              (iii) Experience of Committees in College
+            </h5>
+            <div className="overflow-x-auto border border-slate-300 rounded-lg shadow-sm">
+              <table className="w-full border-collapse text-xs md:text-sm">
+                <thead>
+                  <tr>
+                    <th className={`${thStyle} w-16`}>Sr. No.</th>
+                    <th className={thLeft}>Particulars</th>
+                    <th className={`${thLeft} min-w-[240px]`}>Marks</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    'Co-ordinator IQAC',
+                    'Editor in Chief, College Magazine',
+                    'Member, College Advisory Council',
+                    'Convenor, University Work Committee',
+                    'Convenor, Cultural Affairs Committee',
+                    'Convenor, Purchase/Procurement Committee',
+                    'Convenor, Building/Works Committee',
+                    'Convenor, Sports Committee',
+                    'Convenor, Discipline Committee',
+                    'Convenor, Internal (Complaint)Committee',
+                    'Convenor, Road Safety Club',
+                    'Convenor, Red Ribbon Club',
+                    'Convenor, Eco Club',
+                    'In-charge, Placement Cell',
+                    'In-charge, Women Cell',
+                    'In-charge, Time-table Committee',
+                    'In-charge, SC/BC Committee'
+                  ].map((name, idx) => (
+                    <tr key={idx + 1} className="hover:bg-slate-50">
+                      <td className={tdCenter}>{idx + 1}</td>
+                      <td className={tdStyle}>{name}</td>
+                      <td className={tdStyle}>1 mark for each academic year maximum upto 2 marks</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ================= CATEGORY III: ACADEMIC/RESEARCH SCORE (IMAGE 3) ================= */}
+      <div className="space-y-2">
+        <h3 className="font-bold text-xs md:text-sm text-slate-900">
+          III. Academic/Research Score: Maximum 32.5 marks
+        </h3>
+        <div className="overflow-x-auto border border-slate-300 rounded-lg shadow-sm">
+          <table className="w-full border-collapse text-xs md:text-sm">
+            <thead>
+              <tr>
+                <th className={`${thStyle} w-16`}>Sr. No.</th>
+                <th className={thLeft}>Particulars</th>
+                <th className={`${thLeft} min-w-[240px]`}>Marks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="hover:bg-slate-50">
+                <td className={tdCenter}>1</td>
+                <td className={tdStyle}>Research Score above 110as per the criteria given in Appendix II,Table2.</td>
+                <td className={tdStyle}>0.3 mark for each 1 Research Score above 110</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* ================= CATEGORY IV: INTERVIEW (IMAGE 4) ================= */}
+      <div className="space-y-2">
+        <h3 className="font-bold text-xs md:text-sm text-slate-900">
+          IV. Interview: 12.5 marks
+        </h3>
+        <div className="overflow-x-auto border border-slate-300 rounded-lg shadow-sm">
+          <table className="w-full border-collapse text-xs md:text-sm">
+            <thead>
+              <tr>
+                <th className={`${thStyle} w-16`}>Sr. No.</th>
+                <th className={thLeft}>Particulars</th>
+                <th className={`${thLeft} min-w-[240px]`}>Marks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="hover:bg-slate-50">
+                <td className={tdCenter}>1</td>
+                <td className={tdStyle}>Knowledge of Service rules, financial matters & ICT tools</td>
+                <td className={tdStyle}>4 Marks</td>
+              </tr>
+              <tr className="hover:bg-slate-50">
+                <td className={tdCenter}>2</td>
+                <td className={tdStyle}>Leadership Qualities and Decision- making power</td>
+                <td className={tdStyle}>5.5 Marks</td>
+              </tr>
+              <tr className="hover:bg-slate-50">
+                <td className={tdCenter}>3</td>
+                <td className={tdStyle}>Overall Personality</td>
+                <td className={tdStyle}>3 Marks</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* ================= OFFICIAL NOTES & CONDITIONS (IMAGE 4) ================= */}
+      <div className="space-y-3 pt-2 text-xs md:text-sm text-slate-700 leading-relaxed">
+        <div className="bg-amber-50/80 border border-amber-200 rounded-lg p-3 text-amber-900">
+          <p className="m-0">
+            Marks of only one experience under Category II B shall be allowed in one academic year. The convenor/In-charge shall be entitled mark (s) allotted to each category of experience. Similarly, the member (s) of Committee shall also be entitled for 0.25 mark for each Committee up to maximum marks allotted above. In case of repetition of any assignment/Committee under Category II (B) (ii) & (iii), the maximum marks allotted above, shall be allowed.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/70 border border-blue-200 rounded-lg p-3 text-slate-800">
+          <p className="m-0">
+            Performance in interview shall be assessed on the basis of above-mentioned criteria. Each member of Selection Committee shall assess candidates and shall assign marks individually in all the three sub-categories mentioned at IV above. For selection, marks obtained by candidates in Categories I to III will be added to the average marks assigned by all members of Selection Committee.
+          </p>
+        </div>
+
+        <div className="bg-slate-50 border border-slate-200 rounded-lg p-3">
+          <p className="font-bold text-slate-900 m-0 mb-1">Note:</p>
+          <ul className="list-disc pl-5 m-0 space-y-1 text-slate-700">
+            <li>
+              Teaching experience of candidates shall be considered only in case of teaching the concerned subject after acquiring eligibility qualifications determined by the Govt.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/*
+========================================================================================
+PREVIOUS IMPLEMENTATION (COMMENTED OUT AS PER USER REQUEST - "isko comment krde bhai"):
+========================================================================================
+
+function PreviousSelectionCriteriaTables() {
   const thStyle = "p-2.5 border border-slate-300 bg-slate-100 text-slate-800 font-bold text-xs text-center";
   const tdStyle = "p-2.5 border border-slate-300 text-xs text-slate-700";
   const tdCenter = "p-2.5 border border-slate-300 text-xs text-slate-700 text-center";
@@ -12,7 +355,6 @@ export default function SelectionCriteriaTables() {
         Memo No. KW8/36-2009 C-IV(3) Dated 18-04-2023, Higher Education Department, Haryana
       </div>
 
-      {/* TABLE 1: OVERALL CRITERIA SUMMARY */}
       <div className="overflow-x-auto border border-slate-300 rounded-lg shadow-sm">
         <table className="w-full border-collapse text-xs">
           <thead>
@@ -65,7 +407,6 @@ export default function SelectionCriteriaTables() {
         </table>
       </div>
 
-      {/* TABLE 2: PART I ACADEMIC RECORD */}
       <div className="overflow-x-auto border border-slate-300 rounded-lg shadow-sm">
         <table className="w-full border-collapse text-xs">
           <thead>
@@ -116,7 +457,6 @@ export default function SelectionCriteriaTables() {
         </table>
       </div>
 
-      {/* TABLE 3: PART II (A) TEACHING EXP & ADMIN SKILLS */}
       <div className="overflow-x-auto border border-slate-300 rounded-lg shadow-sm">
         <table className="w-full border-collapse text-xs">
           <thead>
@@ -163,8 +503,6 @@ export default function SelectionCriteriaTables() {
               <td className={tdStyle}>Experience as Head of the Higher Education Institution i.e. Principal, Officiating Principal / DDO</td>
               <td className={tdStyle}>01 Marks for each year</td>
             </tr>
-
-            {/* (ii) Experience of Key Responsibilities */}
             <tr>
               <td colSpan={3} className="p-2 font-bold text-xs text-slate-700 border border-slate-300 bg-white">
                 (ii) Experience of Key Responsibilities in Colleges
@@ -186,8 +524,6 @@ export default function SelectionCriteriaTables() {
                 <td className={tdStyle}>{marks}</td>
               </tr>
             ))}
-
-            {/* (iii) Experience of Committees */}
             <tr>
               <td colSpan={3} className="p-2 font-bold text-xs text-slate-700 border border-slate-300 bg-white">
                 (iii) Experience of Committees in Colleges
@@ -227,7 +563,6 @@ export default function SelectionCriteriaTables() {
         </table>
       </div>
 
-      {/* TABLE 4: PART III ACADEMIC / RESEARCH SCORE */}
       <div className="overflow-x-auto border border-slate-300 rounded-lg shadow-sm">
         <table className="w-full border-collapse text-xs">
           <thead>
@@ -314,3 +649,6 @@ export default function SelectionCriteriaTables() {
     </div>
   );
 }
+========================================================================================
+*/
+
