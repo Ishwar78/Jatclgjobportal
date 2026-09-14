@@ -68,7 +68,7 @@ router.get('/instructions', async (req, res) => {
       // Seed default instructions
       doc = await Instruction.create({
         deadline_date: '2026-03-31',
-        deadline_time: '23:59:59',
+        deadline_time: '11:59 PM',
         warning_text: '⚠️ No consideration for incomplete and after last date application.',
         instructions: defaultInstructions
       });
@@ -102,7 +102,7 @@ router.post('/instructions', async (req, res) => {
     } else {
       doc = await Instruction.create({
         deadline_date: deadline_date || '2026-03-31',
-        deadline_time: deadline_time || '23:59:59',
+        deadline_time: deadline_time || '11:59 PM',
         warning_text: warning_text || '⚠️ No consideration for incomplete and after last date application.',
         instructions: Array.isArray(instructions) ? instructions : defaultInstructions
       });

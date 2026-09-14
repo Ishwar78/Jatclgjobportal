@@ -14,7 +14,7 @@ export const FALLBACK_CONFIG = {
   payment_account_display_name: "ALL INDIA JAT HEROES’ MEMORIAL COLLEGE",
   admin_sheet_url: "https://udbhhoxrstnjytgxpwje.supabase.co/storage/v1/object/public/exports/tenants/all-india-jat-heroes-memorial-college/submissions.xlsx",
   deadline_date: "2026-11-30",
-  deadline_time: "23:59:59",
+  deadline_time: "11:59 PM",
   slug: "all-india-jat-heroes-memorial-college"
 };
 

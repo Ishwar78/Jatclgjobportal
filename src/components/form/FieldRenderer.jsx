@@ -3,6 +3,7 @@ import SelectionCriteriaTables from './SelectionCriteriaTables';
 import TeachingAdminScoreTable from './TeachingAdminScoreTable';
 import AcademicRecordScoreTable from './AcademicRecordScoreTable';
 import ResearchScoreTable from './ResearchScoreTable';
+import { formatIndianDate, formatIndianTime } from '../../utils/indianDateTime';
 
 export default function FieldRenderer({
   section,
@@ -556,7 +557,7 @@ export default function FieldRenderer({
             <div>
               <h3 className="font-bold text-red-900 text-base">Application Timeline</h3>
               <p className="text-red-800 text-xs md:text-sm mt-0.5">
-                Closing Date: <span className="font-bold">{config.deadline_date}</span> at <span className="font-bold">{config.deadline_time || "23:59:59"}</span>
+                Closing Date: <span className="font-bold">{formatIndianDate(config.deadline_date)}</span> at <span className="font-bold">{formatIndianTime(config.deadline_time || "11:59 PM", true)}</span>
               </p>
             </div>
           </div>

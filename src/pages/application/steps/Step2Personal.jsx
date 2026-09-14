@@ -300,7 +300,9 @@ export default function Step2Personal({
 
         {/* 10. WhatsApp No */}
         <div className="step2-field-group">
-          <label className="step2-label">WhatsApp No.</label>
+          <label className="step2-label">
+            WhatsApp No. <span className="step2-required">*</span>
+          </label>
           <input
             type="tel"
             value={values.whatsappNo || ''}

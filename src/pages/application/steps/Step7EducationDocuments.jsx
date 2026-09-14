@@ -162,7 +162,7 @@ export default function Step7EducationDocuments({
 
         {/* Name of Any Other Qualification */}
         <div className="step7-upload-field" style={{ gridColumn: '1 / -1' }}>
-          <label className="step7-label">Name of Any Other Qualification (specify)</label>
+          <label className="step7-label">Name of Any Other Qualification (s)</label>
           <input
             type="text"
             value={values.anyOtherQualName || ''}
@@ -176,7 +176,7 @@ export default function Step7EducationDocuments({
         {/* Certificate for Any Other Qualification */}
         <div className="step7-upload-field" style={{ gridColumn: '1 / -1' }}>
           <label className="step7-label">
-            Certificate for Any Other Qualification
+            Certificate for Any Other Qualification (Merge If more than one Certificate)
           </label>
 
           {otherFile && otherFile.url ? (

@@ -1,4 +1,9 @@
 import React from 'react';
+import {
+  formatIndianDate,
+  formatIndianDateLong,
+  formatIndianTime
+} from '../../../utils/indianDateTime';
 import './Step1Instructions.css';
 
 export default function Step1Instructions({ config = {}, instructions: customInstructions, onProceed }) {
@@ -31,7 +36,7 @@ export default function Step1Instructions({ config = {}, instructions: customIns
       : defaultInstructions;
 
   const deadlineDate = config.deadline_date || config.closingDate || '2026-03-31';
-  const deadlineTime = config.deadline_time || config.closingTime || '23:59:59';
+  const deadlineTime = config.deadline_time || config.closingTime || '11:59 PM';
   const warningText =
     config.warning_text || '⚠️ No consideration for incomplete and after last date application.';
 
@@ -47,7 +52,7 @@ export default function Step1Instructions({ config = {}, instructions: customIns
           <div>
             <h3 className="step1-timeline-heading">Application Timeline</h3>
             <p className="step1-timeline-dates">
-              Closing Date: <strong>{deadlineDate}</strong> at <strong>{deadlineTime}</strong>
+              Closing Date: <strong>{formatIndianDate(deadlineDate)}</strong> {deadlineDate && `(${formatIndianDateLong(deadlineDate)})`} at <strong>{formatIndianTime(deadlineTime, true)}</strong>
             </p>
           </div>
         </div>

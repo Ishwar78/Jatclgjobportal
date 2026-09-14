@@ -9,11 +9,11 @@ export default function SelectionCriteriaTables() {
   return (
     <div className="space-y-6 my-4 font-sans text-slate-800">
       {/* ================= REVISED CRITERIA TITLE (WITHOUT BOX) ================= */}
-      <div className="py-2 px-1 text-center">
+      {/* <div className="py-2 px-1 text-center">
         <p className="text-xs md:text-sm font-bold text-slate-800 leading-relaxed m-0">
           Revised criteria for the recruitment of Assistant Professor and Principals in Govt. Aided Private Colleges in State of Haryana with reference to: Memo No. KW 8/36-2009 C-IV(3) dated 18/04/2023 and Memo no. KW 8/36-2009 C-IV(3) dated 12.12.2022
         </p>
-      </div>
+      </div> */}
 
       {/* ================= MAIN TITLE AS PER IMAGE 1 ================= */}
       {/* <div className="text-center py-2 border-b-2 border-slate-300">
@@ -250,7 +250,11 @@ export default function SelectionCriteriaTables() {
           </div>
         </div>
       </div>
-
+<div className="bg-amber-50/80 border border-amber-200 rounded-lg p-3 text-amber-900">
+          <p className="m-0">
+            Marks of only one experience under Category II B shall be allowed in one academic year. The convenor/In-charge shall be entitled mark (s) allotted to each category of experience. Similarly, the member (s) of Committee shall also be entitled for 0.25 mark for each Committee up to maximum marks allotted above. In case of repetition of any assignment/Committee under Category II (B) (ii) & (iii), the maximum marks allotted above, shall be allowed.
+          </p>
+        </div>
       {/* ================= CATEGORY III: ACADEMIC/RESEARCH SCORE (IMAGE 3) ================= */}
       <div className="space-y-2">
         <h3 className="font-bold text-xs md:text-sm text-slate-900">
@@ -275,7 +279,760 @@ export default function SelectionCriteriaTables() {
           </table>
         </div>
       </div>
+{/* ================= APPENDIX II - TABLE 2 ================= */}
+<div className="space-y-4 pt-6 border-t-2 border-slate-300">
 
+  {/* TITLE */}
+  <div className="text-center space-y-1">
+    <p className="text-xs md:text-sm font-bold">
+      Table 2
+    </p>
+
+    <h3 className="font-extrabold text-sm md:text-base text-slate-900">
+      Methodology for University and College Teachers for calculating
+      Academic/Research Score
+    </h3>
+
+    <p className="text-xs md:text-sm text-slate-700 leading-relaxed">
+      (Assessment must be based on evidence produced by the teacher such as:
+      copy of publications, project sanction letter, utilization and completion
+      certificates issued by the University and acknowledgements for patent filing
+      and approval letters, students' Ph.D. award letter, etc.)
+    </p>
+  </div>
+
+
+  {/* MAIN TABLE */}
+  <div className="overflow-x-auto border border-slate-300 rounded-lg shadow-sm">
+
+    <table className="w-full min-w-[900px] border-collapse text-xs md:text-sm">
+
+      <thead>
+        <tr>
+          <th className={thStyle}>S.N.</th>
+
+          <th className={thLeft}>
+            Academic/Research Activity
+          </th>
+
+          <th className={thStyle}>
+            Faculty of Science/
+            Engineering/Agriculture/
+            Medical/Veterinary Sciences
+          </th>
+
+          <th className={thStyle}>
+            Faculty of Languages/Humanities/
+            Arts/Social Sciences/Library/
+            Education/Physical Education/
+            Commerce/Management & other
+            related disciplines
+          </th>
+        </tr>
+      </thead>
+
+
+      <tbody>
+
+        {/* 1 RESEARCH PAPERS */}
+        <tr>
+          <td className={tdCenter}>1.</td>
+
+          <td className={tdStyle}>
+            <div className="font-bold mb-2">
+              For Direct Recruitment:
+            </div>
+
+            <div>
+              Research Papers in Peer-reviewed / UGC Journals
+              w.e.f. 13.06.2019 and UGC CARE List Journals
+              w.e.f. 14.06.2019
+            </div>
+
+            <div className="font-bold mt-3 mb-2">
+              For Career Advancement Scheme:
+            </div>
+
+            <div>
+              Research Papers in Peer-reviewed / UGC Journals
+              upto 02.07.2023 and UGC CARE List Journals
+              w.e.f. 03.07.2023
+            </div>
+          </td>
+
+          <td className={tdCenter}>8</td>
+
+          <td className={tdCenter}>10</td>
+        </tr>
+
+
+        {/* 2 PUBLICATIONS */}
+        <tr>
+          <td className={tdCenter}>2.</td>
+
+          <td
+            colSpan={3}
+            className="p-2.5 border border-slate-300 font-bold text-slate-900"
+          >
+            Publications (other than Research Papers)
+          </td>
+        </tr>
+
+
+        {/* BOOKS */}
+        <tr>
+          <td className={tdCenter}></td>
+
+          <td
+            colSpan={3}
+            className="p-2.5 border border-slate-300 font-bold"
+          >
+            (a) Books authored which are published by:
+          </td>
+        </tr>
+
+
+        {[
+          ["International publishers", "12", "12"],
+          ["National Publishers", "10", "10"],
+          ["Chapter in Edited Book", "05", "05"],
+          ["Editor of Book by International Publisher", "10", "10"],
+          ["Editor of Book by National Publisher", "08", "08"],
+        ].map(([activity, science, other], index) => (
+          <tr key={`book-${index}`} className="hover:bg-slate-50">
+            <td className={tdCenter}></td>
+
+            <td className={tdStyle}>
+              {activity}
+            </td>
+
+            <td className={tdCenter}>
+              {science}
+            </td>
+
+            <td className={tdCenter}>
+              {other}
+            </td>
+          </tr>
+        ))}
+
+
+        {/* TRANSLATION */}
+        <tr>
+          <td className={tdCenter}></td>
+
+          <td
+            colSpan={3}
+            className="p-2.5 border border-slate-300 font-bold"
+          >
+            (b) Translation works in Indian and Foreign Languages by qualified faculties
+          </td>
+        </tr>
+
+
+        {[
+          ["Chapter or Research paper", "03", "03"],
+          ["Book", "08", "08"],
+        ].map(([activity, science, other], index) => (
+          <tr key={`translation-${index}`} className="hover:bg-slate-50">
+            <td className={tdCenter}></td>
+
+            <td className={tdStyle}>
+              {activity}
+            </td>
+
+            <td className={tdCenter}>
+              {science}
+            </td>
+
+            <td className={tdCenter}>
+              {other}
+            </td>
+          </tr>
+        ))}
+
+
+        {/* 3 ICT */}
+        <tr>
+          <td className={tdCenter}>3.</td>
+
+          <td
+            colSpan={3}
+            className="p-2.5 border border-slate-300 font-bold"
+          >
+            Creation of ICT mediated Teaching Learning pedagogy and content
+            and development of new and innovative courses and curricula
+          </td>
+        </tr>
+
+
+        <tr className="hover:bg-slate-50">
+          <td className={tdCenter}></td>
+
+          <td className={tdStyle}>
+            <span className="font-bold">
+              (a) Development of Innovative pedagogy
+            </span>
+          </td>
+
+          <td className={tdCenter}>05</td>
+
+          <td className={tdCenter}>05</td>
+        </tr>
+
+
+        <tr className="hover:bg-slate-50">
+          <td className={tdCenter}></td>
+
+          <td className={tdStyle}>
+            <span className="font-bold">
+              (b) Design of new curricula and courses
+            </span>
+          </td>
+
+          <td className={tdCenter}>
+            02 per curricula/course
+          </td>
+
+          <td className={tdCenter}>
+            02 per curricula/course
+          </td>
+        </tr>
+
+
+        {/* MOOCs */}
+        <tr>
+          <td className={tdCenter}></td>
+
+          <td
+            colSpan={3}
+            className="p-2.5 border border-slate-300 font-bold"
+          >
+            (c) MOOCs
+          </td>
+        </tr>
+
+
+        {[
+          [
+            "Development of complete MOOCs in 4 quadrants (4 credit course) (In case of MOOCs of lesser credits 05 marks/credit)",
+            "20",
+            "20"
+          ],
+          [
+            "MOOCs (developed in 4 quadrant) per module/lecture",
+            "05",
+            "05"
+          ],
+          [
+            "Content writer/subject matter expert for each module of MOOCs (at least one quadrant)",
+            "02",
+            "02"
+          ],
+          [
+            "Course Coordinator for MOOCs (4 credit course) (In case of MOOCs of lesser credits 02 marks/credit)",
+            "08",
+            "08"
+          ],
+        ].map(([activity, science, other], index) => (
+          <tr key={`mooc-${index}`} className="hover:bg-slate-50">
+            <td className={tdCenter}></td>
+
+            <td className={tdStyle}>
+              {activity}
+            </td>
+
+            <td className={tdCenter}>
+              {science}
+            </td>
+
+            <td className={tdCenter}>
+              {other}
+            </td>
+          </tr>
+        ))}
+
+
+        {/* E CONTENT */}
+        <tr>
+          <td className={tdCenter}></td>
+
+          <td
+            colSpan={3}
+            className="p-2.5 border border-slate-300 font-bold"
+          >
+            (d) E-Content
+          </td>
+        </tr>
+
+
+        {[
+          [
+            "Development of e-Content in 4 quadrants for a complete course/e-book",
+            "12",
+            "12"
+          ],
+          [
+            "e-Content (developed in 4 quadrants) per module",
+            "05",
+            "05"
+          ],
+          [
+            "Contribution to development of e-content module in complete course/paper/e-book (at least one quadrant)",
+            "02",
+            "02"
+          ],
+          [
+            "Editor of e-content for complete course/paper/e-book",
+            "10",
+            "10"
+          ],
+        ].map(([activity, science, other], index) => (
+          <tr key={`econtent-${index}`} className="hover:bg-slate-50">
+            <td className={tdCenter}></td>
+
+            <td className={tdStyle}>
+              {activity}
+            </td>
+
+            <td className={tdCenter}>
+              {science}
+            </td>
+
+            <td className={tdCenter}>
+              {other}
+            </td>
+          </tr>
+        ))}
+
+
+        {/* 4 RESEARCH GUIDANCE */}
+        <tr>
+          <td className={tdCenter}>4.</td>
+
+          <td
+            colSpan={3}
+            className="p-2.5 border border-slate-300 font-bold"
+          >
+            (a) Research guidance
+          </td>
+        </tr>
+
+
+        <tr className="hover:bg-slate-50">
+          <td className={tdCenter}></td>
+
+          <td className={tdStyle}>
+            Ph.D.
+          </td>
+
+          <td className={tdCenter}>
+            <div>10 per degree awarded</div>
+            <div>05 per thesis submitted</div>
+          </td>
+
+          <td className={tdCenter}>
+            <div>10 per degree awarded</div>
+            <div>05 per thesis submitted</div>
+          </td>
+        </tr>
+
+
+        <tr className="hover:bg-slate-50">
+          <td className={tdCenter}></td>
+
+          <td className={tdStyle}>
+            M.Phil./P.G dissertation
+          </td>
+
+          <td className={tdCenter}>
+            02 per degree awarded
+          </td>
+
+          <td className={tdCenter}>
+            02 per degree awarded
+          </td>
+        </tr>
+
+
+        {/* PROJECT COMPLETED */}
+        <tr>
+          <td className={tdCenter}></td>
+
+          <td
+            colSpan={3}
+            className="p-2.5 border border-slate-300 font-bold"
+          >
+            (b) Research Projects Completed
+          </td>
+        </tr>
+
+
+        {[
+          ["More than 10 lakhs", "10", "10"],
+          ["Less than 10 lakhs", "05", "05"],
+        ].map(([activity, science, other], index) => (
+          <tr key={`completed-${index}`} className="hover:bg-slate-50">
+            <td className={tdCenter}></td>
+
+            <td className={tdStyle}>
+              {activity}
+            </td>
+
+            <td className={tdCenter}>
+              {science}
+            </td>
+
+            <td className={tdCenter}>
+              {other}
+            </td>
+          </tr>
+        ))}
+
+
+        {/* PROJECT ONGOING */}
+        <tr>
+          <td className={tdCenter}></td>
+
+          <td
+            colSpan={3}
+            className="p-2.5 border border-slate-300 font-bold"
+          >
+            (c) Research Projects Ongoing
+          </td>
+        </tr>
+
+
+        {[
+          ["More than 10 lakhs", "05", "05"],
+          ["Less than 10 lakhs", "02", "02"],
+        ].map(([activity, science, other], index) => (
+          <tr key={`ongoing-${index}`} className="hover:bg-slate-50">
+            <td className={tdCenter}></td>
+
+            <td className={tdStyle}>
+              {activity}
+            </td>
+
+            <td className={tdCenter}>
+              {science}
+            </td>
+
+            <td className={tdCenter}>
+              {other}
+            </td>
+          </tr>
+        ))}
+
+
+        {/* CONSULTANCY */}
+        <tr className="hover:bg-slate-50">
+          <td className={tdCenter}></td>
+
+          <td className={tdStyle}>
+            <span className="font-bold">
+              (d) Consultancy
+            </span>
+          </td>
+
+          <td className={tdCenter}>03</td>
+
+          <td className={tdCenter}>03</td>
+        </tr>
+
+
+        {/* 5 PATENTS */}
+        <tr>
+          <td className={tdCenter}>5.</td>
+
+          <td
+            colSpan={3}
+            className="p-2.5 border border-slate-300 font-bold"
+          >
+            (a) Patents
+          </td>
+        </tr>
+
+
+        {[
+          ["International", "10", "10"],
+          ["National", "07", "07"],
+        ].map(([activity, science, other], index) => (
+          <tr key={`patent-${index}`} className="hover:bg-slate-50">
+            <td className={tdCenter}></td>
+
+            <td className={tdStyle}>
+              {activity}
+            </td>
+
+            <td className={tdCenter}>
+              {science}
+            </td>
+
+            <td className={tdCenter}>
+              {other}
+            </td>
+          </tr>
+        ))}
+
+
+        {/* POLICY DOCUMENT */}
+        <tr>
+          <td className={tdCenter}></td>
+
+          <td
+            colSpan={3}
+            className="p-2.5 border border-slate-300 font-bold"
+          >
+            (b) *Policy Document (Submitted to an International body/organization
+            like UNESCO/World Bank/International Monetary Fund etc. or Central
+            Government or State Government)
+          </td>
+        </tr>
+
+
+        {[
+          ["International", "10", "10"],
+          ["National", "07", "07"],
+          ["State", "04", "04"],
+        ].map(([activity, science, other], index) => (
+          <tr key={`policy-${index}`} className="hover:bg-slate-50">
+            <td className={tdCenter}></td>
+
+            <td className={tdStyle}>
+              {activity}
+            </td>
+
+            <td className={tdCenter}>
+              {science}
+            </td>
+
+            <td className={tdCenter}>
+              {other}
+            </td>
+          </tr>
+        ))}
+
+
+        {/* AWARDS */}
+        <tr>
+          <td className={tdCenter}></td>
+
+          <td
+            colSpan={3}
+            className="p-2.5 border border-slate-300 font-bold"
+          >
+            (c) Awards/Fellowship
+          </td>
+        </tr>
+
+
+        <tr className="hover:bg-slate-50">
+          <td className={tdCenter}></td>
+
+          <td className={tdStyle}>
+            International
+          </td>
+
+          <td className={tdCenter}>07</td>
+
+          <td className={tdCenter}>07</td>
+        </tr>
+
+
+        <tr className="hover:bg-slate-50">
+          <td className={tdCenter}></td>
+
+          <td className={tdStyle}>
+            National
+          </td>
+
+          <td className={tdCenter}>05</td>
+
+          <td className={tdCenter}>05</td>
+        </tr>
+
+
+        {/* 6 INVITED LECTURES */}
+        <tr>
+          <td className={tdCenter}>6.</td>
+
+          <td
+            colSpan={3}
+            className="p-2.5 border border-slate-300 font-bold"
+          >
+            *Invited lectures / Resource Person / paper presentation in
+            Seminars/Conferences/full paper in Conference Proceedings
+            (Paper presented in Seminars/Conferences and also published
+            as full paper in Conference Proceedings will be counted only once)
+          </td>
+        </tr>
+
+
+        {[
+          ["International (Abroad)", "07", "07"],
+          ["International (within country)", "05", "05"],
+          ["National", "03", "03"],
+          ["State/University", "02", "02"],
+        ].map(([activity, science, other], index) => (
+          <tr key={`lecture-${index}`} className="hover:bg-slate-50">
+            <td className={tdCenter}></td>
+
+            <td className={tdStyle}>
+              {activity}
+            </td>
+
+            <td className={tdCenter}>
+              {science}
+            </td>
+
+            <td className={tdCenter}>
+              {other}
+            </td>
+          </tr>
+        ))}
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+
+  {/* RESEARCH SCORE SECTION */}
+  <div className="space-y-3 pt-4">
+
+    <h3 className="font-bold text-sm md:text-base text-slate-900">
+      The Research score for research papers
+    </h3>
+
+    <p className="text-xs md:text-sm text-slate-700">
+      (Peer-Reviewed upto 02.07.2023 and UGC CARE List w.e.f. 03.07.2023)
+      would be as follows:
+    </p>
+
+
+    <div className="overflow-x-auto border border-slate-300 rounded-lg">
+
+      <table className="w-full border-collapse text-xs md:text-sm">
+
+        <tbody>
+
+          {[
+            ["i)", "Paper in refereed Journals without impact factor", "5 Points"],
+            ["ii)", "Paper with impact factor less than 1", "10 Points"],
+            ["iii)", "Paper with impact factor between 1 and 2", "15 Points"],
+            ["iv)", "Paper with impact factor between 2 and 5", "20 Points"],
+            ["v)", "Paper with impact factor between 5 and 10", "25 Points"],
+            ["vi)", "Paper with impact factor >10", "30 Points"],
+          ].map(([no, activity, marks], index) => (
+            <tr key={index} className="hover:bg-slate-50">
+
+              <td className={`${tdCenter} w-16`}>
+                {no}
+              </td>
+
+              <td className={tdStyle}>
+                {activity}
+              </td>
+
+              <td className={`${tdCenter} w-32`}>
+                {marks}
+              </td>
+
+            </tr>
+          ))}
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <p className="text-xs md:text-sm font-semibold text-slate-700">
+      (Impact factor to be determined as per Thomson Reuters list)
+    </p>
+
+
+    {/* AUTHOR RULES */}
+    <div className="space-y-3 text-xs md:text-sm text-slate-700 leading-relaxed">
+
+      <div className="border border-slate-300 rounded-lg p-3">
+        <span className="font-bold">(a) Two authors:</span>{" "}
+        70% of total value of publication for each author.
+      </div>
+
+
+      <div className="border border-slate-300 rounded-lg p-3">
+        <span className="font-bold">(b) More than two authors:</span>{" "}
+        70% of total value of publication for the First/Principal/
+        Supervisor/Co-supervisor Corresponding author and 30% of total
+        value of publication for each of the joint authors.
+      </div>
+
+
+      <div className="border border-slate-300 rounded-lg p-3">
+        <span className="font-bold">
+          (c) For Publications other than Research Paper:
+        </span>{" "}
+        70% of total value of Publication for each author in case of
+        two authors and 30% of total value of publication in case of
+        more than 2 authors. However, first/corresponding author will
+        get 70% marks irrespective of total number of authors.
+      </div>
+
+
+      <div className="border border-slate-300 rounded-lg p-3">
+        <span className="font-bold">
+          Joint Projects:
+        </span>{" "}
+        Principal Investigator and Co-investigator would get 50% each.
+      </div>
+
+    </div>
+
+
+    {/* NOTE */}
+    <div className="bg-slate-50 border border-slate-300 rounded-lg p-4">
+
+      <h4 className="font-bold text-slate-900 mb-3">
+        Note:
+      </h4>
+
+      <ul className="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 leading-relaxed">
+
+        <li>
+          Paper presented if part of edited book or proceeding then it
+          can be claimed only once.
+        </li>
+
+        <li>
+          For joint supervision of research students, the formula shall
+          be 70% of the total score for Supervisor and Co-supervisor.
+          Supervisor and Co-supervisor, both shall get 7 marks each.
+        </li>
+
+        <li>
+          *For the purpose of calculating research score of the teacher,
+          the combined research score from the categories of 5(b):
+          Policy Document and 6: Invited lectures/Resource Person/Paper
+          presentation shall have an upper capping of thirty percent of
+          the total research score of the teacher concerned.
+        </li>
+
+        <li>
+          The research score shall be from atleast three categories out
+          of six categories.
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+</div>
       {/* ================= CATEGORY IV: INTERVIEW (IMAGE 4) ================= */}
       <div className="space-y-2">
         <h3 className="font-bold text-xs md:text-sm text-slate-900">
@@ -313,11 +1070,11 @@ export default function SelectionCriteriaTables() {
 
       {/* ================= OFFICIAL NOTES & CONDITIONS (IMAGE 4) ================= */}
       <div className="space-y-3 pt-2 text-xs md:text-sm text-slate-700 leading-relaxed">
-        <div className="bg-amber-50/80 border border-amber-200 rounded-lg p-3 text-amber-900">
+        {/* <div className="bg-amber-50/80 border border-amber-200 rounded-lg p-3 text-amber-900">
           <p className="m-0">
             Marks of only one experience under Category II B shall be allowed in one academic year. The convenor/In-charge shall be entitled mark (s) allotted to each category of experience. Similarly, the member (s) of Committee shall also be entitled for 0.25 mark for each Committee up to maximum marks allotted above. In case of repetition of any assignment/Committee under Category II (B) (ii) & (iii), the maximum marks allotted above, shall be allowed.
           </p>
-        </div>
+        </div> */}
 
         <div className="bg-blue-50/70 border border-blue-200 rounded-lg p-3 text-slate-800">
           <p className="m-0">

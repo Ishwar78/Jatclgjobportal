@@ -314,7 +314,7 @@ export default function PersonalInformation() {
             <div className="form-group">
 
               <label>
-                WhatsApp No.
+                WhatsApp No. <span className="required-star">*</span>
               </label>
 
               <input

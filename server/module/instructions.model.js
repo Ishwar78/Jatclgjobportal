@@ -7,7 +7,7 @@ const instructionSchema = new mongoose.Schema({
   },
   deadline_time: {
     type: String,
-    default: '23:59:59'
+    default: '11:59 PM'
   },
   warning_text: {
     type: String,

@@ -481,11 +481,11 @@ export default function Home() {
             </span>
 
             <strong>
-              30 November 2026
+              06 October 2026
             </strong>
 
             <small>
-              Submit your application before 11:59 PM
+              Submit your application before 17:00 PM
             </small>
 
           </div>

@@ -29,33 +29,33 @@ export default function Step15Annexures({
       required: true,
       fullWidth: true
     },
-    { id: 'annexure2Full', label: 'Annexure II: Full texts of publications (other than research papers) — single PDF' },
+    { id: 'annexure2Full', label: 'Annexure II: Upload full copies of publications (other than research papers) as a single PDF' },
     {
       id: 'annexure3',
-      label: 'Annexure III: Creation of ICT Mediated Teaching Learning Pedagogy and Content & Curricula — consolidated list with full supporting documents',
+      label: 'Annexure III: Creation of ICT Mediated Teaching Learning Pedagogy and Content & Curricula — Upload a consolidated list with reference to Part III of selection criteria and attach all supporting documents as a single PDF',
       required: true,
       fullWidth: true
     },
     {
       id: 'annexure4',
-      label: 'Annexure IV: Research Guidance / Research Projects Completed & Ongoing / Consultancy — consolidated list with supporting documents',
+      label: 'Annexure IV: Research Guidance / Research Projects Completed & Ongoing / Consultancy —Upload a consolidated list with reference to Part III of selection criteria and attach all supporting documents as a single PDF',
       required: true,
       fullWidth: true
     },
     {
       id: 'annexure5List',
-      label: 'Annexure V: Patents / Policy Documents / Awards Fellowship — attach a consolidated list with reference to Part III',
+      label: 'Annexure V: Patents / Policy Documents / Awards Fellowship — Upload a consolidated list with reference to Part III of selection criteria ',
       required: true,
       fullWidth: true
     },
-    { id: 'annexure5Full', label: 'Annexure V: Arrange and attach supporting documents in a single PDF' },
+    { id: 'annexure5Full', label: 'Annexure V:Upload all the supporting documents in a single PDF' },
     {
       id: 'annexure6List',
-      label: 'Annexure VI: Invited Lectures / Resource Person / Paper Presentation in Seminars / Conferences — attach a complete list',
+      label: 'Annexure VI: *Invited lectures / Resource Person / paper presentation in Seminars/Conferences/full paper in Conference Proceedings (Paper presented in Seminars/Conferences and also published as full paper in Conference Proceedings will be counted only once) - Upload a consolidated list with reference to Part III of selection criteria',
       required: true,
       fullWidth: true
     },
-    { id: 'annexure6Full', label: 'Annexure VI: Arrange and attach supporting documents in a single PDF' }
+    { id: 'annexure6Full', label: 'Annexure VI: Upload all the supporting documents in a single PDF' }
   ];
 
   const formatLabel = (label) => {
@@ -148,7 +148,7 @@ export default function Step15Annexures({
       <div className="step15-header">
         <h2 className="step15-title">Annexures I–VI: Research Supporting Documents</h2>
         <p className="step15-subtitle">
-          Attach full copies of research papers and other documents for your claimed API score as mentioned under Annexures I-VI of Appendix II, Table-2 (specified by DGHE for Part III ). In case of nil information, write 'Nil' on plain paper and upload its scanned image.
+          Attach full copies of research papers and other documents for your claimed API score as mentioned under Annexures I-VI of Appendix II, Table-2 for Part III of Selection Criteria. In case of nil information, write 'Nil' on plain paper and upload its scanned image.
         </p>
       </div>
 
@@ -157,7 +157,7 @@ export default function Step15Annexures({
 
         <div className="step15-upload-field step15-full-width" style={{ marginTop: '6px' }}>
           <label className="step15-label">
-            Google Drive Link (sharing: "Anyone with the link can view")
+            Google Drive Link, In case of large files and additional information, if any, (Please keep your file settings as 'PUBLIC' so that anyone with the link can view.)
           </label>
           <input
             type="text"

@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { AdminLayout } from '../../components/Layout';
 import { getInstructionsAPI, updateInstructionsAPI } from '../../lib/api';
+import {
+  parseTo12Hour,
+  formatIndianDate,
+  formatIndianDateLong,
+  formatIndianTime
+} from '../../utils/indianDateTime';
 import './AdminInstructions.css';
 
 export default function AdminInstructions() {
   const [deadlineDate, setDeadlineDate] = useState('2026-03-31');
-  const [deadlineTime, setDeadlineTime] = useState('23:59:59');
+  const [hour, setHour] = useState('11');
+  const [minute, setMinute] = useState('59');
+  const [period, setPeriod] = useState('PM');
   const [warningText, setWarningText] = useState(
     '⚠️ No consideration for incomplete and after last date application.'
   );
@@ -14,6 +22,13 @@ export default function AdminInstructions() {
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState(null);
   const [error, setError] = useState(null);
+
+  const presets = [
+    { label: '11:59 PM (Midnight)', h: '11', m: '59', p: 'PM' },
+    { label: '05:00 PM (Office Hours)', h: '05', m: '00', p: 'PM' },
+    { label: '04:00 PM', h: '04', m: '00', p: 'PM' },
+    { label: '12:00 PM (Noon)', h: '12', m: '00', p: 'PM' }
+  ];
 
   useEffect(() => {
     fetchInstructions();
@@ -26,7 +41,12 @@ export default function AdminInstructions() {
       if (res.ok && res.data && res.data.data) {
         const d = res.data.data;
         if (d.deadline_date) setDeadlineDate(d.deadline_date);
-        if (d.deadline_time) setDeadlineTime(d.deadline_time);
+        if (d.deadline_time) {
+          const parsed = parseTo12Hour(d.deadline_time);
+          setHour(parsed.hour);
+          setMinute(parsed.minute);
+          setPeriod(parsed.period);
+        }
         if (d.warning_text) setWarningText(d.warning_text);
         if (Array.isArray(d.instructions) && d.instructions.length > 0) {
           setInstructions(d.instructions);
@@ -92,16 +112,17 @@ export default function AdminInstructions() {
       setMessage(null);
       setError(null);
 
+      const formattedTime = `${hour}:${minute} ${period}`;
       const payload = {
         deadline_date: deadlineDate,
-        deadline_time: deadlineTime,
+        deadline_time: formattedTime,
         warning_text: warningText,
         instructions: instructions.filter((item) => item.text.trim().length > 0)
       };
 
       const res = await updateInstructionsAPI(payload);
       if (res.ok) {
-        setMessage('Instructions and timeline updated successfully!');
+        setMessage('Instructions and Indian timeline updated successfully!');
         setTimeout(() => setMessage(null), 4000);
       } else {
         setError(res.data?.message || 'Failed to save changes');
@@ -126,7 +147,7 @@ export default function AdminInstructions() {
           <form onSubmit={handleSave} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
             {/* Timeline Configuration Card */}
             <div className="admin-instructions-card">
-              <h2 className="admin-card-title">Application Timeline & Deadline Settings</h2>
+              <h2 className="admin-card-title">Application Timeline & Deadline Settings (Indian Standard Time - IST)</h2>
 
               <div className="admin-grid-2">
                 <div className="admin-form-group">
@@ -138,18 +159,79 @@ export default function AdminInstructions() {
                     className="admin-form-input"
                     required
                   />
+                  <span style={{ fontSize: '12px', color: '#64748b', marginTop: '2px' }}>
+                    Indian Date: <strong>{formatIndianDate(deadlineDate)}</strong> ({formatIndianDateLong(deadlineDate)})
+                  </span>
                 </div>
 
                 <div className="admin-form-group">
-                  <label className="admin-form-label">Closing Time</label>
-                  <input
-                    type="text"
-                    value={deadlineTime}
-                    onChange={(e) => setDeadlineTime(e.target.value)}
-                    className="admin-form-input"
-                    placeholder="e.g. 23:59:59 or 05:00 PM"
-                    required
-                  />
+                  <label className="admin-form-label">
+                    Closing Time (Indian 12-Hour Style)
+                  </label>
+                  <div className="admin-time-picker-wrapper">
+                    <select
+                      value={hour}
+                      onChange={(e) => setHour(e.target.value)}
+                      className="admin-time-select"
+                      aria-label="Hour"
+                    >
+                      {Array.from({ length: 12 }, (_, i) => String(i + 1).padStart(2, '0')).map((h) => (
+                        <option key={h} value={h}>{h}</option>
+                      ))}
+                    </select>
+
+                    <span className="admin-time-colon">:</span>
+
+                    <select
+                      value={minute}
+                      onChange={(e) => setMinute(e.target.value)}
+                      className="admin-time-select"
+                      aria-label="Minute"
+                    >
+                      {[
+                        '00', '05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55', '59'
+                      ].map((m) => (
+                        <option key={m} value={m}>{m}</option>
+                      ))}
+                    </select>
+
+                    <div className="admin-ampm-group">
+                      <button
+                        type="button"
+                        onClick={() => setPeriod('AM')}
+                        className={`admin-ampm-btn ${period === 'AM' ? 'active' : ''}`}
+                      >
+                        AM
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setPeriod('PM')}
+                        className={`admin-ampm-btn ${period === 'PM' ? 'active' : ''}`}
+                      >
+                        PM
+                      </button>
+                    </div>
+
+                    <span className="admin-ist-badge">IST</span>
+                  </div>
+
+                  <div className="admin-presets-row">
+                    <span className="admin-preset-label">Quick Presets:</span>
+                    {presets.map((p) => (
+                      <button
+                        key={p.label}
+                        type="button"
+                        onClick={() => {
+                          setHour(p.h);
+                          setMinute(p.m);
+                          setPeriod(p.p);
+                        }}
+                        className="admin-preset-chip"
+                      >
+                        {p.label}
+                      </button>
+                    ))}
+                  </div>
                 </div>
 
                 <div className="admin-form-group" style={{ gridColumn: '1 / -1' }}>
@@ -161,6 +243,23 @@ export default function AdminInstructions() {
                     className="admin-form-input"
                     placeholder="Notice badge text"
                   />
+                </div>
+
+                {/* Live Indian Style Preview Banner */}
+                <div className="admin-indian-preview">
+                  <div className="admin-indian-preview-header">
+                    <span>🇮🇳</span>
+                    <span>Live Portal Preview (Candidate View — Indian Format)</span>
+                  </div>
+                  <div className="admin-indian-preview-banner">
+                    <div>
+                      Closing Date: <strong>{formatIndianDate(deadlineDate)}</strong> {deadlineDate && `(${formatIndianDateLong(deadlineDate)})`}
+                    </div>
+                    <div style={{ color: '#059669', fontWeight: 600 }}>•</div>
+                    <div>
+                      Closing Time: <strong>{hour}:{minute} {period} (IST)</strong>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

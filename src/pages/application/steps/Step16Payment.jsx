@@ -42,8 +42,8 @@ export default function Step16Payment({
           </div>
 
           <div className="step16-fee-callout">
-            Pay the application fee of <strong>₹1,000</strong> using the QR code, note down the
-            12-digit UTR/Transaction number, and upload the payment screenshot below.
+            Pay the application using the QR code, note down the
+            12-digit UTR/Transaction number, and upload the payment screenshot below. Non-submission of payment details will result in rejection of the application.
           </div>
         </div>
       </div>

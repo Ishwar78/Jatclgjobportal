@@ -96,7 +96,7 @@ export const STEPS_CONFIG = [
         "id": "whatsappNo",
         "label": "WhatsApp No.",
         "type": "tel",
-        "required": false,
+        "required": true,
         "pattern": "^[6-9][0-9]{9}$",
         "patternError": "Enter a valid 10-digit Indian mobile number (must start with 6, 7, 8, or 9)"
       },
