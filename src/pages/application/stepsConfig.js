@@ -1,4 +1,4 @@
-// 16 Application Form Steps Configuration (Exact Original Metadata for Progress, Validation & Review)
+// 15 Application Form Steps Configuration (Exact Original Metadata for Progress, Validation & Review)
 export const STEPS_CONFIG = [
   {
     "id": "instructions",
@@ -282,53 +282,6 @@ export const STEPS_CONFIG = [
         "label": "Contact Email",
         "type": "email",
         "required": true
-      }
-    ]
-  },
-  {
-    "id": "court_declarations",
-    "title": "Declarations Regarding Court Cases / Disqualification",
-    "subtitle": "",
-    "fields": [
-      {
-        "id": "courtCase1",
-        "label": "Have you ever been prosecuted, kept under detention, bound down, fined, convicted by a Court of Law or debarred/disqualified by any University or Public Service Commission from appearing at its examinations/selection?",
-        "type": "select",
-        "required": true,
-        "options": [
-          "No",
-          "Yes"
-        ]
-      },
-      {
-        "id": "courtCase1Details",
-        "label": "If Yes, give full particulars of the case, detention, fine, conviction, sentence, etc.",
-        "type": "textarea",
-        "required": false,
-        "showIf": {
-          "fieldId": "courtCase1",
-          "equals": "Yes"
-        }
-      },
-      {
-        "id": "courtCase2",
-        "label": "Is any case pending against you in any court of law at the time of filling up of this form?",
-        "type": "select",
-        "required": true,
-        "options": [
-          "No",
-          "Yes"
-        ]
-      },
-      {
-        "id": "courtCase2Details",
-        "label": "If Yes, give full particulars of the case",
-        "type": "textarea",
-        "required": false,
-        "showIf": {
-          "fieldId": "courtCase2",
-          "equals": "Yes"
-        }
       }
     ]
   },

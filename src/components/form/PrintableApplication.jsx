@@ -271,50 +271,9 @@ export default function PrintableApplication({
         </div>
       </div>
 
-      {/* ================= 4. COURT DECLARATIONS ================= */}
+      {/* ================= 4. EDUCATIONAL QUALIFICATIONS ================= */}
       <div className="print-section">
-        <div className="print-section-title">
-          4. DECLARATIONS REGARDING COURT CASES / DISQUALIFICATION
-        </div>
-        <table className="print-table">
-          <tbody>
-            <tr>
-              <td style={{ width: '80%' }}>
-                Have you ever been prosecuted, kept under detention, bound down, fined, convicted by a Court of Law or debarred/disqualified by any University or Public Service Commission?
-              </td>
-              <td style={{ width: '20%', fontWeight: 'bold', color: v.courtCase1 === 'Yes' ? '#dc2626' : '#15803d' }}>
-                {v.courtCase1 || 'No'}
-              </td>
-            </tr>
-            {v.courtCase1 === 'Yes' && v.courtCase1Details && (
-              <tr>
-                <td colSpan="2" style={{ backgroundColor: '#fff1f2', color: '#991b1b', fontSize: '11px' }}>
-                  <strong>Particulars:</strong> {v.courtCase1Details}
-                </td>
-              </tr>
-            )}
-            <tr>
-              <td>
-                Is any case pending against you in any court of law at the time of filling up of this form?
-              </td>
-              <td style={{ fontWeight: 'bold', color: v.courtCase2 === 'Yes' ? '#dc2626' : '#15803d' }}>
-                {v.courtCase2 || 'No'}
-              </td>
-            </tr>
-            {v.courtCase2 === 'Yes' && v.courtCase2Details && (
-              <tr>
-                <td colSpan="2" style={{ backgroundColor: '#fff1f2', color: '#991b1b', fontSize: '11px' }}>
-                  <strong>Particulars:</strong> {v.courtCase2Details}
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
-
-      {/* ================= 5. EDUCATIONAL QUALIFICATIONS ================= */}
-      <div className="print-section">
-        <div className="print-section-title">5. EDUCATIONAL QUALIFICATIONS</div>
+        <div className="print-section-title">4. EDUCATIONAL QUALIFICATIONS</div>
         <table className="print-table">
           <thead>
             <tr>
@@ -366,9 +325,9 @@ export default function PrintableApplication({
         </div>
       </div>
 
-      {/* ================= 6. EMPLOYMENT & EXPERIENCE ================= */}
+      {/* ================= 5. EMPLOYMENT & EXPERIENCE ================= */}
       <div className="print-section">
-        <div className="print-section-title">6. DETAILS OF PRESENT / PREVIOUS EMPLOYMENT</div>
+        <div className="print-section-title">5. DETAILS OF PRESENT / PREVIOUS EMPLOYMENT</div>
         {empRows.length > 0 ? (
           <table className="print-table">
             <thead>
@@ -407,9 +366,9 @@ export default function PrintableApplication({
         </div>
       </div>
 
-      {/* ================= 7. EDUCATIONAL DOCUMENTS UPLOADED ================= */}
+      {/* ================= 6. EDUCATIONAL DOCUMENTS UPLOADED ================= */}
       <div className="print-section">
-        <div className="print-section-title">7. UPLOADED EDUCATIONAL DOCUMENTS</div>
+        <div className="print-section-title">6. UPLOADED EDUCATIONAL DOCUMENTS</div>
         <table className="print-table">
           <thead>
             <tr>
@@ -464,10 +423,10 @@ export default function PrintableApplication({
         </table>
       </div>
 
-      {/* ================= 8. EMPLOYMENT STATUS, NOC & OTHER SERVICE ================= */}
+      {/* ================= 7. EMPLOYMENT STATUS, NOC & OTHER SERVICE ================= */}
       <div className="print-section">
         <div className="print-section-title">
-          8. EMPLOYMENT STATUS, NO OBJECTION CERTIFICATE & OTHER SERVICE DETAILS
+          7. EMPLOYMENT STATUS, NO OBJECTION CERTIFICATE & OTHER SERVICE DETAILS
         </div>
         <div className="print-grid-2">
           <div className="print-field-row">
@@ -511,9 +470,9 @@ export default function PrintableApplication({
         </div>
       </div>
 
-      {/* ================= 9. CRITERIA FOR SELECTION OF PRINCIPAL ================= */}
+      {/* ================= 8. CRITERIA FOR SELECTION OF PRINCIPAL ================= */}
       <div className="print-section" style={{ pageBreakInside: 'auto', breakInside: 'auto' }}>
-        <div className="print-section-title">9. CRITERIA FOR SELECTION OF PRINCIPAL</div>
+        <div className="print-section-title">8. CRITERIA FOR SELECTION OF PRINCIPAL</div>
         <div style={{ backgroundColor: '#f0fdf4', padding: '10px 14px', borderRadius: '6px', border: '1px solid #bbf7d0', marginBottom: '14px' }}>
           <div style={{ color: '#15803d', fontWeight: 'bold', fontSize: '12px' }}>
             ✓ Status: Candidate has carefully read, understood and agreed to the Criteria for Selection of Principal (Haryana Govt Memo No. KW 8/36-2009 C-IV(3) Dated 18/04/2023).
@@ -522,9 +481,9 @@ export default function PrintableApplication({
         <SelectionCriteriaTables />
       </div>
 
-      {/* ================= 10. PART I: ACADEMIC RECORD SCORE ================= */}
+      {/* ================= 9. PART I: ACADEMIC RECORD SCORE ================= */}
       <div className="print-section">
-        <div className="print-section-title">10. PART I: ACADEMIC RECORD SCORE (MAX 20 MARKS)</div>
+        <div className="print-section-title">9. PART I: ACADEMIC RECORD SCORE (MAX 20 MARKS)</div>
         <table className="print-table">
           <thead>
             <tr>
@@ -565,10 +524,10 @@ export default function PrintableApplication({
         </table>
       </div>
 
-      {/* ================= 11. PART II: TEACHING & ADMINISTRATIVE SKILLS ================= */}
+      {/* ================= 10. PART II: TEACHING & ADMINISTRATIVE SKILLS ================= */}
       <div className="print-section">
         <div className="print-section-title">
-          11. PART II: TEACHING EXPERIENCE & ADMINISTRATIVE SKILLS (MAX 35 MARKS)
+          10. PART II: TEACHING EXPERIENCE & ADMINISTRATIVE SKILLS (MAX 35 MARKS)
         </div>
         <table className="print-table">
           <thead>
@@ -611,10 +570,10 @@ export default function PrintableApplication({
         </table>
       </div>
 
-      {/* ================= 12. PART II B(ii) & B(iii) RESPONSIBILITIES & COMMITTEES ================= */}
+      {/* ================= 11. PART II B(ii) & B(iii) RESPONSIBILITIES & COMMITTEES ================= */}
       <div className="print-section">
         <div className="print-section-title">
-          12. B(ii) KEY RESPONSIBILITIES & B(iii) COMMITTEES IN COLLEGES
+          11. B(ii) KEY RESPONSIBILITIES & B(iii) COMMITTEES IN COLLEGES
         </div>
 
         {/* Sub-table (ii) */}
@@ -703,10 +662,10 @@ export default function PrintableApplication({
         </div>
       </div>
 
-      {/* ================= 13. PART III: RESEARCH SCORE ================= */}
+      {/* ================= 12. PART III: RESEARCH SCORE ================= */}
       <div className="print-section">
         <div className="print-section-title">
-          13. PART III: ACADEMIC / RESEARCH SCORE (MAX 32.5 MARKS)
+          12. PART III: ACADEMIC / RESEARCH SCORE (MAX 32.5 MARKS)
         </div>
         <table className="print-table">
           <thead>
@@ -781,9 +740,9 @@ export default function PrintableApplication({
         </table>
       </div>
 
-      {/* ================= 14. ANNEXURES ================= */}
+      {/* ================= 13. ANNEXURES ================= */}
       <div className="print-section">
-        <div className="print-section-title">14. ANNEXURES & SUPPORTING DOCUMENTS</div>
+        <div className="print-section-title">13. ANNEXURES & SUPPORTING DOCUMENTS</div>
         <div style={{ fontSize: '12px' }}>
           <span className="print-field-label">Merged Annexures Document: </span>
           <span className="print-field-val">
@@ -794,9 +753,9 @@ export default function PrintableApplication({
         </div>
       </div>
 
-      {/* ================= 15. PAYMENT DETAILS ================= */}
+      {/* ================= 14. PAYMENT DETAILS ================= */}
       <div className="print-section">
-        <div className="print-section-title">15. APPLICATION FEE PAYMENT</div>
+        <div className="print-section-title">14. APPLICATION FEE PAYMENT</div>
         <div className="print-grid-2">
           <div>
             <p style={{ margin: '2px 0', fontSize: '12.5px' }}>
@@ -836,9 +795,9 @@ export default function PrintableApplication({
         </div>
       </div>
 
-      {/* ================= 16. DECLARATION & SIGNATURE ================= */}
+      {/* ================= 15. DECLARATION & SIGNATURE ================= */}
       <div className="print-section" style={{ pageBreakInside: 'avoid' }}>
-        <div className="print-section-title">16. DECLARATION & VERIFICATION</div>
+        <div className="print-section-title">15. DECLARATION & VERIFICATION</div>
         <div style={{ backgroundColor: '#f8fafc', padding: '10px 14px', borderRadius: '6px', border: '1px solid #e2e8f0', marginBottom: '16px' }}>
           <p style={{ fontSize: '11px', color: '#334155', lineHeight: '1.6', margin: '0 0 8px 0' }}>
             <strong>Undertaking:</strong> I hereby declare and undertake that all the information provided by me in this application form is true, correct and complete to the best of my knowledge and belief and nothing has been concealed therein. In case any information is found to be false, incorrect or misleading, my candidature/appointment is liable to be cancelled without any notice.

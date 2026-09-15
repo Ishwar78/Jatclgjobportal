@@ -410,26 +410,9 @@ async function sendApplicationSubmissionEmail({ application, recipients }) {
         </tr>
       </table>
 
-      {/* ================= 4. COURT DECLARATIONS ================= */}
+      {/* ================= 4. EDUCATIONAL QUALIFICATIONS ================= */}
       <h3 style="color: #1e3a8a; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-top: 24px; font-size: 14px;">
-        4. Declarations Regarding Court Cases / Disqualification
-      </h3>
-      <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 15px;">
-        <tr>
-          <td style="padding: 6px; border: 1px solid #e2e8f0;">Ever prosecuted, detained, fined, convicted, or debarred?</td>
-          <td style="padding: 6px; border: 1px solid #e2e8f0; font-weight: bold; color: ${fd.courtCase1 === 'Yes' ? '#dc2626' : '#15803d'}; width: 20%;">${fd.courtCase1 || 'No'}</td>
-        </tr>
-        ${fd.courtCase1 === 'Yes' && fd.courtCase1Details ? `<tr><td colspan="2" style="padding: 6px; background: #fff1f2; color: #991b1b; border: 1px solid #fecdd3;">Details: ${fd.courtCase1Details}</td></tr>` : ''}
-        <tr>
-          <td style="padding: 6px; border: 1px solid #e2e8f0;">Any case pending in any court of law?</td>
-          <td style="padding: 6px; border: 1px solid #e2e8f0; font-weight: bold; color: ${fd.courtCase2 === 'Yes' ? '#dc2626' : '#15803d'};">${fd.courtCase2 || 'No'}</td>
-        </tr>
-        ${fd.courtCase2 === 'Yes' && fd.courtCase2Details ? `<tr><td colspan="2" style="padding: 6px; background: #fff1f2; color: #991b1b; border: 1px solid #fecdd3;">Details: ${fd.courtCase2Details}</td></tr>` : ''}
-      </table>
-
-      {/* ================= 5. EDUCATIONAL QUALIFICATIONS ================= */}
-      <h3 style="color: #1e3a8a; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-top: 24px; font-size: 14px;">
-        5. Educational Qualifications
+        4. Educational Qualifications
       </h3>
       <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 8px;">
         <thead>
@@ -453,9 +436,9 @@ async function sendApplicationSubmissionEmail({ application, recipients }) {
         <p style="margin: 2px 0;"><strong>Specialization:</strong> ${fd.fieldOfSpecialization || '-'}</p>
       </div>
 
-      {/* ================= 6. EMPLOYMENT & EXPERIENCE ================= */}
+      {/* ================= 5. EMPLOYMENT & EXPERIENCE ================= */}
       <h3 style="color: #1e3a8a; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-top: 24px; font-size: 14px;">
-        6. Employment History & Experience
+        5. Employment History & Experience
       </h3>
       <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 8px;">
         <thead>
@@ -475,9 +458,9 @@ async function sendApplicationSubmissionEmail({ application, recipients }) {
         <strong>Experience Certificates:</strong> ${resolveFileLink(files.fileExperienceCerts)}
       </p>
 
-      {/* ================= 7. UPLOADED EDUCATIONAL DOCUMENTS ================= */}
+      {/* ================= 6. UPLOADED EDUCATIONAL DOCUMENTS ================= */}
       <h3 style="color: #1e3a8a; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-top: 24px; font-size: 14px;">
-        7. Uploaded Educational Documents
+        6. Uploaded Educational Documents
       </h3>
       <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 15px;">
         <tr style="background-color: #f8fafc;">
@@ -506,9 +489,9 @@ async function sendApplicationSubmissionEmail({ application, recipients }) {
         </tr>
       </table>
 
-      {/* ================= 8. EMPLOYMENT STATUS, NOC & OTHER SERVICE DETAILS ================= */}
+      {/* ================= 7. EMPLOYMENT STATUS, NOC & OTHER SERVICE DETAILS ================= */}
       <h3 style="color: #1e3a8a; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-top: 24px; font-size: 14px;">
-        8. Employment Status, NOC & Other Service Details
+        7. Employment Status, NOC & Other Service Details
       </h3>
       <table style="width: 100%; border-collapse: collapse; font-size: 12.5px; margin-bottom: 15px;">
         <tr>
@@ -539,9 +522,9 @@ async function sendApplicationSubmissionEmail({ application, recipients }) {
         </tr>
       </table>
 
-      {/* ================= 9. CRITERIA FOR SELECTION OF PRINCIPAL ================= */}
+      {/* ================= 8. CRITERIA FOR SELECTION OF PRINCIPAL ================= */}
       <h3 style="color: #1e3a8a; border-bottom: 2px solid #1e3a8a; padding-bottom: 6px; margin-top: 24px; font-size: 14px; text-transform: uppercase;">
-        9. Criteria for Selection of Principal in Govt. Aided Private Colleges in Haryana
+        8. Criteria for Selection of Principal in Govt. Aided Private Colleges in Haryana
       </h3>
 
       {/* Revised criteria line (without box) */}
@@ -795,9 +778,9 @@ async function sendApplicationSubmissionEmail({ application, recipients }) {
         </ul>
       </div>
 
-      {/* ================= 10. PART I ACADEMIC RECORD SCORE ================= */}
+      {/* ================= 9. PART I ACADEMIC RECORD SCORE ================= */}
       <h3 style="color: #1e3a8a; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-top: 24px; font-size: 14px;">
-        10. Part I: Academic Record Score (Max 20 Marks)
+        9. Part I: Academic Record Score (Max 20 Marks)
       </h3>
       <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 15px;">
         <thead>
@@ -836,9 +819,9 @@ async function sendApplicationSubmissionEmail({ application, recipients }) {
         </tbody>
       </table>
 
-      {/* ================= 11. PART II TEACHING & ADMIN SCORE ================= */}
+      {/* ================= 10. PART II TEACHING & ADMIN SCORE ================= */}
       <h3 style="color: #1e3a8a; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-top: 24px; font-size: 14px;">
-        11. Part II: Teaching & Administrative Experience (Max 35 Marks)
+        10. Part II: Teaching & Administrative Experience (Max 35 Marks)
       </h3>
       <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 15px;">
         <thead>
@@ -875,9 +858,9 @@ async function sendApplicationSubmissionEmail({ application, recipients }) {
         </tbody>
       </table>
 
-      {/* ================= 12. B(ii) RESPONSIBILITIES & B(iii) COMMITTEES ================= */}
+      {/* ================= 11. B(ii) RESPONSIBILITIES & B(iii) COMMITTEES ================= */}
       <h3 style="color: #1e3a8a; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-top: 24px; font-size: 14px;">
-        12. B(ii) Responsibilities & B(iii) Committees in Colleges
+        11. B(ii) Responsibilities & B(iii) Committees in Colleges
       </h3>
 
       <p style="font-weight: bold; font-size: 12px; color: #1e3a8a; margin: 8px 0 4px 0;">
@@ -932,9 +915,9 @@ async function sendApplicationSubmissionEmail({ application, recipients }) {
         <strong>Part II Merged Proof Document:</strong> ${resolveFileLink(files.filePart2)}
       </div>
 
-      {/* ================= 13. PART III RESEARCH SCORE ================= */}
+      {/* ================= 12. PART III RESEARCH SCORE ================= */}
       <h3 style="color: #1e3a8a; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-top: 24px; font-size: 14px;">
-        13. Part III: Academic / Research Score (Max 32.5 Marks)
+        12. Part III: Academic / Research Score (Max 32.5 Marks)
       </h3>
       <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 15px;">
         <thead>
@@ -1006,17 +989,17 @@ async function sendApplicationSubmissionEmail({ application, recipients }) {
         </tbody>
       </table>
 
-      {/* ================= 14. ANNEXURES ================= */}
+      {/* ================= 13. ANNEXURES ================= */}
       <h3 style="color: #1e3a8a; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-top: 24px; font-size: 14px;">
-        14. Annexures & Supporting Documents
+        13. Annexures & Supporting Documents
       </h3>
       <p style="font-size: 12px; color: #334155; margin-bottom: 15px;">
         <strong>Merged Annexures:</strong> ${resolveFileLink(files.fileAnnexures)}
       </p>
 
-      {/* ================= 15. PAYMENT DETAILS ================= */}
+      {/* ================= 14. PAYMENT DETAILS ================= */}
       <h3 style="color: #1e3a8a; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-top: 24px; font-size: 14px;">
-        15. Application Fee Payment Details
+        14. Application Fee Payment Details
       </h3>
       <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; padding: 12px; border-radius: 6px; font-size: 13px; margin-bottom: 15px;">
         <table style="width: 100%; border-collapse: collapse;">
@@ -1040,9 +1023,9 @@ async function sendApplicationSubmissionEmail({ application, recipients }) {
         ${paymentScreenshotHtml}
       </div>
 
-      {/* ================= 16. DECLARATION & SIGNATURE ================= */}
+      {/* ================= 15. DECLARATION & SIGNATURE ================= */}
       <h3 style="color: #1e3a8a; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-top: 24px; font-size: 14px;">
-        16. Declaration & Verification
+        15. Declaration & Verification
       </h3>
       <div style="background-color: #f1f5f9; padding: 12px; border-radius: 6px; font-size: 12px; color: #334155;">
         <p style="margin: 0 0 6px 0;">

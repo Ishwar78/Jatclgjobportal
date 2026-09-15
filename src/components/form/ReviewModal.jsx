@@ -60,10 +60,10 @@ export default function ReviewModal({
         <div>
           <h2 className="text-xl font-bold text-blue-950 flex items-center gap-2">
             <span>📋</span>
-            <span>Review Application Details (All 16 Sections)</span>
+            <span>Review Application Details (All {sections.length || 15} Sections)</span>
           </h2>
           <p className="text-xs md:text-sm text-blue-800 mt-1">
-            Please carefully review all 16 sections before final submission. Click <strong>Edit</strong> on any section to make corrections.
+            Please carefully review all {sections.length || 15} sections before final submission. Click <strong>Edit</strong> on any section to make corrections.
           </p>
         </div>
         <div className="flex items-center gap-2 flex-wrap">
@@ -114,7 +114,7 @@ export default function ReviewModal({
         </div>
       )}
 
-      {/* Accordion List of All 16 Sections */}
+      {/* Accordion List of All Sections */}
       <div className="space-y-3">
         {sections.map((sec, idx) => {
           const isOpen = openSections.includes(idx);
@@ -290,40 +290,8 @@ export default function ReviewModal({
                     </div>
                   )}
 
-                  {/* STEP 4: COURT DECLARATIONS */}
-                  {stepNum === 4 && (
-                    <div className="space-y-2 text-xs">
-                      <div className="bg-slate-50 p-3 rounded-lg border border-slate-200">
-                        <span className="text-slate-600 block mb-1">
-                          Ever prosecuted, detained, fined, convicted or debarred/disqualified?
-                        </span>
-                        <span className={`font-bold ${values.courtCase1 === 'Yes' ? 'text-red-600' : 'text-emerald-700'}`}>
-                          {values.courtCase1 || 'No'}
-                        </span>
-                        {values.courtCase1 === 'Yes' && values.courtCase1Details && (
-                          <p className="mt-1 text-red-700 bg-red-50 p-2 rounded">
-                            <strong>Details:</strong> {values.courtCase1Details}
-                          </p>
-                        )}
-                      </div>
-                      <div className="bg-slate-50 p-3 rounded-lg border border-slate-200">
-                        <span className="text-slate-600 block mb-1">
-                          Is any court case pending against you?
-                        </span>
-                        <span className={`font-bold ${values.courtCase2 === 'Yes' ? 'text-red-600' : 'text-emerald-700'}`}>
-                          {values.courtCase2 || 'No'}
-                        </span>
-                        {values.courtCase2 === 'Yes' && values.courtCase2Details && (
-                          <p className="mt-1 text-red-700 bg-red-50 p-2 rounded">
-                            <strong>Details:</strong> {values.courtCase2Details}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* STEP 5: EDUCATIONAL QUALIFICATIONS */}
-                  {stepNum === 5 && (
+                  {/* STEP 4: EDUCATIONAL QUALIFICATIONS */}
+                  {(sec.id === 'education_table' || stepNum === 4) && (
                     <div className="space-y-3 text-xs">
                       {eduRows.length > 0 ? (
                         <div className="overflow-x-auto">
@@ -369,8 +337,8 @@ export default function ReviewModal({
                     </div>
                   )}
 
-                  {/* STEP 6: EMPLOYMENT & EXPERIENCE */}
-                  {stepNum === 6 && (
+                  {/* STEP 5: EMPLOYMENT & EXPERIENCE */}
+                  {(sec.id === 'employment_table' || stepNum === 5) && (
                     <div className="space-y-3 text-xs">
                       {empRows.length > 0 ? (
                         <div className="overflow-x-auto">
@@ -418,8 +386,8 @@ export default function ReviewModal({
                     </div>
                   )}
 
-                  {/* STEP 7: UPLOADED EDUCATIONAL DOCUMENTS */}
-                  {stepNum === 7 && (
+                  {/* STEP 6: UPLOADED EDUCATIONAL DOCUMENTS */}
+                  {(sec.id === 'education_documents' || stepNum === 6) && (
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 text-xs">
                       {[
                         { key: 'docMatric', label: 'Matriculation' },
@@ -455,8 +423,8 @@ export default function ReviewModal({
                     </div>
                   )}
 
-                  {/* STEP 8: EMPLOYMENT STATUS, NOC & OTHER SERVICE DETAILS */}
-                  {stepNum === 8 && (
+                  {/* STEP 7: EMPLOYMENT STATUS, NOC & OTHER SERVICE DETAILS */}
+                  {(sec.id === 'employment_noc' || stepNum === 7) && (
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-xs">
                       <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200">
                         <span className="text-slate-500 font-semibold block">Presently Employed:</span>
@@ -504,8 +472,8 @@ export default function ReviewModal({
                     </div>
                   )}
 
-                  {/* STEP 9: CRITERIA FOR SELECTION OF PRINCIPAL */}
-                  {stepNum === 9 && (
+                  {/* STEP 8: CRITERIA FOR SELECTION OF PRINCIPAL */}
+                  {(sec.id === 'criteria_selection' || stepNum === 8) && (
                     <div className="space-y-4">
                       <div className="flex items-center gap-2 text-emerald-700 font-semibold bg-emerald-50 px-3 py-2.5 rounded-lg border border-emerald-200 text-xs md:text-sm">
                         <span className="text-base">✓</span>
@@ -515,8 +483,8 @@ export default function ReviewModal({
                     </div>
                   )}
 
-                  {/* STEP 10: PART I ACADEMIC RECORD SCORE */}
-                  {stepNum === 10 && (() => {
+                  {/* STEP 9: PART I ACADEMIC RECORD SCORE */}
+                  {(sec.id === 'academic_score' || stepNum === 9) && (() => {
                     const m = parseFloat(values.academicMasters || 0) || 0;
                     const g = parseFloat(values.academicGrad || 0) || 0;
                     const h = parseFloat(values.academic12th || 0) || 0;
@@ -568,8 +536,8 @@ export default function ReviewModal({
                     );
                   })()}
 
-                  {/* STEP 11: PART II TEACHING & ADMIN SKILLS SCORE */}
-                  {stepNum === 11 && (() => {
+                  {/* STEP 10: PART II TEACHING & ADMIN SKILLS SCORE */}
+                  {(sec.id === 'teaching_score' || stepNum === 10) && (() => {
                     const exp15 = parseFloat(values.teachingExpAbove15 || 0) || 0;
                     const jd = parseFloat(values.adminJointDirector || 0) || 0;
                     const reg = parseFloat(values.adminRegistrar || 0) || 0;
@@ -620,8 +588,8 @@ export default function ReviewModal({
                     );
                   })()}
 
-                  {/* STEP 12: B(ii) RESPONSIBILITIES & B(iii) COMMITTEES */}
-                  {stepNum === 12 && (
+                  {/* STEP 11: B(ii) RESPONSIBILITIES & B(iii) COMMITTEES */}
+                  {(sec.id === 'responsibilities' || stepNum === 11) && (
                     <div className="space-y-4 text-xs">
                       {/* Sub-table (ii) */}
                       <div>
@@ -736,8 +704,8 @@ export default function ReviewModal({
                     </div>
                   )}
 
-                  {/* STEP 13: PART III RESEARCH SCORE */}
-                  {stepNum === 13 && (
+                  {/* STEP 12: PART III RESEARCH SCORE */}
+                  {(sec.id === 'research_score' || stepNum === 12) && (
                     <div className="space-y-2 text-xs">
                       <table className="w-full text-left border-collapse border border-slate-200 text-xs">
                         <thead className="bg-slate-100 text-slate-700">
@@ -811,8 +779,8 @@ export default function ReviewModal({
                     </div>
                   )}
 
-                  {/* STEP 14: ANNEXURES */}
-                  {stepNum === 14 && (
+                  {/* STEP 13: ANNEXURES */}
+                  {(sec.id === 'annexures' || stepNum === 13) && (
                     <div className="text-xs">
                       <span className="text-slate-500 font-semibold">Merged Annexures Document: </span>
                       {fileMeta.fileAnnexures?.url ? (
@@ -830,8 +798,8 @@ export default function ReviewModal({
                     </div>
                   )}
 
-                  {/* STEP 15: PAYMENT DETAILS */}
-                  {stepNum === 15 && (
+                  {/* STEP 14: PAYMENT DETAILS */}
+                  {(sec.id === 'payment' || stepNum === 14) && (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                       <div className="space-y-2">
                         <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200">
@@ -878,8 +846,8 @@ export default function ReviewModal({
                     </div>
                   )}
 
-                  {/* STEP 16: DECLARATION & SIGNATURE */}
-                  {stepNum === 16 && (
+                  {/* STEP 15: DECLARATION & SIGNATURE */}
+                  {(sec.id === 'declaration' || stepNum === 15) && (
                     <div className="space-y-3 text-xs">
                       <div className="p-3 bg-slate-50 rounded-lg border border-slate-200 space-y-2">
                         <p><strong>Undertaking:</strong> I hereby declare and undertake that all the information provided by me in this application form is true, correct and complete to the best of my knowledge and belief and nothing has been concealed therein.</p>

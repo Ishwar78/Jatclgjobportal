@@ -8,7 +8,6 @@ import {
   Step1Instructions,
   Step2Personal,
   Step3References,
-  Step4CourtDeclarations,
   Step5EducationQualifications,
   Step6Employment,
   Step7EducationDocuments,
@@ -169,7 +168,7 @@ export default function ApplicationPortal() {
     candidateApi.getSchema(COLLEGE_SLUG)
       .then(remoteSchema => {
         const list = Array.isArray(remoteSchema) ? remoteSchema : remoteSchema?.sections;
-        if (Array.isArray(list) && list.length >= 16) {
+        if (Array.isArray(list) && list.length >= 15) {
           setSections(list);
         }
       })
@@ -489,44 +488,40 @@ export default function ApplicationPortal() {
       missing.push({ step: 3, label: 'Referee 2 (Name & Phone)' });
     }
 
-    // Step 4
-    if (!values.courtCase1) missing.push({ step: 4, label: 'Court Declaration 1 (Yes/No)' });
-    if (!values.courtCase2) missing.push({ step: 4, label: 'Court Declaration 2 (Yes/No)' });
-
-    // Step 5
+    // Step 4 (Educational Qualifications)
     const eduRows = tableValues.educationDetails || [];
     const matricRow = eduRows[0] || {};
     if (!matricRow.yearOfPassing && !matricRow.percentage && !matricRow.marksObtained && !matricRow.university) {
-      missing.push({ step: 5, label: 'Matriculation Educational Details' });
+      missing.push({ step: 4, label: 'Matriculation Educational Details' });
     }
-    if (!values.phdTopic?.trim()) missing.push({ step: 5, label: 'Ph.D. Topic' });
-    if (!values.fieldOfSpecialization?.trim()) missing.push({ step: 5, label: 'Field of Specialization' });
+    if (!values.phdTopic?.trim()) missing.push({ step: 4, label: 'Ph.D. Topic' });
+    if (!values.fieldOfSpecialization?.trim()) missing.push({ step: 4, label: 'Field of Specialization' });
 
-    // Step 7
-    if (!fileMeta.docMatric?.url) missing.push({ step: 7, label: 'Matriculation Certificate/Marksheet PDF' });
-    if (!fileMeta.docInter?.url) missing.push({ step: 7, label: '10+2 / Prep Certificate/Marksheet PDF' });
-    if (!fileMeta.docGrad?.url) missing.push({ step: 7, label: 'Graduation Certificate/Marksheet PDF' });
+    // Step 6 (Education Documents)
+    if (!fileMeta.docMatric?.url) missing.push({ step: 6, label: 'Matriculation Certificate/Marksheet PDF' });
+    if (!fileMeta.docInter?.url) missing.push({ step: 6, label: '10+2 / Prep Certificate/Marksheet PDF' });
+    if (!fileMeta.docGrad?.url) missing.push({ step: 6, label: 'Graduation Certificate/Marksheet PDF' });
 
-    // Step 8 (Employment Status, NOC & Other Service Details)
-    if (!values.isPresEmployed) missing.push({ step: 8, label: 'Presently Employed (Yes/No)' });
+    // Step 7 (Employment Status, NOC & Other Service Details)
+    if (!values.isPresEmployed) missing.push({ step: 7, label: 'Presently Employed (Yes/No)' });
 
-    // Step 9 (Criteria for Selection)
+    // Step 8 (Criteria for Selection)
     if (values.criteriaAccepted !== 'true' && values.criteriaAccepted !== true) {
-      missing.push({ step: 9, label: 'Accept Criteria for Selection' });
+      missing.push({ step: 8, label: 'Accept Criteria for Selection' });
     }
 
-    // Step 15 (Payment)
-    if (!values.paymentAmount?.trim()) missing.push({ step: 15, label: 'Payment Amount' });
-    if (!values.utrNo?.trim()) missing.push({ step: 15, label: '12-Digit UTR / Transaction No.' });
-    if (!fileMeta.filePaymentScreenshot?.url) missing.push({ step: 15, label: 'Payment Screenshot Upload' });
+    // Step 14 (Payment)
+    if (!values.paymentAmount?.trim()) missing.push({ step: 14, label: 'Payment Amount' });
+    if (!values.utrNo?.trim()) missing.push({ step: 14, label: '12-Digit UTR / Transaction No.' });
+    if (!fileMeta.filePaymentScreenshot?.url) missing.push({ step: 14, label: 'Payment Screenshot Upload' });
 
-    // Step 16 (Declaration)
+    // Step 15 (Declaration)
     if (values.finalVerification !== 'true' && values.finalVerification !== true) {
-      missing.push({ step: 16, label: 'Final Verification Checkbox' });
+      missing.push({ step: 15, label: 'Final Verification Checkbox' });
     }
-    if (!values.place?.trim()) missing.push({ step: 16, label: 'Declaration Place' });
-    if (!values.date?.trim()) missing.push({ step: 16, label: 'Declaration Date' });
-    if (!fileMeta.signature?.url) missing.push({ step: 16, label: 'Candidate Signature Upload' });
+    if (!values.place?.trim()) missing.push({ step: 15, label: 'Declaration Place' });
+    if (!values.date?.trim()) missing.push({ step: 15, label: 'Declaration Date' });
+    if (!fileMeta.signature?.url) missing.push({ step: 15, label: 'Candidate Signature Upload' });
 
     return missing;
   };
@@ -687,14 +682,6 @@ export default function ApplicationPortal() {
         );
       case 4:
         return (
-          <Step4CourtDeclarations
-            values={values}
-            errors={errors}
-            onValueChange={handleValueChange}
-          />
-        );
-      case 5:
-        return (
           <Step5EducationQualifications
             values={values}
             errors={errors}
@@ -705,7 +692,7 @@ export default function ApplicationPortal() {
             onRemoveTableRow={handleRemoveTableRow}
           />
         );
-      case 6:
+      case 5:
         return (
           <Step6Employment
             tableValues={tableValues}
@@ -719,7 +706,7 @@ export default function ApplicationPortal() {
             onFileChange={handleFileChange}
           />
         );
-      case 7:
+      case 6:
         return (
           <Step7EducationDocuments
             values={values}
@@ -732,7 +719,7 @@ export default function ApplicationPortal() {
             onFileRemove={handleFileRemove}
           />
         );
-      case 8:
+      case 7:
         return (
           <Step9EmploymentNoc
             values={values}
@@ -745,7 +732,7 @@ export default function ApplicationPortal() {
             onOpenNocDraft={() => setShowNocModal(true)}
           />
         );
-      case 9:
+      case 8:
         return (
           <Step10CriteriaInfo
             values={values}
@@ -753,7 +740,7 @@ export default function ApplicationPortal() {
             onValueChange={handleValueChange}
           />
         );
-      case 10:
+      case 9:
         return (
           <Step11AcademicRecord
             values={values}
@@ -761,7 +748,7 @@ export default function ApplicationPortal() {
             onValueChange={handleValueChange}
           />
         );
-      case 11:
+      case 10:
         return (
           <Step12TeachingAdminScore
             values={values}
@@ -769,7 +756,7 @@ export default function ApplicationPortal() {
             onValueChange={handleValueChange}
           />
         );
-      case 12:
+      case 11:
         return (
           <Step13ResponsibilitiesCommittees
             tableValues={tableValues}
@@ -781,7 +768,7 @@ export default function ApplicationPortal() {
             onFileChange={handleFileChange}
           />
         );
-      case 13:
+      case 12:
         return (
           <Step14ResearchScore
             values={values}
@@ -789,7 +776,7 @@ export default function ApplicationPortal() {
             onValueChange={handleValueChange}
           />
         );
-      case 14:
+      case 13:
         return (
           <Step15Annexures
             values={values}
@@ -801,7 +788,7 @@ export default function ApplicationPortal() {
             onFileChange={handleFileChange}
           />
         );
-      case 15:
+      case 14:
         return (
           <Step16Payment
             values={values}
@@ -815,7 +802,7 @@ export default function ApplicationPortal() {
             onFileRemove={handleFileRemove}
           />
         );
-      case 16:
+      case 15:
         return (
           <div className="space-y-8">
             <Step17Declaration
@@ -829,7 +816,7 @@ export default function ApplicationPortal() {
               onFileRemove={handleFileRemove}
             />
 
-            {/* Review Section on Step 16 at the Bottom */}
+            {/* Review Section on final Step at the Bottom */}
             <div className="mt-12 pt-8 border-t-2 border-slate-200" id="step16-review-section">
               <ReviewModal
                 sections={sections}
