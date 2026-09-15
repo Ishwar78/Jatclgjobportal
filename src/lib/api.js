@@ -104,3 +104,50 @@ export const getAdminApplicationByIdAPI = async (id) => {
   }
 };
 
+export const getSettingAPI = async (key) => {
+  try {
+    const response = await fetch(`${API_URL}/settings/${key}`);
+    const data = await response.json();
+    return { ok: response.ok, status: response.status, data };
+  } catch (error) {
+    console.error('API error fetching setting:', error);
+    throw new Error('Failed to connect to backend server');
+  }
+};
+
+export const updateSettingAPI = async (key, value) => {
+  try {
+    const response = await fetch(`${API_URL}/settings/${key}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ value })
+    });
+    const data = await response.json();
+    return { ok: response.ok, status: response.status, data };
+  } catch (error) {
+    console.error('API error updating setting:', error);
+    throw new Error('Failed to connect to backend server');
+  }
+};
+
+export const uploadFileAPI = async (file) => {
+  try {
+    const formData = new FormData();
+    formData.append('file', file);
+    const response = await fetch(`${API_URL}/upload`, {
+      method: 'POST',
+      body: formData
+    });
+    const data = await response.json();
+    return { ok: response.ok, status: response.status, data };
+  } catch (error) {
+    console.error('API error uploading file:', error);
+    throw new Error('Failed to connect to backend server');
+  }
+};
+
+export const getBaseUrl = () => {
+    return API_URL.replace('/api', '');
+};
+
+

@@ -1257,3 +1257,87 @@
   }
 
 }
+/* Home Popup Styles */
+.home-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.home-popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  position: relative;
+  max-width: 600px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  animation: popupFadeIn 0.3s ease-out forwards;
+}
+
+@keyframes popupFadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.home-popup-close {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: background 0.2s;
+  font-size: 16px;
+}
+.home-popup-close:hover {
+  background: #dc2626;
+}
+
+.home-popup-img {
+  width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.home-popup-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.home-popup-download-btn {
+  background: #1e3a8a;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.home-popup-download-btn:hover {
+  background: #1e40af;
+  color: white;
+}

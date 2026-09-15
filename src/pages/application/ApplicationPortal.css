@@ -264,4 +264,31 @@
     break-inside: avoid !important;
     margin-top: 20px !important;
   }
+
+  /* Modal Print Overrides */
+  .print-modal-overlay {
+    position: absolute !important;
+    inset: 0 !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+
+  .print-modal-content {
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    overflow: visible !important;
+  }
+
+  .print-modal-body {
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+  }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Brand from './Brand';
-import { FaHome, FaFileAlt, FaUser, FaBell, FaSignOutAlt, FaUsers, FaInfoCircle } from 'react-icons/fa';
+import { FaHome, FaFileAlt, FaUser, FaBell, FaSignOutAlt, FaUsers, FaInfoCircle, FaImage } from 'react-icons/fa';
 import './Layout.css';
 
 export function PublicLayout({ children }) {
@@ -51,6 +51,7 @@ export function AdminLayout({ title, children }) {
                 <Link to="/admin/users"><FaUsers style={{marginRight: '8px', display: 'inline-block'}} /> Users</Link>
                 <Link to="/admin/applications"><FaFileAlt style={{marginRight: '8px', display: 'inline-block'}} /> Applications</Link>
                 <Link to="/admin/instructions"><FaInfoCircle style={{marginRight: '8px', display: 'inline-block'}} /> Instructions</Link>
+                <Link to="/admin/popup"><FaImage style={{marginRight: '8px', display: 'inline-block'}} /> Home Popup</Link>
                 
                 <button onClick={() => {
                     localStorage.removeItem('adminAuth');

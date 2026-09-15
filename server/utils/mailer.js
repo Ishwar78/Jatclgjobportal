@@ -103,15 +103,9 @@ async function sendApplicationSubmissionEmail({ application, recipients }) {
 
   const isValidEmail = (em) => typeof em === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.trim());
   const committeeRecipients = (recipients || defaultCommittees).filter(isValidEmail);
-  const candEmail = (application.email && isValidEmail(application.email)) 
-    ? [application.email.trim()] 
-    : (application.formData?.email && isValidEmail(application.formData.email) ? [application.formData.email.trim()] : []);
   
-  // Merge unique recipients including candidate email
-  const allRecipients = Array.from(new Set([
-    ...committeeRecipients,
-    ...candEmail
-  ]));
+  // Merge unique recipients for the committee email (exclude candidate here, they get a separate success email)
+  const allRecipients = Array.from(new Set([...committeeRecipients]));
 
   const fd = application.formData || {};
   const files = application.fileData || {};
@@ -1219,10 +1213,55 @@ async function sendRegistrationIdEmail({ to, name, registrationId, mobile }) {
   return transporter.sendMail(mailOptions);
 }
 
+/**
+ * Send candidate success email
+ */
+async function sendCandidateSuccessEmail({ application }) {
+  const candidateEmail = application.email || application.formData?.email;
+  if (!candidateEmail) return;
+
+  const mailOptions = {
+    from: `"AIJHM Recruitment Portal" <${process.env.SMTP_USER}>`,
+    to: candidateEmail,
+    subject: `Application Submitted Successfully - ${application.applicationNo}`,
+    html: `
+      <div style="font-family: Arial, sans-serif; max-width: 550px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 8px; background-color: #ffffff;">
+        <div style="text-align: center; border-bottom: 2px solid #1e3a8a; padding-bottom: 12px; margin-bottom: 18px;">
+          <h2 style="color: #1e3a8a; margin: 0; font-size: 18px;">ALL INDIA JAT HEROES’ MEMORIAL COLLEGE</h2>
+          <p style="color: #64748b; font-size: 12px; margin: 4px 0 0;">Rohtak, Haryana • Recruitment Portal</p>
+        </div>
+        <h3 style="color: #059669; margin-top: 0;">Application Submitted Successfully!</h3>
+        <p style="color: #334155; font-size: 14px; line-height: 1.6;">
+          Dear <strong>${application.candidateName || 'Candidate'}</strong>,<br/><br/>
+          Your application for the post of <strong>${application.postAppliedFor || application.formData?.postAppliedFor || 'Principal'}</strong> has been successfully submitted on the AIJHM Recruitment Portal.
+        </p>
+        <div style="background-color: #f8fafc; border-left: 4px solid #2563eb; padding: 14px 18px; margin: 20px 0; border-radius: 4px;">
+          <p style="margin: 4px 0; font-size: 14px;"><strong>Application No:</strong> <span style="color: #1e3a8a; font-weight: bold;">${application.applicationNo}</span></p>
+          <p style="margin: 4px 0; font-size: 14px;"><strong>Status:</strong> <span style="color: #059669; font-weight: bold;">Submitted</span></p>
+        </div>
+        <p style="color: #334155; font-size: 13px; line-height: 1.5;">
+          You can login to your dashboard at any time to view or download a PDF copy of your submitted application form. 
+          Please remember to submit the hard copy of the application along with all required testimonials by the closing date as per the guidelines.
+        </p>
+        <div style="margin: 25px 0; text-align: center;">
+          <a href="http://localhost:5173/login" style="background-color: #1e3a8a; color: #ffffff; padding: 10px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">
+            Go to Candidate Portal
+          </a>
+        </div>
+        <p style="color: #94a3b8; font-size: 11px; margin-top: 25px; border-top: 1px solid #f1f5f9; padding-top: 10px; text-align: center;">
+          AIJHM Recruitment Portal • Automated Notification
+        </p>
+      </div>
+    `
+  };
+  return transporter.sendMail(mailOptions);
+}
+
 module.exports = {
   transporter,
   sendRegistrationEmail,
   sendApplicationSubmissionEmail,
   sendPasswordResetOtpEmail,
-  sendRegistrationIdEmail
+  sendRegistrationIdEmail,
+  sendCandidateSuccessEmail
 };

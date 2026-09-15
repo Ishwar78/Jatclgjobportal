@@ -32,11 +32,14 @@ app.use('/uploads', express.static(uploadsDir));
 // Connect to Database
 connectDB();
 
+const settingsRoutes = require('./route/settings.route');
+
 // Routes
 app.use('/api/admin', adminRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/application', applicationRoutes);
 app.use('/api/upload', uploadRoutes);
+app.use('/api/settings', settingsRoutes);
 
 app.get('/', (req, res) => {
   res.send('API is running');

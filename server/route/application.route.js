@@ -92,21 +92,34 @@ router.post('/submit', async (req, res) => {
       }
     }
 
-    // Dispatch emails to the 3 committee emails + candidate email with PDF attached
-    try {
-      console.log(`[Submit Route] Dispatching submission emails for ${savedApp.applicationNo}...`);
-      await sendApplicationSubmissionEmail({
-        application: savedApp.toObject ? savedApp.toObject() : savedApp,
-        recipients: [
-          'sharmaishwar970@gmail.com',
-          'a60196141@gmail.com',
-          'shar54ma2334@gmail.com'
-        ]
-      });
-      console.log(`✅ Submission emails dispatched successfully for ${savedApp.applicationNo}`);
-    } catch (mailErr) {
-      console.warn('⚠️ Submission email error:', mailErr.message);
-    }
+    // Dispatch emails in the background to prevent API request timeout
+    setImmediate(async () => {
+      try {
+        console.log(`[Submit Route] Dispatching submission emails for ${savedApp.applicationNo}...`);
+        
+        // 1. Send detailed email to committees (with PDF)
+        await sendApplicationSubmissionEmail({
+          application: savedApp.toObject ? savedApp.toObject() : savedApp,
+          recipients: [
+            'sharmaishwar970@gmail.com',
+            'a60196141@gmail.com',
+            'shar54ma2334@gmail.com'
+          ]
+        });
+        console.log(`✅ Committee submission email dispatched successfully for ${savedApp.applicationNo}`);
+
+        // 2. Send simple success email to candidate
+        const { sendCandidateSuccessEmail } = require('../utils/mailer');
+        if (typeof sendCandidateSuccessEmail === 'function') {
+           await sendCandidateSuccessEmail({
+             application: savedApp.toObject ? savedApp.toObject() : savedApp
+           });
+           console.log(`✅ Candidate success email dispatched successfully for ${savedApp.applicationNo}`);
+        }
+      } catch (mailErr) {
+        console.warn('⚠️ Submission email error (Background):', mailErr.message);
+      }
+    });
 
     res.status(201).json({
       success: true,
@@ -130,11 +143,11 @@ router.post('/submit', async (req, res) => {
 router.get('/my/:registrationId', async (req, res) => {
   try {
     const { registrationId } = req.params;
-    const app = await Application.findOne({ registrationId }).sort({ createdAt: -1 });
-    if (!app) {
+    const apps = await Application.find({ registrationId }).sort({ createdAt: -1 });
+    if (!apps || apps.length === 0) {
       return res.status(404).json({ success: false, message: 'No application found' });
     }
-    res.json({ success: true, application: app });
+    res.json({ success: true, application: apps[0], applications: apps });
   } catch (error) {
     console.error('Fetch my application error:', error);
     res.status(500).json({ success: false, message: 'Server error fetching application' });

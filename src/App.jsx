@@ -36,6 +36,7 @@ import AdminReports from './pages/admin/AdminReports';
 import AdminSettings from './pages/admin/AdminSettings';
 import AdminUsers from './pages/admin/AdminUsers';
 import AdminInstructions from './pages/admin/AdminInstructions';
+import AdminPopup from './pages/admin/AdminPopup';
 import ApplicationPortal from './pages/application/ApplicationPortal';
 export default function App(){
     return <Routes><Route path="/" element={<Home/>}/>
@@ -67,6 +68,7 @@ export default function App(){
     <Route path="/admin/notifications" element={<AdminNotifications/>}/>
     <Route path="/admin/reports" element={<AdminReports/>}/>
     <Route path="/admin/settings" element={<AdminSettings/>}/>
+    <Route path="/admin/popup" element={<AdminPopup/>}/>
     <Route path="*" element={<Navigate to="/"/>}/>
   </Routes>
 }

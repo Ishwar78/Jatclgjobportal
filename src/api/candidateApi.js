@@ -176,8 +176,15 @@ export const candidateApi = {
       const data = await safeRequest(`/api/application/my/${registrationId}`);
       if (data?.application?.fileData) {
         for (const [k, v] of Object.entries(data.application.fileData)) {
-          if (v && v.url) {
-            data.application.fileData[k].url = getFileUrl(v.url);
+          if (v && v.url) data.application.fileData[k].url = getFileUrl(v.url);
+        }
+      }
+      if (data?.applications && Array.isArray(data.applications)) {
+        for (const app of data.applications) {
+          if (app.fileData) {
+            for (const [k, v] of Object.entries(app.fileData)) {
+              if (v && v.url) app.fileData[k].url = getFileUrl(v.url);
+            }
           }
         }
       }

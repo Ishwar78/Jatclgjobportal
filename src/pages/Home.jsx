@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { getSettingAPI, getBaseUrl } from '../lib/api';
 
 import {
   FaSignInAlt,
@@ -11,7 +12,9 @@ import {
   FaUniversity,
   FaMapMarkerAlt,
   FaLock,
-  FaClipboardList
+  FaClipboardList,
+  FaTimes,
+  FaDownload
 } from 'react-icons/fa';
 
 import Brand from '../components/Brand';
@@ -20,6 +23,8 @@ import './Home.css';
 export default function Home() {
 
   const [candidate, setCandidate] = useState(null);
+  const [popupData, setPopupData] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     const raw = localStorage.getItem('candidate_session');
@@ -35,6 +40,23 @@ export default function Home() {
         console.error('Session error:', error);
       }
     }
+
+    // Fetch Home Popup Setting
+    const fetchPopup = async () => {
+      try {
+        const res = await getSettingAPI('home_popup');
+        if (res.ok && res.data && res.data.value) {
+          setPopupData(res.data.value);
+          // show popup if not dismissed before (or always show? the user said "home page p ek pop aaye")
+          // let's always show it for now on page load
+          setShowPopup(true);
+        }
+      } catch (err) {
+        console.error('Error fetching popup:', err);
+      }
+    };
+    fetchPopup();
+
   }, []);
 
   return (
@@ -313,7 +335,7 @@ export default function Home() {
                 </span>
 
                 <p>
-                  Fill all 16 application steps carefully.
+                  Fill all 15 application steps carefully.
                   Your progress is automatically saved.
                 </p>
 
@@ -481,7 +503,7 @@ export default function Home() {
             </span>
 
             <strong>
-              06 October 2026
+              07 October 2026
             </strong>
 
             <small>
@@ -513,6 +535,29 @@ export default function Home() {
 
 
       </div>
+
+      {/* ================= HOME POPUP ================= */}
+      {showPopup && popupData && (
+        <div className="home-popup-overlay">
+          <div className="home-popup-content">
+            <button className="home-popup-close" onClick={() => setShowPopup(false)}>
+              <FaTimes />
+            </button>
+            <img src={`${getBaseUrl()}${popupData}`} alt="Important Announcement" className="home-popup-img" />
+            <div className="home-popup-actions">
+              <a 
+                href={`${getBaseUrl()}${popupData}`} 
+                download="Announcement.jpg" 
+                target="_blank" 
+                rel="noreferrer"
+                className="home-popup-download-btn"
+              >
+                <FaDownload /> Download Option
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
 

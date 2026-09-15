@@ -1,27 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import { candidateApi } from '../../api/candidateApi';
+import { getFileUrl } from '../../api/candidateApi';
 import PrintableApplication from '../form/PrintableApplication';
+import candidateApi from '../../api/candidateApi';
+import '../../pages/application/ApplicationPortal.css'; // For print layout CSS
 
 export default function ViewLastApplicationModal({ isOpen, onClose, candidate }) {
   const [loading, setLoading] = useState(false);
-  const [application, setApplication] = useState(null);
+  const [applications, setApplications] = useState([]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const [showFullPrint, setShowFullPrint] = useState(false);
 
   useEffect(() => {
     if (isOpen && candidate?.registrationId) {
       setLoading(true);
       setShowFullPrint(false);
+      setSelectedIndex(0);
       candidateApi.getMyApplication(candidate.registrationId)
         .then(res => {
-          if (res && res.application) {
-            setApplication(res.application);
+          if (res && res.applications && res.applications.length > 0) {
+            setApplications(res.applications);
+          } else if (res && res.application) {
+            setApplications([res.application]);
           } else {
-            setApplication(null);
+            setApplications([]);
           }
         })
         .catch(err => {
-          console.warn('Error fetching application:', err);
-          setApplication(null);
+          console.warn('Error fetching applications:', err);
+          setApplications([]);
         })
         .finally(() => setLoading(false));
     }
@@ -29,19 +35,20 @@ export default function ViewLastApplicationModal({ isOpen, onClose, candidate })
 
   if (!isOpen) return null;
 
+  const application = applications[selectedIndex];
   const fd = application?.formData || {};
   const files = application?.fileData || {};
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4 overflow-y-auto">
-      <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 max-w-2xl w-full overflow-hidden my-8 animate-in fade-in zoom-in-95 duration-200">
+    <div className="fixed inset-0 z-50 flex items-start justify-center bg-slate-900/60 backdrop-blur-xs p-4 sm:p-6 overflow-y-auto pt-10 pb-10 print-modal-overlay">
+      <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 max-w-2xl w-full my-auto overflow-hidden animate-in fade-in zoom-in-95 duration-200 print-modal-content">
         
         {/* MODAL HEADER */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-slate-50">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-slate-50 no-print">
           <div className="flex items-center gap-3">
             <span className="text-xl">📄</span>
             <div>
-              <h3 className="font-bold text-slate-800 text-base">Last Submitted Application</h3>
+              <h3 className="font-bold text-slate-800 text-base">Your Submitted Applications</h3>
               <p className="text-xs text-slate-500">Recruitment application history for this account</p>
             </div>
           </div>
@@ -55,16 +62,39 @@ export default function ViewLastApplicationModal({ isOpen, onClose, candidate })
         </div>
 
         {/* MODAL BODY */}
-        <div className="p-6 max-h-[75vh] overflow-y-auto">
+        <div className="p-6 max-h-[calc(100vh-10rem)] overflow-y-auto print-modal-body">
           {loading ? (
-            <div className="text-center py-12">
+            <div className="text-center py-12 no-print">
               <div className="inline-block animate-spin w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full mb-3"></div>
-              <p className="text-sm font-semibold text-slate-600">Loading your application details...</p>
+              <p className="text-sm font-semibold text-slate-600">Loading your applications...</p>
             </div>
-          ) : application ? (
-            <div className="space-y-6">
+          ) : applications.length > 0 ? (
+            <div className="space-y-6 print-space-y-0">
+              
+              {/* TABS FOR MULTIPLE APPLICATIONS */}
+              {applications.length > 1 && (
+                <div className="flex gap-2 overflow-x-auto pb-2 border-b border-slate-200 no-print">
+                  {applications.map((app, idx) => (
+                    <button
+                      key={app.applicationNo || idx}
+                      onClick={() => {
+                        setSelectedIndex(idx);
+                        setShowFullPrint(false);
+                      }}
+                      className={`whitespace-nowrap px-4 py-2 rounded-t-lg font-semibold text-xs border-b-2 transition ${
+                        selectedIndex === idx
+                          ? 'border-blue-600 text-blue-700 bg-blue-50/50'
+                          : 'border-transparent text-slate-500 hover:bg-slate-50 hover:text-slate-700'
+                      }`}
+                    >
+                      {app.applicationNo || `Application ${idx + 1}`}
+                    </button>
+                  ))}
+                </div>
+              )}
+
               {/* STATUS & POST BANNER */}
-              <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 no-print">
                 <div>
                   <div className="flex items-center gap-2 mb-1">
                     <span className="px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider bg-emerald-600 text-white rounded-md">
@@ -84,7 +114,10 @@ export default function ViewLastApplicationModal({ isOpen, onClose, candidate })
                 <div className="shrink-0 flex gap-2">
                   <button
                     type="button"
-                    onClick={() => window.print()}
+                    onClick={() => {
+                      setShowFullPrint(true);
+                      setTimeout(() => window.print(), 300);
+                    }}
                     className="inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-lg shadow-sm transition cursor-pointer"
                   >
                     🖨️ Print / PDF
@@ -93,7 +126,7 @@ export default function ViewLastApplicationModal({ isOpen, onClose, candidate })
               </div>
 
               {/* CANDIDATE PARTICULARS */}
-              <div className="bg-slate-50 rounded-xl p-4 border border-slate-200">
+              <div className="bg-slate-50 rounded-xl p-4 border border-slate-200 no-print">
                 <h5 className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-3 border-b border-slate-200 pb-1.5">
                   Candidate Details
                 </h5>
@@ -126,7 +159,7 @@ export default function ViewLastApplicationModal({ isOpen, onClose, candidate })
               </div>
 
               {/* SCORES SUMMARY */}
-              <div className="bg-slate-50 rounded-xl p-4 border border-slate-200">
+              <div className="bg-slate-50 rounded-xl p-4 border border-slate-200 no-print">
                 <h5 className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-3 border-b border-slate-200 pb-1.5">
                   Calculated Scores
                 </h5>
@@ -149,7 +182,7 @@ export default function ViewLastApplicationModal({ isOpen, onClose, candidate })
               </div>
 
               {/* PAYMENT SUMMARY */}
-              <div className="bg-slate-50 rounded-xl p-4 border border-slate-200">
+              <div className="bg-slate-50 rounded-xl p-4 border border-slate-200 no-print">
                 <h5 className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 border-b border-slate-200 pb-1.5">
                   Fee Payment
                 </h5>
@@ -174,26 +207,25 @@ export default function ViewLastApplicationModal({ isOpen, onClose, candidate })
                 <button
                   type="button"
                   onClick={() => setShowFullPrint(!showFullPrint)}
-                  className="w-full text-center text-xs font-bold text-blue-600 hover:text-blue-800 hover:underline py-2"
+                  className="w-full text-center text-xs font-bold text-blue-600 hover:text-blue-800 hover:underline py-2 no-print"
                 >
                   {showFullPrint ? '▲ Hide Full Form Preview' : '▼ View Complete Form Preview'}
                 </button>
-                {showFullPrint && (
-                  <div className="mt-4 border border-slate-200 rounded-xl p-4 bg-white max-h-[500px] overflow-y-auto">
-                    <PrintableApplication
-                      applicationNo={application.applicationNo}
-                      candidate={{ ...candidate, ...application }}
-                      values={fd}
-                      tableValues={fd}
-                      fileMeta={files}
-                    />
-                  </div>
-                )}
+                {/* ALWAYS render it for printing, but hide on screen if not toggled */}
+                <div className={`mt-4 border border-slate-200 rounded-xl p-4 bg-white print-container ${!showFullPrint ? 'hidden print:block print:border-none print:p-0' : 'max-h-[500px] overflow-y-auto print:max-h-none print:overflow-visible print:border-none print:p-0 print:m-0'}`}>
+                  <PrintableApplication
+                    applicationNo={application.applicationNo}
+                    candidate={{ ...candidate, ...application }}
+                    values={fd}
+                    tableValues={fd}
+                    fileMeta={files}
+                  />
+                </div>
               </div>
             </div>
           ) : (
             /* NO APPLICATION FOUND */
-            <div className="text-center py-10 px-4">
+            <div className="text-center py-10 px-4 no-print">
               <div className="w-16 h-16 bg-amber-50 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-3 text-3xl">
                 📝
               </div>
@@ -215,7 +247,7 @@ export default function ViewLastApplicationModal({ isOpen, onClose, candidate })
         </div>
 
         {/* MODAL FOOTER */}
-        <div className="px-6 py-3 bg-slate-50 border-t border-slate-200 flex justify-end">
+        <div className="px-6 py-3 bg-slate-50 border-t border-slate-200 flex justify-end no-print">
           <button
             type="button"
             onClick={onClose}
